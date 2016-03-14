@@ -22,4 +22,27 @@
 		{
 			$this->PDO=NULL;
 		}
+
+		function Select($SQL)
+		{
+			try
+			{
+				$this->Connect();
+				$resultSet = $this->PDO->query($SQL);
+				while($Row =$resultSet->fetch(PDO::FETCH_ASSOC)) 
+				{
+           			$Data[]=$Row;
+				}
+				return  $Data;
+			}
+			catch(PDOException $e)
+			{
+				echo $e->getMessage();
+			}
+			finally
+			{
+				$this->Close_Connection();
+			}
+		}
 	}
+?>

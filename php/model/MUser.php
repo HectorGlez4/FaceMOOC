@@ -34,10 +34,7 @@
 
 		}
 
-
 	}
 
-	//$mus = new MUser();
-	//var_dump($mus->SelectUser("email@domain.com", "123456"));
 
 ?>

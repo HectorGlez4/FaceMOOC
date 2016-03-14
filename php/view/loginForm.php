@@ -1,7 +1,11 @@
 <form method="post" action="./index.php">
-	<label for="pseudo">Pseudo : </label>
-	<input type="text" id="pseudo" name="pseudo" /><br />
-	<label for="password">Mot de passe : </label>
-	<input type="password" id="password" name="password" /><br />
-	<input type="submit" name="submit" value="Connection" /><br />
+	<div class="form-group">
+	    <label for="pseudo">Pseudo : </label>
+		<input type="text" id="pseudo" name="pseudo" />
+  	</div>
+	<div class="form-group">
+		<label for="password">Mot de passe : </label>
+		<input type="password" id="password" name="password" />
+  	</div>
+  	<button type="submit" name="submit" class="btn btn-default" value="Connection">Submit</button>
 </form>

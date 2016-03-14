@@ -34,6 +34,7 @@
 			}
 
 		}
+
 		function InsertUser($email, $password, $firstname, $lastname)
 		{
 			$this->Connect();
@@ -47,10 +48,24 @@
 			return false;
 		}
 
+		function DeleteUser($idUser)
+		{
+			$this->Connect();
+			$sql = "DELETE FROM user WHERE id_user = %d ";
+			$sql1 = sprintf($sql, $idUser);
+			echo $sql1;
+			if($this->Insert($sql1))
+			{
+				return true;
+			}
+			return false;
+		}
+
 
 	}
 	
-	$mus = new MUser();
-	var_dump($mus->InsertUser("email@domain4.com", "123456", "fn" , "ln"));
+	//$mus = new MUser();
+	//echo "\n";
+	//echo $mus->DeleteUser(3);
 	
 ?>

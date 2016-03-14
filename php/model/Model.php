@@ -56,6 +56,19 @@
 			{
 				echo $e->getMessage();
 			}
-		}	
+		}
+
+		public function Delete($SQL)
+		{
+			try
+			{
+				$success = $this->PDO->exec($SQL);
+				return $success;
+			}
+			catch(PDOException $e)
+			{
+				echo $e->getMessage();
+			}
+		}		
 	}
 ?>

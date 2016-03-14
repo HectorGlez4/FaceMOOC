@@ -7,10 +7,10 @@ use mooc;
 
 create table user(
 		id_user int primary key auto_increment,
-		email varchar(25),
-		password varchar(40),
-		firstname varchar(5),
-		lastname varchar(40)
+		email varchar(255),
+		password varchar(255),
+		firstname varchar(255),
+		lastname varchar(255)
 		)engine=innodb;
 create table expert(
 		id_expert int primary key auto_increment,
@@ -27,7 +27,7 @@ create table formation(
   		description text,
   		image varchar(255),
   		required_skill text,
-  		difficulty int(11),
+  		difficulty varchar(10),
 		keywords text 
 		)engine=innodb;
 

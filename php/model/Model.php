@@ -3,7 +3,7 @@
 
 	class Model
 	{
-		private $PDO;
+		public $PDO;
 
 		public function Connect()
 		{

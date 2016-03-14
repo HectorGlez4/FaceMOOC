@@ -39,7 +39,6 @@
 			{
 				echo $e->getMessage();
 			}
-			finally
 			{
 				$this->Close_Connection();
 			}

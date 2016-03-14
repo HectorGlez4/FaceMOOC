@@ -44,5 +44,18 @@
 				$this->Close_Connection();
 			}
 		}
+
+		public function Insert($SQL)
+		{
+			try
+			{
+				$success = $this->PDO->exec($SQL);
+				return $success;
+			}
+			catch(PDOException $e)
+			{
+				echo $e->getMessage();
+			}
+		}	
 	}
 ?>

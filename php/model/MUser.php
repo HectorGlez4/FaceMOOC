@@ -11,6 +11,7 @@
 		{
 			try
 			{
+				$Data = null;
 				$this->Connect();
 				$sql = "SELECT * FROM user WHERE email = :email AND password = :password";
 				$stmt = $this->PDO->prepare($sql);
@@ -33,11 +34,23 @@
 			}
 
 		}
+		function InsertUser($email, $password, $firstname, $lastname)
+		{
+			$this->Connect();
+			$sql = "INSERT INTO user (`email`, `password`, `firstname`, `lastname`) VALUES ('%s', '%s', '%s', '%s');";
+			$sql1 = sprintf($sql, $email, $password, $firstname, $lastname);
+			echo $sql1;
+			if($this->Insert($sql1))
+			{
+				return true;
+			}
+			return false;
+		}
 
 
 	}
-
-	//$mus = new MUser();
-	//var_dump($mus->SelectUser("email@domain.com", "123456"));
-
+	
+	$mus = new MUser();
+	var_dump($mus->InsertUser("email@domain4.com", "123456", "fn" , "ln"));
+	
 ?>

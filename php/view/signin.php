@@ -7,7 +7,7 @@
 </head>
 
     <body>
-        <form method="post" action="<?php WEBROOT ?>User/login">
+        <form method="post" action="<?php WEBROOT ?>signin">
 
             <div class="form-group">
                 <label for="email">Email : </label>

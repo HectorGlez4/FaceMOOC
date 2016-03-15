@@ -19,7 +19,7 @@ Class User extends Controller {
         }
         else {
             $MUser = new MUser();
-            $connect = $MUser->SelectUser($_POST['email'], $_POST['password']);
+            $connect = $MUser->SelectUserEmailPassword($_POST['email'], $_POST['password']);
             if ($connect) {
                 session_start();
                 $_SESSION['id'] = 1;
@@ -28,31 +28,33 @@ Class User extends Controller {
                 header('Location:' . WEBROOT . 'index');
             }
         }
+    }
 
+    function inscription() {
+        $this->render('signin');
     }
 
     function signin()
     {
         if (empty($_POST)) {
-            header('Location:' . WEBROOT);
+            header('Location:'.WEBROOT);
         } else {
             $email = $_POST['email'];
             $password = $_POST['password'];
             $passwordconf = $_POST['passwordconf'];
             $MUser = new MUser();
-            $connect = $MUser->SelectUser($_POST['email'], $_POST['password']);
-            if ($password == $passwordconf) {
-                $sign = $MUser->InsertUser($_POST['email'], $_POST['password'], $_POST['firstname'], $_POST['lastname']);
-                if ($sign) {
-                    session_start();
-                    $_SESSION['id'] = 1;
-                    header('Location:' . WEBROOT . 'Home');
+            $checkMail = $MUser->SelectUserEmail($email);
+            if (!$checkMail) {
+                if ($password == $passwordconf) {
+                    $MUser->InsertUser($_POST['email'], $_POST['password'], $_POST['firstname'], $_POST['lastname']);
+                        session_start();
+                        $_SESSION['id'] = 1;
+                        header('Location:' . WEBROOT . 'Home');
                 } else {
-                    header('Location:' . WEBROOT . 'index');
+                    echo "Mots de passe non identiques";
                 }
-            }
-            else {
-                echo "Mots de passe non identiques";
+            } else {
+                echo "Email déjà utilisé";
             }
         }
     }

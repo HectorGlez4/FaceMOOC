@@ -9,3 +9,5 @@
   	</div>
   	<button type="submit" name="submit" class="btn btn-default" value="Connection">Submit</button>
 </form>
+
+<?php global $content ?>

@@ -48,6 +48,10 @@
 			return false;
 		}
 
+
+	}
+
+
 		function DeleteUser($idUser)
 		{
 			$this->Connect();
@@ -79,8 +83,6 @@
 
 	}
 	
-	$mus = new MUser();
-	echo "\n";
-	echo $mus->UpdateUser("e@d.com", "6543321", "namef","namel", 1);
-	
-?>
+	//$mus = new MUser();
+	//echo "\n";
+	//echo $mus->DeleteUser(3);

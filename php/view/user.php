@@ -3,23 +3,41 @@
 <!---->
 <html lang="fr">
 	<?php include("head.php")?>
+	   <link rel="stylesheet" href="../../css/login.css">
     <body>
 
+	<div class="container well" id="sha">
+		<div class="row">
+					<div class="col-sm-12" id="avatar">
 
-<form method="post" action="<?php WEBROOT ?>User/login">
-	<div class="form-group">
-	    <label for="email">Email : </label>
-		<input type="text" id="email" name="email" />
-  	</div>
-	<div class="form-group">
-		<label for="password">Mot de passe : </label>
-		<input type="password" class="form-control" id="password" name="password" />
-  	</div>
-  	<button type="submit" name="submit" class="btn btn-default" value="Connection">Submit</button>
-</form>
+					<span id="avat" class="glyphicon glyphicon-user"></span>
+				
+					</div>
+		</div>
+				
+		<form class="login" action=".php" method="POST">
+				<div class="form-group">
+					Email: <input type="email" class="form-control" placeholder="name@name." name="email" required autofocus>
+				</div>
 
+				<div class="form-group">
+					Password: <input type="password" class="form-control" placeholder="*****" name="pass" required>
+				</div>
+
+
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Start</button>
+							
+					
+				       <p class="help-block"><a href="#">I forgot my password</a></p>
+			
+
+	    </form>
+
+		
+		
+	</div>
 
 <?php global $content ?>
-<?php include("footer.php")?>
+
  </body>
 </html>

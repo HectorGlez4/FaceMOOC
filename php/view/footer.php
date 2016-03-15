@@ -1,3 +1,3 @@
 <footer>
-    <p>&copy; Company 2015</p>
+    <p>&copy; FaceMOOC Company 2015</p>
 </footer>

@@ -40,7 +40,7 @@
 			$this->Connect();
 			$sql = "INSERT INTO user (`email`, `password`, `firstname`, `lastname`) VALUES ('%s', '%s', '%s', '%s');";
 			$sql1 = sprintf($sql, $email, $password, $firstname, $lastname);
-			echo $sql1;
+			//echo $sql1;
 			if($this->Insert($sql1))
 			{
 				return true;
@@ -57,8 +57,8 @@
 			$this->Connect();
 			$sql = "DELETE FROM user WHERE id_user = %d ";
 			$sql1 = sprintf($sql, $idUser);
-			echo $sql1;
-			if($this->Insert($sql1))
+			//echo $sql1;
+			if($this->Delete($sql1))
 			{
 				return true;
 			}
@@ -70,8 +70,8 @@
 			$this->Connect();
 			$sql = "UPDATE user SET email = '%s', password = '%s', firstname = '%s', lastname='%s' WHERE id_user = %d ";
 			$sql1 = sprintf($sql, $email, $password, $fname, $lname, $idUser);
-			echo $sql1;
-			if($this->Insert($sql1))
+			//echo $sql1;
+			if($this->Update($sql1))
 			{
 				return true;
 			}

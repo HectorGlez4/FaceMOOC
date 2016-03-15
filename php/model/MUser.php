@@ -61,11 +61,26 @@
 			return false;
 		}
 
+		function UpdateUser($email, $password, $fname, $lname, $idUser)
+		{
+			$this->Connect();
+			$sql = "UPDATE user SET email = '%s', password = '%s', firstname = '%s', lastname='%s' WHERE id_user = %d ";
+			$sql1 = sprintf($sql, $email, $password, $fname, $lname, $idUser);
+			echo $sql1;
+			if($this->Insert($sql1))
+			{
+				return true;
+			}
+			return false;
+		}
+
+		
+
 
 	}
 	
-	//$mus = new MUser();
-	//echo "\n";
-	//echo $mus->DeleteUser(3);
+	$mus = new MUser();
+	echo "\n";
+	echo $mus->UpdateUser("e@d.com", "6543321", "namef","namel", 1);
 	
 ?>

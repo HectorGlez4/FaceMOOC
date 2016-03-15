@@ -69,6 +69,19 @@
 			{
 				echo $e->getMessage();
 			}
-		}		
+		}
+
+		public function Update($SQL)
+		{
+			try
+			{
+				$success = $this->PDO->exec($SQL);
+				return $success;
+			}
+			catch(PDOException $e)
+			{
+				echo $e->getMessage();
+			}
+		}			
 	}
 ?>

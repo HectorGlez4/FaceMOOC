@@ -1,20 +1,35 @@
 <?php
 	require("Model.php");
-	class MExpert extends Model
+	class MFormation extends Model
 	{
-		function SelectExpertsALL()
+		function SelectFomrationsALL()
 		{
-			return $this->Select("Select * From expert");
+			return $this->Select("Select * From formation");
 		}
 
-		/*
-		function SelectExpert($param)
+		
+		function SelectFormation($keywords)
 		{
 			
+			$keyarray = explode(" ", $keywords);
+			$Data = null;
+			$sql = "SELECT * FROM formation ";
+			foreach ($keyarray as $key => $value) {
+				if ($key== 0)
+				{
+					$sql .= "WHERE keywords LIKE '%$value%'";
+				}
+				else
+				{
+					$sql .= " OR keywords LIKE '%$value%'";
+				}				
+			}
+			//echo $sql;
+			return ($this->Select($sql));
+		}
 
-		}*/
-
-		function InsertExpert($iduser, $address, $phone)
+		function InsertFormation($idExpert, $title, $description, $image
+								, $req_skill, $difficulty, $keywords )
 		{
 			$this->Connect();
 			$sql = "INSERT INTO expert (`id_user`, `address`, `phone`) VALUES ('%d', '%s', '%s');";
@@ -59,6 +74,7 @@
 
 	}
 	
-	$mes = new MExpert();
+	$mes = new MFormation();
 	echo "\n";
-	var_dump($mes->SelectExpertsALL());
+	//var_dump($mes->SelectFomrationsALL());
+	var_dump($mes->SelectFormation("js css json php java"));

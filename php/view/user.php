@@ -28,7 +28,7 @@
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Start</button>
 							
 					
-				       <p class="help-block"><a href="#">I forgot my password</a></p>
+				 <p class="help-block"><a href="#">I forgot my password</a></p>
 			
 
 	    </form>

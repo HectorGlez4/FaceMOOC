@@ -6,7 +6,10 @@ Class Home extends Controller {
     var $layout;
 
     function index() {
-        $this->layout = 'home';
+        if(!isset($_SESSION['id'])) {
+            header('Location:'.WEBROOT.'User');
+            return;
+        }
         $this->render('home');
     }
 

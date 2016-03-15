@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 define('WEBROOT', str_replace('index.php','',$_SERVER['SCRIPT_NAME']));
 define('ROOT', str_replace('index.php','',$_SERVER['SCRIPT_FILENAME']));
 require(ROOT.'php/controller/controller.php');
@@ -21,6 +23,9 @@ if (!isset($_SESSION['id']) && $controller == 'index') {
     $controller = 'User';
 }
 
+if (isset($_SESSION['id']) && $controller == 'index') {
+    $controller = 'Home';
+}
 
 require(ROOT.'php/controller/'.$controller.'.php');
 $controller = new $controller();

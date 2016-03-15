@@ -32,8 +32,8 @@
 								, $req_skill, $difficulty, $keywords )
 		{
 			$this->Connect();
-			$sql = "INSERT INTO expert (`id_user`, `address`, `phone`) VALUES ('%d', '%s', '%s');";
-			$sql1 = sprintf($sql, $iduser, $address, $phone);
+			$sql = "INSERT INTO formation ('id_expert', 'title', 'description','image', 'required_skill', 'difficulty', 'keywords') VALUES ('%d', '%s', '%s' ,'%s' ,'%s','%s','%s');";
+			$sql1 = sprintf($sql, $idExpert, $title, $description, $image,$req_skill, $difficulty, $keywords);
 			//echo $sql1;
 			if($this->Insert($sql1))
 			{
@@ -43,11 +43,11 @@
 		}
 
 
-		function DeleteExpert($idExpert)
+		function DeleteFormation($idFormation)
 		{
 			$this->Connect();
-			$sql = "DELETE FROM expert WHERE id_expert = %d ";
-			$sql1 = sprintf($sql, $idExpert);
+			$sql = "DELETE FROM formation WHERE id_formation = %d ";
+			$sql1 = sprintf($sql, $idFormation);
 			//echo $sql1;
 			if($this->Delete($sql1))
 			{
@@ -56,11 +56,14 @@
 			return false;
 		}
 
-		function UpdateExpert($address, $phone, $idExpert)
+		function UpdateFormation($idExpert, $title, $description, $image
+								, $req_skill, $difficulty, $keywords, $idFormation)
 		{
 			$this->Connect();
-			$sql = "UPDATE expert SET address = '%s', phone = '%s' WHERE id_expert = %d ";
-			$sql1 = sprintf($sql, $address, $phone, $idExpert);
+			$sql = "UPDATE expert SET id_expert = '%d', title = '%s' ,
+			description = '%s', image = '%s', required_skill = '%s',
+			difficulty = '%s', keywords = '%s' WHERE id_expert = %d ";
+			$sql1 = sprintf($sql, $idExpert, $title, $description, $image, $req_skill, $difficulty, $keywords, $idFormation);
 			//echo $sql1;
 			if($this->Update($sql1))
 			{

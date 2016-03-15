@@ -1,7 +1,7 @@
-<form method="post" action="./index.php">
+<form method="post" action="<?php WEBROOT ?>User/login">
 	<div class="form-group">
-	    <label for="pseudo">Pseudo : </label>
-		<input type="text" id="pseudo" name="pseudo" />
+	    <label for="email">Email : </label>
+		<input type="text" id="email" name="email" />
   	</div>
 	<div class="form-group">
 		<label for="password">Mot de passe : </label>
@@ -9,5 +9,3 @@
   	</div>
   	<button type="submit" name="submit" class="btn btn-default" value="Connection">Submit</button>
 </form>
-
-<?php global $content ?>

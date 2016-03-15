@@ -2,16 +2,18 @@
 
 define('WEBROOT', str_replace('index.php','',$_SERVER['SCRIPT_NAME']));
 define('ROOT', str_replace('index.php','',$_SERVER['SCRIPT_FILENAME']));
-
 require(ROOT.'php/controller/controller.php');
-
 $params = explode('/', $_GET['p']);
 $controller = $params[0];
 
 $action = isset($params[1]) ? $params[1] : 'index';
 
+if ($controller == 'php') {
+    $controller = $params[2];
+    $action = $params[3];
+}
 
-if ($controller == '' OR $controller == 'php') {
+if ($controller == '') {
     header('Location: '.WEBROOT.'index');
 }
 

@@ -49,9 +49,6 @@
 		}
 
 
-	}
-
-
 		function DeleteUser($idUser)
 		{
 			$this->Connect();
@@ -65,6 +62,17 @@
 			return false;
 		}
 
+		function connection($login, $password){
+			$this->Connect();
+			$sql = "SELECT FROM user WHERE id_user = %d ";
+			$sql1 = sprintf($sql, $idUser);
+			if ($res){
+				$_SESSION['name'] = $res['User'];
+				return true;
+			}else{
+				return false;
+			}
+		}
 
 	}
 	

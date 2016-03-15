@@ -21,15 +21,13 @@ body {
     border-radius: 6%;
   }
 #avatar{
-width: 96px;
-height: 96px;
 margin: 0px auto 10px;
 display: block;
  } 
+
 span {
 
   display: block;
-  float: left;
   width: 300px;
   text-align: center;
   color: #006699;

@@ -16,7 +16,7 @@
 				
 		<form class="login" action=".php" method="POST">
 				<div class="form-group">
-					Email: <input type="email" class="form-control" placeholder="name@name." name="email" required autofocus>
+					Email: <input type="email" class="form-control" placeholder="name@name.fr" name="email" required autofocus>
 				</div>
 
 

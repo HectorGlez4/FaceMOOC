@@ -6,8 +6,6 @@ body {
   
 }
 
-
-
 .login {
   max-width: 330px;
   padding: 15px;
@@ -29,7 +27,6 @@ margin: 0px auto 10px;
 display: block;
  } 
 span {
-  
 
   display: block;
   float: left;

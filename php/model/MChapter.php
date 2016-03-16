@@ -4,7 +4,7 @@
 	{
 		function SelectChapters($Page)
 		{
-			$offset = $NbResults * ($Page-1)
+			$offset = $NbResults * ($Page-1);
 			$sql = "Select * From formation LIMIT %d, %d";
 			$sql1 = sprintf($sql, $offset, $NbResults);
 			return $this->Select($sql1);

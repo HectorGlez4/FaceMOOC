@@ -35,6 +35,10 @@ Class User extends Controller {
         $this->render('signin');
     }
 
+    function recupmdp() {
+        $this->render('recupmdp');
+    }
+
     function signin()
     {
         if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['firstname']) || empty($_POST['lastname'])) {
@@ -62,6 +66,24 @@ Class User extends Controller {
             }
         }
     }
+
+    function mailmdp()
+    {
+        if (empty($_POST['email'])) {
+            header('Location:' . WEBROOT . 'User/recupmdp');
+        } else {
+            $MUser = new MUser();
+            $checkMail = $MUser->SelectUserEmail($_POST['email']);
+            if ($checkMail) {
+                $MUser->recoverPassword($_POST['email']);
+            }
+            else {
+                echo "Cet email n'a pas de compte sur ce site";
+            }
+        }
+    }
+
+
 
     function logout() {
         session_destroy();

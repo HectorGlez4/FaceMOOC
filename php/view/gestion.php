@@ -13,27 +13,22 @@
                     <label>Modifiez vos informations de compte :</label>
                 </div>
                 <div class="form-group">
-                    Email: <input type="email" class="form-control" placeholder="name@name.fr" name="email" autofocus>
+                    <label>Email :</label>
+                    <input type="email" class="form-control" placeholder="name@name.fr" name="email" autofocus>
                 </div>
                 <div class="form-group">
-                    Prénom : <input type="text" class="form-control" name="firstname" required>
+                    <label>Prénom :</label>
+                    <input type="text" class="form-control" name="firstname" required>
                 </div>
                 <div class="form-group">
-                    Prénom : <input type="text" class="form-control" name="lastname" required>
+                    <label>Nom :</label>
+                     <input type="text" class="form-control" name="lastname" required>
                 </div>
 
-                <div class="form-group">
-                    <label>Modifiez vos informations de compte :</label>
-                </div>
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Modifier mot de passe</button>
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Start</button>
-
-                <a href="<?php WEBROOT ?>User/inscription">Inscription</a>
-                <p class="help-block"><a href="<?php WEBROOT ?>User/recupmdp">I forgot my password</a></p>
-
-
-            </form>
-
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Confirmer</button>
+            
         </div>
 
         <?php global $content ?>

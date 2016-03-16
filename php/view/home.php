@@ -5,10 +5,13 @@ foreach ($content['userInfo'] as $user){
 echo '<h1>Bienvenue sur le site '. $user['firstname'] .' !</h1>';
 
 }
-$formations = $content['formations'];
+//$formations = $content['formations'];
+$formations = $content['page'];
 $countFormations = $content['countFormations'];
-$perpage = $content['count'];
-$pages = ceil($countFormations/$perpage);
+$perpage = $content['perPage'];
+$pages = ceil($countFormations[0]/$perpage);
+//var_dump($content['page']);
+var_dump($pages);
 
 //var_dump($formations);
 
@@ -21,7 +24,7 @@ $pages = ceil($countFormations/$perpage);
 				echo "<a href='#'>";
 				echo "<div class ='col-md-3'>";
 				echo "<h2>".$formations[$i]['title']."</h2>";
-				echo "<img src='".$formations[$i]['image']."' alt='Image formation'>";
+				echo "<img src='".WEBROOT.$formations[$i]['image']."' alt='Image formation'>";
 				echo "<p>Difficulty : ".$formations[$i]['difficulty']." </p>";
 				echo "<p>Required skills : ".$formations[$i]['required_skill']." </p>";
 				echo "</div>";
@@ -34,8 +37,8 @@ $pages = ceil($countFormations/$perpage);
 			$i--;
 			echo "</div>";
 		}
-		for ($ii=1; $ii < $pages ; $ii++) { 
-			echo "<a class='btn btn-default' href = 'Home?p=$i' role='button' >$i</a>";
+		for ($ii=1; $ii <= $pages ; $ii++) { 
+			echo "<a class='btn btn-default' href = '".WEBROOT."Home/view/$ii' role='button' >$ii</a>";
 		}
 	?>
 </body>

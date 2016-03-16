@@ -81,8 +81,4 @@
 			}
 			return false;
 		}
-
-		
-
-
 	}

@@ -44,6 +44,24 @@
 			}
 		}
 
+		function SelectOne($SQL)
+		{
+			try
+			{
+				$this->Connect();
+				$resultSet = $this->PDO->query($SQL);
+				$Data = $resultSet->fetch();
+				return $Data;
+			}
+			catch(PDOException $e)
+			{
+				echo $e->getMessage();
+			}
+			{
+				$this->Close_Connection();
+			}
+		}
+
 		public function Insert($SQL)
 		{
 			try

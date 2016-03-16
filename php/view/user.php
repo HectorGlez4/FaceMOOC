@@ -1,17 +1,11 @@
-<!doctype html>
-<!---->
-<html lang="fr">
-	<?php include("head.php")?>
-	   <link rel="stylesheet" href="<?php echo WEBROOT?>/css/login.css">
-    <body>
 
-	<div class="container well" id="sha">
-		<div class="row">
-					<div class="col-sm-12" id="avatar">
-
-					<span id="avat" class="glyphicon glyphicon-user"></span>
-				
-					</div>
+<?php include("head.php")?>
+	<link rel="stylesheet" href="<?php echo WEBROOT?>/css/login.css">
+<body>
+ <div class="container well" id="contenu">
+	
+		<div id="avatar">
+		<span class="glyphicon glyphicon-user"></span>
 		</div>
 				
 		<form class="login" action="<?php WEBROOT ?>User/login" method="POST">
@@ -37,8 +31,7 @@
 		
 	</div>
 
-
 <?php global $content ?>
 
- </body>
+</body>
 </html>

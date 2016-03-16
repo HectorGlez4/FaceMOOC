@@ -1,37 +1,40 @@
-<html>
-
-<head>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="<?php WEBROOT ?>css/bootstrap.css?">
-    <link rel="stylesheet" type="text/js" href="<?php WEBROOT ?>js/bootstrap.js?">
-</head>
+<?php include("head.php")?>
+<link rel="stylesheet" href="<?php echo WEBROOT?>/css/login.css">
 
     <body>
+     <div class="container well" id="contenu">
+
         <form method="post" action="<?php WEBROOT ?>signin">
 
             <div class="form-group">
                 <label for="email">Email : </label>
-                <input type="text" id="email" name="email" />
+                <input type="text" class="form-control" id="email" name="email" required autofocus/>
             </div>
             <div class="form-group">
                 <label for="firstname">Prénom : </label>
-                <input type="text" id="firstname" name="firstname" />
+                <input type="text" class="form-control" id="firstname" name="firstname"/>
             </div>
             <div class="form-group">
                 <label for="lastname">Nom : </label>
-                <input type="text" id="lastname" name="lastname" />
+                <input type="text" class="form-control" id="lastname" name="lastname"/>
             </div>
             <div class="form-group">
                 <label for="password">Mot de passe : </label>
-                <input type="password" id="password" name="password" />
+                <input type="password" class="form-control" id="password" name="password"/>
             </div>
             <div class="form-group">
                 <label for="passwordconf">Confirmez mot de passe : </label>
-                <input type="password" id="passwordconf" name="passwordconf" />
+                <input type="password" class="form-control" id="passwordconf" name="passwordconf"/>
             </div>
-            <button type="submit" name="submit" class="btn btn-default" value="Connection">Inscription</button>
+            <button type="submit" name="submit" class="btn btn-md btn-primary btn-block" value="Connection">Inscription</button>
         </form>
+    </div>
+ </body>
 
-    </body>
+
+
+
+
 
 </html>
+

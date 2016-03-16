@@ -4,6 +4,7 @@
 	{
 		function SelectChapters($idFormation)
 		{
+
 			$sql = "Select * From chapter WHERE id_formation = %d";
 			$sql1 = sprintf($sql, $idFormation);
 			return $this->Select($sql1);

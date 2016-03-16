@@ -12,6 +12,11 @@
 			return $this->Select($sql1);
 		}
 
+		function CountFormations(){
+			$sql = "Select count(*) From formation";
+			return $this->SelectOne($sql);
+		}
+
 		
 		function SelectFormation($keywords)
 		{
@@ -81,7 +86,7 @@
 
 
 	}
-	//$mes = new MFormation();
+	$mes = new MFormation();
 	//echo "\n";
 	//var_dump($mes->SelectFomrationsALL());
-	//var_dump($mes->SelectFormationsPage(1));
+	var_dump($mes->CountFormations());

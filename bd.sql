@@ -84,6 +84,14 @@ call inuser('hec@test.fr','1234','test','samm');
 call inuser('dyl@test.fr','1234','test','samm');
 call inuser('hey@test.fr','1234','test','samm');
 call inuser('lin@test.fr','1234','test','samm');
+call inuser('youu@test.fr','1234','test','samm');
+call inuser('hola@test.fr','1234','test','samm');
+call inuser('yolo@test.fr','1234','test','samm');
+call inuser('hector@test.fr','1234','test','samm');
+call inuser('marvyn@test.fr','1234','test','samm');
+call inuser('linda@test.fr','1234','test','samm');
+call inuser('nada@test.fr','1234','test','samm');
+
 
 
 drop procedure inexp;
@@ -104,6 +112,13 @@ call inexp(4,'aix en provence','0785362596');
 call inexp(5,'aix en provence','0785362596');
 call inexp(6,'aix en provence','0785362596');
 call inexp(7,'aix en provence','0785362596');
+call inexp(8,'aix en provence','0785362596');
+call inexp(9,'aix en provence','0785362596');
+call inexp(10,'aix en provence','0785362596');
+call inexp(11,'aix en provence','0785362596');
+call inexp(12,'aix en provence','0785362596');
+call inexp(13,'aix en provence','0785362596');
+call inexp(14,'aix en provence','0785362596');
 
 
 	drop procedure inform;
@@ -123,13 +138,34 @@ call inexp(7,'aix en provence','0785362596');
 	end //
 	delimiter ;
 
-call inform(1,'any title','a simple description','anyimage','any skill','normal','words');
-call inform(2,'any title','a simple description','anyimage','any skill','normal','words');
-call inform(3,'any title','a simple description','anyimage','any skill','normal','words');
-call inform(4,'any title','a simple description','anyimage','any skill','normal','words');
-call inform(5,'any title','a simple description','anyimage','any skill','normal','words');
-call inform(6,'any title','a simple description','anyimage','any skill','normal','words');
-call inform(7,'any title','a simple description','anyimage','any skill','normal','words');
+call inform(1,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(2,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(3,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(4,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(5,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(6,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(7,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(1,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(2,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(3,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(4,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(5,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(6,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(7,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(8,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(9,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(10,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(11,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(12,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(13,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(14,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(1,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(2,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(3,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(4,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(5,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(6,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
+call inform(7,'any title','a simple description','FaceMOOC/img/avatar.png','any skill','normal','words');
 
 
 	drop procedure ininsc;
@@ -151,6 +187,13 @@ call ininsc(4,4,'2016-03-13');
 call ininsc(5,5,'2016-03-12');
 call ininsc(6,6,'2016-03-11');
 call ininsc(7,7,'2016-03-10');
+call ininsc(8,1,'2016-03-16');
+call ininsc(9,2,'2016-03-15');
+call ininsc(10,3,'2016-03-14');
+call ininsc(11,4,'2016-03-13');
+call ininsc(12,5,'2016-03-12');
+call ininsc(13,6,'2016-03-11');
+call ininsc(14,7,'2016-03-10');
 
 drop procedure inchap;
 	delimiter //
@@ -172,6 +215,20 @@ call inchap(4,'simple title','simple description');
 call inchap(5,'simple title','simple description');
 call inchap(6,'simple title','simple description');
 call inchap(7,'simple title','simple description');
+call inchap(8,'simple title','simple description');
+call inchap(9,'simple title','simple description');
+call inchap(10,'simple title','simple description');
+call inchap(11,'simple title','simple description');
+call inchap(12,'simple title','simple description');
+call inchap(13,'simple title','simple description');
+call inchap(14,'simple title','simple description');
+call inchap(15,'simple title','simple description');
+call inchap(16,'simple title','simple description');
+call inchap(17,'simple title','simple description');
+call inchap(18,'simple title','simple description');
+call inchap(19,'simple title','simple description');
+call inchap(20,'simple title','simple description');
+call inchap(21,'simple title','simple description');
 
 drop procedure inclas;
 	delimiter //
@@ -195,6 +252,13 @@ call inclas(4,'simple title','simple description','good video','your docs');
 call inclas(5,'simple title','simple description','good video','your docs');
 call inclas(6,'simple title','simple description','good video','your docs');
 call inclas(7,'simple title','simple description','good video','your docs');
+call inclas(8,'simple title','simple description','good video','your docs');
+call inclas(9,'simple title','simple description','good video','your docs');
+call inclas(10,'simple title','simple description','good video','your docs');
+call inclas(11,'simple title','simple description','good video','your docs');
+call inclas(12,'simple title','simple description','good video','your docs');
+call inclas(13,'simple title','simple description','good video','your docs');
+call inclas(14,'simple title','simple description','good video','your docs');
 
 
 drop procedure incom;

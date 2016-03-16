@@ -2,7 +2,6 @@
 include_once(ROOT.'php/model/MUser.php');
 include_once(ROOT.'php/model/MFormation.php');
 
-
 Class Home extends Controller {
 
     var $layout;

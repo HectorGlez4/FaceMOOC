@@ -12,6 +12,11 @@
 			return $this->Select($sql1);
 		}
 
+		function CountFormations(){
+			$sql = "Select count(*) From formation";
+			return $this->Select($sql);
+		}
+
 		
 		function SelectFormation($keywords)
 		{

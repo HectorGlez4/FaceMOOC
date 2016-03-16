@@ -33,7 +33,7 @@
 				{
            			$Data[]=$Row;
 				}
-				return  $Data;
+				return $Data;
 			}
 			catch(PDOException $e)
 			{

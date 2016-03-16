@@ -1,13 +1,11 @@
 
 <?php 
 global $content;
-$mformation = new MFormation();
-$formations = $mformation->SelectFormationsPage(1);
-var_dump($formations);
 foreach ($content['userInfo'] as $user){
 echo '<h1>Bienvenue sur le site '. $user['firstname'] .' !</h1>';
 
 }
+$formations = $content['formations'];
 ?>
 <body>
 	<?php

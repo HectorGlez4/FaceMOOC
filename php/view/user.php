@@ -12,11 +12,13 @@ include("head.php");
 				
 		<form class="login" action="<?php WEBROOT ?>User/login" method="POST">
 				<div class="form-group">
-					Email: <input type="email" class="form-control" placeholder="name@name.fr" name="email" required autofocus>
+				 <label for="email">Email :</label>
+				 Email: <input type="email" class="form-control" placeholder="name@name.fr" name="email" required autofocus>
 				</div>
 
 				<div class="form-group">
-					Password: <input type="password" class="form-control" placeholder="*****" name="pass" required>
+					<label for="email">Password :</label>
+					<input type="password" class="form-control" placeholder="*****" name="pass" required>
 				</div>
 
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Start</button>

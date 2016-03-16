@@ -7,8 +7,9 @@ echo '<h1>Bienvenue sur le site '. $user['firstname'] .' !</h1>';
 }
 $formations = $content['formations'];
 $countFormations = $content['countFormations'];
-$perpage = $content['count'];
-$pages = ceil($countFormations/$perpage);
+$perpage = $content['perPage'];
+$pages = ceil($countFormations[0]/$perpage);
+var_dump($pages);
 
 //var_dump($formations);
 
@@ -34,8 +35,8 @@ $pages = ceil($countFormations/$perpage);
 			$i--;
 			echo "</div>";
 		}
-		for ($ii=1; $ii < $pages ; $ii++) { 
-			echo "<a class='btn btn-default' href = 'Home?p=$i' role='button' >$i</a>";
+		for ($ii=1; $ii <= $pages ; $ii++) { 
+			echo "<a class='btn btn-default' href = 'Home?p=$ii' role='button' >$ii</a>";
 		}
 	?>
 </body>

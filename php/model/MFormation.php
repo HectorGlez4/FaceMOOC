@@ -1,5 +1,5 @@
 <?php
-	require("Model.php");
+	require_once("Model.php");
 	class MFormation extends Model
 	{
 		public $NbResults = 16;

@@ -1,5 +1,7 @@
 <?php
-include(ROOT.'php/model/MUser.php');
+include_once(ROOT.'php/model/MUser.php');
+include_once(ROOT.'php/model/MFormation.php');
+
 
 Class Home extends Controller {
 
@@ -11,7 +13,9 @@ Class Home extends Controller {
             return;
         }
         $MUser = new MUser();
+        $MFormation = new MFormation();
         $d['userInfo'] = $MUser->SelectUserEmail($_SESSION['email']);
+        $d['formations'] = $MFormation->SelectFormationsPage(1);
         $this->set($d);
         $this->render('home');
     }

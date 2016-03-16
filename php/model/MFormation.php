@@ -86,7 +86,3 @@
 
 
 	}
-	$mes = new MFormation();
-	//echo "\n";
-	//var_dump($mes->SelectFomrationsALL());
-	var_dump($mes->CountFormations());

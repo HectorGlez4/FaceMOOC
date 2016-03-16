@@ -83,8 +83,6 @@ Class User extends Controller {
         }
     }
 
-
-
     function logout() {
         session_destroy();
         header('Location:'.WEBROOT.'index');

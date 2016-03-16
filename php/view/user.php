@@ -1,5 +1,8 @@
-<?php include("head.php")?>
-	<link rel="stylesheet" href="<?php echo WEBROOT?>/css/login.css">
+
+<?php 
+include("head.php");
+?>
+<link rel="stylesheet" href="<?php echo WEBROOT?>/css/login.css">
 <body>
  <div class="container well" id="contenu">
 	

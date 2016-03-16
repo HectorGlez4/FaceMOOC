@@ -1,5 +1,5 @@
 <?php
-	require("Model.php");
+	require_once("Model.php");
 	class MFormation extends Model
 	{
 		public $NbResults = 16;
@@ -10,6 +10,11 @@
 			$sql = "Select * From formation LIMIT %d, %d";
 			$sql1 = sprintf($sql, $offset, $this->NbResults);
 			return $this->Select($sql1);
+		}
+
+		function CountFormations(){
+			$sql = "Select count(*) From formation";
+			return $this->SelectOne($sql);
 		}
 
 		
@@ -65,9 +70,9 @@
 								, $req_skill, $difficulty, $keywords, $idFormation)
 		{
 			$this->Connect();
-			$sql = "UPDATE expert SET id_expert = '%d', title = '%s' ,
+			$sql = "UPDATE formation SET id_expert = '%d', title = '%s' ,
 			description = '%s', image = '%s', required_skill = '%s',
-			difficulty = '%s', keywords = '%s' WHERE id_expert = %d ";
+			difficulty = '%s', keywords = '%s' WHERE id_formation = %d ";
 			$sql1 = sprintf($sql, $idExpert, $title, $description, $image, $req_skill, $difficulty, $keywords, $idFormation);
 			//echo $sql1;
 			if($this->Update($sql1))
@@ -81,8 +86,7 @@
 
 
 	}
-	
-	//$mes = new MFormation();
+	$mes = new MFormation();
 	//echo "\n";
 	//var_dump($mes->SelectFomrationsALL());
-	//var_dump($mes->SelectFormationsPage(1));
+	var_dump($mes->CountFormations());

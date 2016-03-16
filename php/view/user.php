@@ -13,7 +13,7 @@ include("head.php");
 		<form class="login" action="<?php WEBROOT ?>User/login" method="POST">
 				<div class="form-group">
 				 <label for="email">Email :</label>
-				 Email: <input type="email" class="form-control" placeholder="name@name.fr" name="email" required autofocus>
+				 <input type="email" class="form-control" placeholder="name@name.fr" name="email" required autofocus>
 				</div>
 
 				<div class="form-group">

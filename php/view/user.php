@@ -14,7 +14,7 @@
 					</div>
 		</div>
 				
-		<form class="login" action=".php" method="POST">
+		<form class="login" action="<?php WEBROOT ?>User/login" method="POST">
 				<div class="form-group">
 					Email: <input type="email" class="form-control" placeholder="name@name.fr" name="email" required autofocus>
 				</div>

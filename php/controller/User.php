@@ -19,10 +19,11 @@ Class User extends Controller {
         }
         else {
             $MUser = new MUser();
-            $connect = $MUser->SelectUserEmailPassword($_POST['email'], $_POST['password']);
+            $connect = $MUser->SelectUserEmailPassword($_POST['email'], $_POST['pass']);
             if ($connect) {
                 session_start();
                 $_SESSION['id'] = 1;
+                $_SESSION['email'] = $_POST['email'];
                 header('Location:' . WEBROOT . 'Home');
             } else {
                 header('Location:' . WEBROOT . 'index');
@@ -36,8 +37,8 @@ Class User extends Controller {
 
     function signin()
     {
-        if (empty($_POST)) {
-            header('Location:'.WEBROOT);
+        if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['firstname']) || empty($_POST['lastname'])) {
+            header('Location:'.WEBROOT.'User/inscription');
         } else {
             $email = $_POST['email'];
             $password = $_POST['password'];
@@ -46,10 +47,13 @@ Class User extends Controller {
             $checkMail = $MUser->SelectUserEmail($email);
             if (!$checkMail) {
                 if ($password == $passwordconf) {
-                    $MUser->InsertUser($_POST['email'], $_POST['password'], $_POST['firstname'], $_POST['lastname']);
+                    $MUser->InsertUser($email, $password, $_POST['firstname'], $_POST['lastname']);
                         session_start();
                         $_SESSION['id'] = 1;
-                        header('Location:' . WEBROOT . 'Home');
+                        $_SESSION['email'] = $email;
+                        $_SESSION['firstname'] = $_POST['firstname'];
+                        $_SESSION['lastname'] = $_POST['lastname'];
+                    header('Location:' . WEBROOT . 'Home');
                 } else {
                     echo "Mots de passe non identiques";
                 }

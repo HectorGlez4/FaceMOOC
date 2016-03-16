@@ -1,10 +1,14 @@
-<?php
+
+<?php 
+global $content;
 $mformation = new MFormation();
 $formations = $mformation->SelectFormationsPage(1);
 var_dump($formations);
-?>
-<h1>Bienvenue sur le site !</h1>
+foreach ($content['userInfo'] as $user){
+echo '<h1>Bienvenue sur le site '. $user['firstname'] .' !</h1>';
 
+}
+?>
 <body>
 	<?php
 		for($i = 0; $i <= count($formations) -1; $i++){

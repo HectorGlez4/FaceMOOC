@@ -28,7 +28,8 @@ Class Home extends Controller {
     }
 
     function view($id) {
-        $d['page'] = $this->MFormation->SelectFormationsPage($id);
+        $MFormation = new MFormation();
+        $d['page'] = $this->$MFormation->SelectFormationsPage($id);
         $this->set($d);
         $this->render('home');
         return;

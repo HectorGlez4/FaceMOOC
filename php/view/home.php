@@ -27,8 +27,8 @@ var_dump($formations);
 				if($i > count($formations) - 1){
 					break;
 				}
-
 			}
+			$i--;
 			echo "</div>";
 		}
 	?>

@@ -2,7 +2,7 @@
 	require("Model.php");
 	class MFormation extends Model
 	{
-		function SelectFomrationsALL()
+		function SelectFormationsALL()
 		{
 			return $this->Select("Select * From formation");
 		}

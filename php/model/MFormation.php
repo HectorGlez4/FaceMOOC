@@ -2,13 +2,13 @@
 	require("Model.php");
 	class MFormation extends Model
 	{
-		private $NbResults = 16
+		public $NbResults = 16;
 
 		function SelectFormationsPage($Page)
 		{
-			$offset = $NbResults * ($Page-1)
+			$offset = $this->NbResults * ($Page-1);
 			$sql = "Select * From formation LIMIT %d, %d";
-			$sql1 = sprintf($sql, $offset, $NbResults);
+			$sql1 = sprintf($sql, $offset, $this->NbResults);
 			return $this->Select($sql1);
 		}
 
@@ -85,4 +85,4 @@
 	$mes = new MFormation();
 	echo "\n";
 	//var_dump($mes->SelectFomrationsALL());
-	var_dump($mes->SelectFormation("js css json php java"));
+	var_dump($mes->SelectFormationsPage(1));

@@ -1,10 +1,10 @@
 <?php
 	require("Model.php");
-	class MFormation extends Model
+	class MChapter extends Model
 	{
 		private $NbResults = 16
 
-		function SelectFormationsPage($Page)
+		function SelectFormations($Page)
 		{
 			$offset = $NbResults * ($Page-1)
 			$sql = "Select * From formation LIMIT %d, %d";

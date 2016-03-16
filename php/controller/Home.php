@@ -10,6 +10,9 @@ Class Home extends Controller {
             header('Location:'.WEBROOT.'User');
             return;
         }
+        $MUser = new MUser();
+        $d['userInfo'] = $MUser->SelectUserEmail($_SESSION['email']);
+        $this->set($d);
         $this->render('home');
     }
 

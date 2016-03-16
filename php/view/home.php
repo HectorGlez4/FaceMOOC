@@ -3,7 +3,6 @@ include("head.php");
 global $content;
 foreach ($content['userInfo'] as $user){
 echo '<h1>Bienvenue sur le site '. $user['firstname'] .' !</h1>';
-
 }
 //$formations = $content['formations'];
 $formations = $content['page'];
@@ -11,7 +10,6 @@ $countFormations = $content['countFormations'];
 $perpage = $content['perPage'];
 $pages = ceil($countFormations[0]/$perpage);
 //var_dump($content['page']);
-//var_dump($pages);
 
 //var_dump($formations);
 
@@ -37,7 +35,7 @@ $pages = ceil($countFormations[0]/$perpage);
 			$i--;
 			echo "</div>";
 		}
-		for ($ii=1; $ii <= $pages ; $ii++) { 
+		for ($ii=1; $ii <= $pages ; $ii++) {
 			echo "<a class='btn btn-default' href = '".WEBROOT."Home/view/$ii' role='button' >$ii</a>";
 		}
 	?>

@@ -15,7 +15,6 @@ Class Home extends Controller {
         $MFormation = new MFormation();
         $d['userInfo'] = $MUser->SelectUserEmail($_SESSION['email']);
         $page = 1;
-        echo $_GET['p'];
         /*if (isset($_GET['p'])) {
             $page = $_GET['p'];
         }*/

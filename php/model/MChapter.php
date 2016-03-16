@@ -1,14 +1,12 @@
 <?php
 	require("Model.php");
-	class MFormation extends Model
+	class MChapter extends Model
 	{
-		public $NbResults = 16;
-
-		function SelectFormationsPage($Page)
+		function SelectChapters($Page)
 		{
-			$offset = $this->NbResults * ($Page-1);
+			$offset = $NbResults * ($Page-1)
 			$sql = "Select * From formation LIMIT %d, %d";
-			$sql1 = sprintf($sql, $offset, $this->NbResults);
+			$sql1 = sprintf($sql, $offset, $NbResults);
 			return $this->Select($sql1);
 		}
 
@@ -82,7 +80,7 @@
 
 	}
 	
-	//$mes = new MFormation();
-	//echo "\n";
+	$mes = new MFormation();
+	echo "\n";
 	//var_dump($mes->SelectFomrationsALL());
-	//var_dump($mes->SelectFormationsPage(1));
+	var_dump($mes->SelectFormation("js css json php java"));

@@ -11,7 +11,7 @@ $countFormations = $content['countFormations'];
 $perpage = $content['perPage'];
 $pages = ceil($countFormations[0]/$perpage);
 //var_dump($content['page']);
-var_dump($pages);
+//var_dump($pages);
 
 //var_dump($formations);
 
@@ -22,7 +22,7 @@ var_dump($pages);
 			echo "<div class ='row'>";
 			for($j=1; $j<=4; $j++){
 				echo "<a href='#'>";
-				echo "<div class ='col-md-3'>";
+				echo "<div class ='col-md-3 formation text-center'>";
 				echo "<h2>".$formations[$i]['title']."</h2>";
 				echo "<img src='".WEBROOT.$formations[$i]['image']."' alt='Image formation'>";
 				echo "<p>Difficulty : ".$formations[$i]['difficulty']." </p>";
@@ -42,4 +42,4 @@ var_dump($pages);
 		}
 	?>
 </body>
-<a href='<?php WEBROOT ?>User/logout'>Deconnexion</a>
+<a class='btn btn-default' href='<?php WEBROOT ?>User/logout'>Deconnexion</a>

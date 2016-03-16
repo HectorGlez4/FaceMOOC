@@ -16,11 +16,10 @@ Class Home extends Controller {
         $d['userInfo'] = $MUser->SelectUserEmail($_SESSION['email']);
         $page = 1;
         echo $_GET['p'];
-        if (isset($_GET['p'])) {
+        /*if (isset($_GET['p'])) {
             $page = $_GET['p'];
-        }
-        echo $page;
-        $d['formations'] = $MFormation->SelectFormationsPage($page);
+        }*/
+        $d['page'] = $MFormation->SelectFormationsPage($page);
         $d['countFormations'] = $MFormation->CountFormations();
         $d['perPage'] = $MFormation->NbResults;
         $this->set($d);
@@ -28,7 +27,12 @@ Class Home extends Controller {
     }
 
     function view($id) {
-        $d['page'] = $this->MFormation->SelectFormationsPage($id);
+        $MUser = new MUser();
+        $MFormation = new MFormation();
+        $d['userInfo'] = $MUser->SelectUserEmail($_SESSION['email']);
+        $d['page'] = $MFormation->SelectFormationsPage($id);
+        $d['countFormations'] = $MFormation->CountFormations();
+        $d['perPage'] = $MFormation->NbResults;
         $this->set($d);
         $this->render('home');
         return;

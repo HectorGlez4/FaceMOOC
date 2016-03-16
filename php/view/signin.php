@@ -1,7 +1,6 @@
-<?php include("head.php")?>
-<link rel="stylesheet" href="<?php echo WEBROOT?>/css/login.css">
-
-    <body>
+<?php include("head.php")
+?>
+<body>
      <div class="container well" id="contenu">
 
         <form method="post" action="<?php WEBROOT ?>signin">
@@ -30,11 +29,3 @@
         </form>
     </div>
  </body>
-
-
-
-
-
-
-</html>
-

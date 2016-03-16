@@ -2,9 +2,14 @@
 	require("Model.php");
 	class MFormation extends Model
 	{
-		function SelectFormationsALL()
+		private $NbResults = 16
+
+		function SelectFormations($Page)
 		{
-			return $this->Select("Select * From formation");
+			$offset = $NbResults * ($Page-1)
+			$sql = "Select * From formation LIMIT %d, %d";
+			$sql1 = sprintf($sql, $offset, $NbResults);
+			return $this->Select($sql1);
 		}
 
 		

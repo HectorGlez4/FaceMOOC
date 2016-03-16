@@ -14,7 +14,15 @@ Class Home extends Controller {
         $MUser = new MUser();
         $MFormation = new MFormation();
         $d['userInfo'] = $MUser->SelectUserEmail($_SESSION['email']);
-        $d['formations'] = $MFormation->SelectFormationsPage(1);
+        if (isset($_GET['p'])) {
+            $page = $_GET['p'];
+        }
+        else{
+            $page = 1;
+        }
+        $d['formations'] = $MFormation->SelectFormationsPage($page);
+        $d['countFormations'] = $MFormation->CountFormations();
+        $d['perPage'] = $MFormation->NbResults;
         $this->set($d);
         $this->render('home');
     }

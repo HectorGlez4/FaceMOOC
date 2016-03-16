@@ -19,7 +19,7 @@ Class Home extends Controller {
         /*if (isset($_GET['p'])) {
             $page = $_GET['p'];
         }*/
-        $d['page'] = $MFormation->SelectFormationsPage($page);
+        $test = $d['page'] = $MFormation->SelectFormationsPage($page);
         $d['countFormations'] = $MFormation->CountFormations();
         $d['perPage'] = $MFormation->NbResults;
         $this->set($d);

@@ -12,6 +12,13 @@
 			return $this->Select($sql1);
 		}
 
+		function SelectFormationById($id)
+		{
+			$sql = "Select * From formation WHERE id_formation = %d";
+			$sql1 = sprintf($sql, $id);
+			return $this->Select($sql1);
+		}
+
 		function CountFormations(){
 			$sql = "Select count(*) From formation";
 			return $this->SelectOne($sql);

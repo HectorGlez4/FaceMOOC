@@ -60,6 +60,32 @@
 			}
 
 		}
+		function SelectUserPassword($password)
+		{
+			try
+			{
+				$Data = null;
+				$this->Connect();
+				$sql = "SELECT * FROM user WHERE password = :password ";
+				$stmt = $this->PDO->prepare($sql);
+				$stmt->bindParam(":password", $password, PDO::PARAM_STR);
+				$stmt->execute();
+				while($Row =$stmt->fetch(PDO::FETCH_ASSOC)) 
+				{
+           			$Data[]=$Row;
+				}
+				return  $Data;
+			}
+			catch(PDOException $e)
+			{
+				echo $e->getMessage();
+			}
+			finally
+			{
+				$this->Close_Connection();
+			}
+
+		}
 
 		function InsertUser($email, $password, $firstname, $lastname)
 		{
@@ -75,7 +101,7 @@
 		}
 
 
-		function DeleteUser($idUser)
+		function DeleteUser($idUser, $email)
 		{
 			$this->Connect();
 			$sql = "DELETE FROM user WHERE id_user = %d ";
@@ -95,6 +121,18 @@
 			$sql = "UPDATE user SET email = '%s', password = '%s', firstname = '%s', lastname='%s' WHERE id_user = %d ";
 			$sql1 = sprintf($sql, $email, $password, $fname, $lname, $idUser);
 			//echo $sql1;
+			if($this->Update($sql1))
+			{
+				return true;
+			}
+			return false;
+		}
+
+		function changePass($password, $email)
+		{
+			$this->Connect();
+			$sql = "UPDATE user SET password = '%s' WHERE email = %d ";
+			$sql1 = sprintf($sql,$password, $email);
 			if($this->Update($sql1))
 			{
 				return true;
@@ -140,7 +178,7 @@
 			$mail->Host = "smtp.gmail.com";
 			$mail->Port = 465;
 			$mail->Username = "linyyoazz@gmail.com";
-			$mail->Password = "151107nuestrodia";
+			$mail->Password = "";
 			$mail->setFrom("linyyoazz@gmail.com", "Linda");
 			$mail->Subject = "Récuperation de mot de passe";
 			$mail->msgHTML('Bonjour');

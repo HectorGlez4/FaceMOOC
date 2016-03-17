@@ -12,16 +12,16 @@ include("head.php");
 				
 		<form class="login" action="<?php WEBROOT ?>User/login" method="POST">
 				<div class="form-group">
-				<label for="email">Email :</label>
-				<input type="email" class="form-control" placeholder="name@name.fr" name="email" required autofocus>
+				 <label for="email">Email :</label>
+				 <input type="email" class="form-control" placeholder="name@name.fr" name="email" autofocus
 				</div>
 
 				<div class="form-group">
-					<label for="email">Password :</label>
-					<input type="password" class="form-control" placeholder="*****" name="pass" required>
+					<label for="password">Password :</label>
+					<input type="password" class="form-control" placeholder="*****" name="password">
 				</div>
 
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+				<button class="btn btn-md btn-primary btn-block" type="submit"> <span class="glyphicon glyphicon-off"></span>Connexion</button>
 
 			<a href="<?php WEBROOT ?>User/inscription">Inscription</a>
 				 <p class="help-block"><a href="<?php WEBROOT ?>User/recupmdp">I forgot my password</a></p>
@@ -29,7 +29,9 @@ include("head.php");
 
 	    </form>
 
+
 	</div>
+	
 
 <?php global $content ?>
 

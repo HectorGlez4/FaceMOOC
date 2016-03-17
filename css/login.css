@@ -9,6 +9,15 @@ body {
     margin: 0 auto;
 }
 
+
+.manageac{
+    max-width: 500px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+
+
 #contenu {
     max-width: 340px;
     -webkit-box-shadow: 0px 0px 18px 0px rgba(48, 50, 50, 0.48);
@@ -22,7 +31,7 @@ body {
     display: block;
 }
 
-span {
+#avatar span {
     display: block;
     width: 300px;
     text-align: center;

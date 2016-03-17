@@ -40,4 +40,5 @@ $pages = ceil($countFormations[0]/$perpage);
 		}
 	?>
 </body>
+<a class='btn btn-default' href='<?php WEBROOT ?>Gestion'>Gestion de compte</a>
 <a class='btn btn-default' href='<?php WEBROOT ?>User/logout'>Deconnexion</a>

@@ -140,8 +140,8 @@
 
 		function recoverPassword($userMail)
 		{
-			require ROOT.'PHPMailer/PHPMailerAutoload.php';
-			require ROOT.'PHPMailer/class.phpmailer.php';
+			require ROOT . 'PHPMailer/PHPMailerAutoload.php';
+			require ROOT . 'PHPMailer/class.phpmailer.php';
 			$body = "
 				<h1>Réinitialisation du mot de passe</h1>
 				<hr />
@@ -162,30 +162,81 @@
 			$mailer->AddAddress($userMail);
 			//$mailer->Subject ="Subject: =?UTF-8?B?".base64_encode("Réinitialisation du mot de passe | Zenetude")."?=";
 			$mailer->Body = $body;
-			if(!$mailer->Send())
+			if (!$mailer->Send())
 				echo "Erreur lors de l'envoie du mail";
 			else
 				echo "Un email vous a été envoyé à cette adresse";
+
+
+			/*			$mail = new PHPMailer();
+                        $mail->isSMTP();
+                        $mail->SMTPDebug = 2;
+                        $mail->SMTPAuth = true;
+                        $mail->SMTPSecure = "ssl";
+                        $mail->Host = "smtp.gmail.com";
+                        $mail->Port = 465;
+                        $mail->Username = "linyyoazz@gmail.com";
+                        $mail->Password = "";
+                        $mail->setFrom("linyyoazz@gmail.com", "Linda");
+                        $mail->Subject = "Récuperation de mot de passe";
+                        $mail->msgHTML('Bonjour');
+                        $address = "marvyn.duvauchelle@gmail.com";
+                        $mail->addAddress($address, "Marvyn");
+                        if(!$mail->Send())
+                            echo "Erreur lors de l'envoie du mail";
+                        else
+                            echo "Un email vous a été envoyé à cette adresse";*/
 		}
 
-/*			$mail = new PHPMailer();
-			$mail->isSMTP();
-			$mail->SMTPDebug = 2;
-			$mail->SMTPAuth = true;
-			$mail->SMTPSecure = "ssl";
-			$mail->Host = "smtp.gmail.com";
-			$mail->Port = 465;
-			$mail->Username = "linyyoazz@gmail.com";
-			$mail->Password = "";
-			$mail->setFrom("linyyoazz@gmail.com", "Linda");
-			$mail->Subject = "Récuperation de mot de passe";
-			$mail->msgHTML('Bonjour');
-			$address = "marvyn.duvauchelle@gmail.com";
-			$mail->addAddress($address, "Marvyn");
-			if(!$mail->Send())
-				echo "Erreur lors de l'envoie du mail";
-			else
-				echo "Un email vous a été envoyé à cette adresse";*/
+		function SelectGestionUser($email)
+		{
+			try
+			{
+				$Data = null;
+				$this->Connect();
+				$sql = "SELECT email, firstname, lastname, avatar FROM user WHERE email = :email";
+				$stmt = $this->PDO->prepare($sql);
+				$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+				$stmt->execute();
+				while($Row =$stmt->fetch(PDO::FETCH_ASSOC))
+				{
+					$Data[]=$Row;
+				}
+				return  $Data;
+			}
+			catch(PDOException $e)
+			{
+				echo $e->getMessage();
+			}
+			finally
+			{
+				$this->Close_Connection();
+			}
+		}
+
+		function updateAccount($email, $firstname, $lastname, $sessionemail)
+		{
+			$this->Connect();
+			$sql = "UPDATE user SET email = '%s', firstname = '%s', lastname='%s' WHERE email = '%s' ";
+			$sql1 = sprintf($sql, $email, $firstname, $lastname, $sessionemail);
+			if($this->Update($sql1))
+			{
+				return true;
+			}
+			return false;
+		}
+
+		function addAvatar($fichier, $email)
+		{
+			$this->Connect();
+			$sql = "UPDATE user SET avatar = '%s' WHERE email = '%s' ";
+			$sql1 = sprintf($sql, $fichier, $email);
+			if($this->Update($sql1))
+			{
+				return true;
+			}
+			return false;
+		}
 
 	}
 	

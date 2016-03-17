@@ -60,15 +60,15 @@
 			}
 
 		}
-		function SelectUserPassword($password)
+		function SelectUserPassword($email)
 		{
 			try
 			{
 				$Data = null;
 				$this->Connect();
-				$sql = "SELECT * FROM user WHERE password = :password ";
+				$sql = "SELECT password FROM user WHERE email = :email ";
 				$stmt = $this->PDO->prepare($sql);
-				$stmt->bindParam(":password", $password, PDO::PARAM_STR);
+				$stmt->bindParam(":email", $email, PDO::PARAM_STR);
 				$stmt->execute();
 				while($Row =$stmt->fetch(PDO::FETCH_ASSOC)) 
 				{
@@ -101,7 +101,7 @@
 		}
 
 
-		function DeleteUser($idUser, $email)
+		function DeleteUser($idUser)
 		{
 			$this->Connect();
 			$sql = "DELETE FROM user WHERE id_user = %d ";
@@ -114,13 +114,11 @@
 			return false;
 		}
 
-
 		function UpdateUser($email, $password, $fname, $lname, $idUser)
 		{
 			$this->Connect();
 			$sql = "UPDATE user SET email = '%s', password = '%s', firstname = '%s', lastname='%s' WHERE id_user = %d ";
 			$sql1 = sprintf($sql, $email, $password, $fname, $lname, $idUser);
-			//echo $sql1;
 			if($this->Update($sql1))
 			{
 				return true;
@@ -131,7 +129,7 @@
 		function changePass($password, $email)
 		{
 			$this->Connect();
-			$sql = "UPDATE user SET password = '%s' WHERE email = %d ";
+			$sql = "UPDATE user SET password = '%s' WHERE email = '%s' ";
 			$sql1 = sprintf($sql,$password, $email);
 			if($this->Update($sql1))
 			{

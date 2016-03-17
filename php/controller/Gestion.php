@@ -12,8 +12,49 @@ Class Gestion extends Controller
             header('Location:' . WEBROOT . 'index');
             return;
         }
+        $MUser = new MUser();
+        $d['userGestion'] = $MUser->SelectGestionUser($_SESSION['email']);
+        $this->set($d);
         $this->render('gestion');
     }
+
+    function updateaccount()
+    {
+        if (empty($_POST['email']) || empty($_POST['firstname']) || empty($_POST['lastname'])) {
+            header('Location:' . WEBROOT);
+        } else {
+            $MUser = new MUser();
+            $MUser->updateAccount($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_SESSION['email']);
+            $_SESSION['email'] = $_POST['email'];
+            header('Location:' . WEBROOT);
+        }
+
+/*        if (isset($_FILES['avatar'])) {
+            if (isset($_FILES['student_avatar'])) {
+                //$accountView->showMessage("on passe par la");
+                $maxsize = 2097152;
+                $extensions_valides = array('gif', 'png', 'jpg', 'jpeg');
+                $filename = $_FILES['student_avatar']['name'];
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                $extension_upload = strtolower(substr(strrchr($_FILES['student_avatar']['name'], '.'), 1));
+
+                if ($_FILES['student_avatar']['error'] > 0) {
+                    //$accountView -> showMessage("C'est l'erreur 1.");
+                    //$erreur += 1;
+                    echo 'error';
+                } else if (($_FILES['student_avatar']['size'] >= $maxsize) || ($_FILES["student_avatar"]["size"] == 0)) {
+                    //$accountView -> showMessage("Le poids de l'avatar est trop lourd (max : 2 Mo).");
+                    $erreur += 1;
+                    echo 'erreur size';
+                } else if (!in_array($ext, $extensions_valides)) {
+                    //$accountView -> showMessage("Mauvaise extension pour l'avatar.");
+                    $erreur += 1;
+                    echo 'erreur extension';
+                } else {
+                }
+            }*/
+        }
+
 
     function changepass()
     {

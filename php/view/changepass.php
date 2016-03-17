@@ -8,7 +8,7 @@
                       </div>
                        
                      
-<form name="changePass" action="<?php ROOT ?>changepass"  method="post">
+<form name="changePass" action="<?php ROOT ?>Gestion/changepass"  method="post">
             
                     <div class="modal-body">
                             <div class="form-group">

@@ -19,7 +19,7 @@ $pages = ceil($countFormations[0]/$perpage);
 		for($i = 0; $i <= count($formations) -1; $i++){
 			echo "<div class ='row'>";
 			for($j=1; $j<=4; $j++){
-				echo "<a href='#'>";
+				echo "<a href='".WEBROOT."Formation/view/".$formations[$i]['id_formation']."'>";
 				echo "<div class ='col-md-3 formation text-center'>";
 				echo "<h2>".$formations[$i]['title']."</h2>";
 				echo "<img src='".WEBROOT.$formations[$i]['image']."' alt='Image formation'>";

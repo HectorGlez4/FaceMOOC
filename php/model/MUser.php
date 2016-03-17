@@ -101,7 +101,7 @@
 		}
 
 
-		function DeleteUser($idUser)
+		function DeleteUser($idUser, $email)
 		{
 			$this->Connect();
 			$sql = "DELETE FROM user WHERE id_user = %d ";
@@ -121,6 +121,18 @@
 			$sql = "UPDATE user SET email = '%s', password = '%s', firstname = '%s', lastname='%s' WHERE id_user = %d ";
 			$sql1 = sprintf($sql, $email, $password, $fname, $lname, $idUser);
 			//echo $sql1;
+			if($this->Update($sql1))
+			{
+				return true;
+			}
+			return false;
+		}
+
+		function changePass($password, $email)
+		{
+			$this->Connect();
+			$sql = "UPDATE user SET password = '%s' WHERE email = %d ";
+			$sql1 = sprintf($sql,$password, $email);
 			if($this->Update($sql1))
 			{
 				return true;

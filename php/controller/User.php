@@ -14,7 +14,7 @@ Class User extends Controller {
     }
 
     function login() {
-        if (empty($_POST)){
+        if (empty($_POST['email']) || empty($_POST['password'])){
             header('Location:'.WEBROOT);
         }
         else {
@@ -36,10 +36,13 @@ Class User extends Controller {
     }
 
     function recupmdp() {
-        $this->render('gestion');
+        $this->render('recupmdp');
     }
 
+    function changepass()
+    {
 
+<<<<<<< HEAD
     function changepass(){
 
     if(empty($_POST))
@@ -69,25 +72,31 @@ Class User extends Controller {
             
         }else{
             echo "That is not your correct password... man";
+=======
+        if (empty($_POST['password']) || empty($_POST['password_new']) || empty($_POST['password_confirm'])) {
+            header('Location:' . WEBROOT);
+        } else {
+            $MUser = new MUser();
+            $old_password = $MUser->SelectUserPassword($_POST['password']);
+            $password = $_POST["password"];
+            $password_new = $_POST["password_new"];
+            $password_confirm = $_POST["password_confirm"];
+            if ($password == $old_password) {
+                if ($password_new == $password_confirm) {
+                    if ($old_password !== $password_new) {
+                        $MUser->UpdateUser($password_new, $_SESSION['email']);
+                    } else {
+                        echo "That was your old password";
+                    }
+                } else {
+                    echo "The password does not match";
+                }
+            } else {
+                echo "That is not your correct password... man";
+            }
+>>>>>>> 09b3a190c129c8b1e306bc2675f2afadf6ca9950
         }
-
-        
-
-        
-       
-        
     }
-        
-        
-     
-
-    
-    
-}
-
-
-
-
 
 
     function signin()

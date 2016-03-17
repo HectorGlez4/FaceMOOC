@@ -19,7 +19,7 @@ Class User extends Controller {
         }
         else {
             $MUser = new MUser();
-            $connect = $MUser->SelectUserEmailPassword($_POST['email'], $_POST['pass']);
+            $connect = $MUser->SelectUserEmailPassword($_POST['email'], $_POST['password']);
             if ($connect) {
                 session_start();
                 $_SESSION['id'] = 1;

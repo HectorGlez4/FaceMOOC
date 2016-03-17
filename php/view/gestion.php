@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-4">
         <h3>Image</h3><br>
-        <img class="responsive" src="<?php echo WEBROOT?>/img/avatar.png"></img>
+        <img class="responsive" src="<?php echo WEBROOT?>/img/avatar.png"/>
         </div>
     <div class="col-md-8">
         <h3>Information Personnelle</h3>

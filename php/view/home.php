@@ -21,7 +21,7 @@ $pages = ceil($countFormations[0]/$perpage);
 			for($i = 0; $i <= count($formations) -1; $i++){
 				echo "<div class ='row'>";
 				for($j=1; $j<=4; $j++){
-					echo "<a href='#'>";
+					echo "<a href='".WEBROOT."Formation/view/".$formations[$i]['id_formation']."'>";
 					echo "<div class ='col-md-3 formation text-center'>";
 					echo "<div class='panel panel-default'>";
 					echo "<div class='panel-body'>";
@@ -48,4 +48,5 @@ $pages = ceil($countFormations[0]/$perpage);
 		</div>
 	</div>
 </body>
+<a class='btn btn-default' href='<?php WEBROOT ?>Gestion'>Gestion de compte</a>
 <a class='btn btn-default' href='<?php WEBROOT ?>User/logout'>Deconnexion</a>

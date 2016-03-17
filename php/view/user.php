@@ -21,7 +21,7 @@ include("head.php");
 					<input type="password" class="form-control" placeholder="*****" name="password" required>
 				</div>
 
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+				<button class="btn btn-md btn-primary btn-block" type="submit"> <span class="glyphicon glyphicon-off"></span> Connexion</button>
 
 			<a href="<?php WEBROOT ?>User/inscription">Inscription</a>
 				 <p class="help-block"><a href="<?php WEBROOT ?>User/recupmdp">I forgot my password</a></p>
@@ -29,7 +29,9 @@ include("head.php");
 
 	    </form>
 
+
 	</div>
+	
 
 <?php global $content ?>
 

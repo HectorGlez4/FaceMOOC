@@ -36,8 +36,59 @@ Class User extends Controller {
     }
 
     function recupmdp() {
-        $this->render('recupmdp');
+        $this->render('gestion');
     }
+
+
+    function changepass(){
+
+    if(!empty($_POST))
+        {
+
+        $password = $_POST["password"];
+        $password_new = $_POST["password_new"];
+        $password_confirm = $_POST["password_confirm"];
+        $MUser = new MUser();  
+        $old_password = $MUser->SelectUserPassword($_POST['password']);
+
+        if($password_new != $password_confirm)
+        {
+           echo "The password does not match";
+        }
+        else if($old_password){
+            
+        if($old_password==$password_new){
+                //not updating
+            echo "That was your old password";
+        }
+        else{
+        $MUser->UpdateUser($password_new);
+  
+       
+        }
+            
+        }else{
+            echo "That is not your correct password... man";
+        }
+
+        
+
+        
+       
+        
+    }
+        
+        
+     
+
+    
+    
+}
+
+
+
+
+
 
     function signin()
     {

@@ -1,6 +1,8 @@
 <?php
 
 include_once(ROOT.'php/model/MFormation.php');
+include_once(ROOT.'php/model/MChapter.php');
+include_once(ROOT.'php/model/MClass.php');
 
 Class Formation extends Controller {
 
@@ -12,12 +14,21 @@ Class Formation extends Controller {
             return;
         }
         $this->render('formation');
-        $this->set($d);
     }
 
     function view($id){
         $MFormation = new MFormation();
+        $MChapter = new MChapter();
+        $MClass = new MClass();
         $d['formation'] = $MFormation->SelectFormationById($id);
+        $d['chapter'] = $MChapter->SelectChapters($id);
+        $chapters = $d['chapter'];
+        //var_dump($chapters);
+        foreach ($chapters as $chapter) {
+        	//var_dump($chapter);
+        	$d['class'][$chapter['id_chapter']] = $MClass->SelectClass($chapter['id_chapter']);
+        	//var_dump($d['class']);
+        }
         $this->set($d);
         $this->render('formation');
         return;

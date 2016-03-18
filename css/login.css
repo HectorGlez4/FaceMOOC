@@ -29,9 +29,6 @@ body {
 #avatar {
     margin: 0px auto 10px;
     display: block;
-}
-
-#avatar span {
     display: block;
     width: 300px;
     text-align: center;
@@ -39,7 +36,9 @@ body {
     font-size: 70px;
 }
 
+
 .formation{
     border-style: solid;
     border-width: 1px;
 }
+

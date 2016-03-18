@@ -2,10 +2,24 @@
 	require_once("Model.php");
 	class MClass extends Model
 	{
-		function SelectClass($idChapter)
+		function SelectClass($idClass)
+		{
+			$sql = "Select * From class WHERE id_class = %d";
+			$sql1 = sprintf($sql, $idClass);
+			return $this->Select($sql1);
+		}
+
+		function SelectClassByChapterId($idChapter)
 		{
 			$sql = "Select * From class WHERE id_chapter = %d";
 			$sql1 = sprintf($sql, $idChapter);
+			return $this->Select($sql1);
+		}
+
+		function SelectInfoByJoin($info, $idClass)
+		{
+			$sql = "SELECT %s FROM formation AS f, chapter AS ch, class AS cl WHERE cl.id_chapter = ch.id_chapter AND ch.id_formation = f.id_formation AND cl.id_class = %d ";
+			$sql1 = sprintf($sql, $info, $idClass);
 			return $this->Select($sql1);
 		}
 

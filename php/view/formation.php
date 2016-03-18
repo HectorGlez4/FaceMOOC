@@ -3,7 +3,9 @@ include("head.php");
 global $content;
 $formationInfo = $content['formation'][0];
 $chapterInfo = $content['chapter'];
-$classInfo = $content['class'];
+if (isset($content['class'])) {
+	$classInfo = $content['class'];	
+}
 ?>
 <h1><?php echo $formationInfo['title']; ?></h1>
 <p><?php echo $formationInfo['description']; ?></p>
@@ -27,8 +29,12 @@ if ($chapterInfo == null) {
 		echo "<div class ='row'>";
 		echo "<div class='panel panel-default'>";
 		echo "<div class='panel-body'>";
-		foreach ($classInfo[$chapter['id_chapter']] as $class) {
-			echo "<h3>".$class['title']."</h3>";
+		if ($classInfo[$chapter['id_chapter']] != null) {
+			foreach ($classInfo[$chapter['id_chapter']] as $class) {
+				echo "<a href='".WEBROOT."Classes/index/".$class['id_class']."'><h3>".$class['title']."</h3></a>";
+			}
+		}else{
+			echo "<p>Ce chapitre ne comporte pas encore de cours</p>";
 		}
 		echo "</div>";
 		echo "</div>";

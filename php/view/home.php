@@ -21,50 +21,52 @@ $pages = ceil($countFormations[0]/$perpage);
 
 <body>
 
-		<div class="page-header">
-			<?php
-			for($i = 0; $i <= count($formations) -1; $i++){
+	<div class="page-header">
+		<?php
+		for($i = 0; $i <= count($formations) -1; $i++){
+			
+			echo "<div class ='row'>";
+			for($j=1; $j<=4; $j++){
+				echo "<a href='".WEBROOT."Formation/view/".$formations[$i]['id_formation']."'>";
 				
-				echo "<div class ='row'>";
-				for($j=1; $j<=4; $j++){
-					echo "<a href='".WEBROOT."Formation/view/".$formations[$i]['id_formation']."'>";
-					
-					echo "<div class ='col-md-3 text-center'>";
-					echo "<div  class='panel panel-info'>";
-					echo "<div class='panel-heading'>";
-					
-					echo "<div class='panel-body'>";
-					
-					echo "<h2>".$formations[$i]['title']."</h2>";
-					echo "<img src='".WEBROOT.$formations[$i]['image']."' alt='Image formation' class='img-responsive img-thumbnail'>";
-					echo "<p>Difficulty : ".$formations[$i]['difficulty']." </p>";
-					echo "<p>Required skills : ".$formations[$i]['required_skill']." </p>";
-					
+				echo "<div class ='col-md-3 text-center'>";
+				echo "<div  class='panel panel-info'>";
+				echo "<div class='panel-heading'>";
+				
+				echo "<div class='panel-body'>";
+				
+				echo "<h2>".$formations[$i]['title']."</h2>";
+				echo "<img src='".WEBROOT.$formations[$i]['image']."' alt='Image formation' class='img-responsive img-thumbnail'>";
+				echo "<p>Difficulty : ".$formations[$i]['difficulty']." </p>";
+				echo "<p>Required skills : ".$formations[$i]['required_skill']." </p>";
+				
 
-					echo "</div>";
-					echo "</div>";
-					echo "</div>";
-					echo "</div>";
-					echo "</a>";
-					$i++;
-					if($i > count($formations) - 1){
-						break;
-					}
-				}
-				$i--;
+				echo "</div>";
+				echo "</div>";
+				echo "</div>";
 				
 				echo "</div>";
 
+				echo "</a>";
+				$i++;
+				if($i > count($formations) - 1){
+					break;
+				}
 			}
-			for ($ii=1; $ii <= $pages ; $ii++) {
+			$i--;
 			
-				echo "<a class='btn btn-default' href = '".WEBROOT."Home/view/$ii' role='button' >$ii</a>";
-			}
-			?>
-		</div>
+			echo "</div>";
 
-		<a class='btn btn-default' href='<?php WEBROOT ?>Gestion'>Gestion de compte</a>
-		<a class='btn btn-default' href='<?php WEBROOT ?>GestionFormation'>Gestion de Cours</a>
-		<a class='btn btn-default' href='<?php WEBROOT ?>User/logout'>Deconnexion</a>
+		}
+		for ($ii=1; $ii <= $pages ; $ii++) {
+		
+			echo "<a class='btn btn-default' href = '".WEBROOT."Home/view/$ii' role='button' >$ii</a>";
+		}
+		?>
+	</div>
+
+	<a class='btn btn-default' href='<?php WEBROOT ?>Gestion'>Gestion de compte</a>
+	<a class='btn btn-default' href='<?php WEBROOT ?>GestionFormation'>Gestion de Cours</a>
+	<a class='btn btn-default' href='<?php WEBROOT ?>User/logout'>Deconnexion</a>
 	
 </body>

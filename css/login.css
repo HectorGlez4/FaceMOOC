@@ -29,15 +29,13 @@ body {
 #avatar {
     margin: 0px auto 10px;
     display: block;
-}
-
-#avatar span {
     display: block;
     width: 300px;
     text-align: center;
     color: #006699;
     font-size: 70px;
 }
+
 
 .formation{
     border-style: solid;

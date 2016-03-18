@@ -115,11 +115,11 @@
 
 		}
 
-		function InsertUser($email, $password, $firstname, $lastname)
+		function InsertUser($email, $password, $firstname, $lastname, $avatar)
 		{
 			$this->Connect();
-			$sql = "INSERT INTO user (`email`, `password`, `firstname`, `lastname`) VALUES ('%s', '%s', '%s', '%s');";
-			$sql1 = sprintf($sql, $email, $password, $firstname, $lastname);
+			$sql = "INSERT INTO user (`email`, `password`, `firstname`, `lastname`, `avatar`) VALUES ('%s', '%s', '%s', '%s', '%s');";
+			$sql1 = sprintf($sql, $email, $password, $firstname, $lastname, $avatar);
 			//echo $sql1;
 			if($this->Insert($sql1))
 			{

@@ -48,7 +48,7 @@ Class Gestion extends Controller
                 $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'], $fichier);
                 if ($resultat) {
                     $MUser->addAvatar($fichier, $_SESSION['email']);
-                    $_SESSION['avatar'] = $UserId[0]['id_user'] . ".$extension_upload";
+                    $_SESSION['avatar'] = WEBROOT."img/avatar/".$UserId[0]['id_user'] . ".$extension_upload";
                     echo 'uploaded !';
                     if ($extension_upload !== 'gif') {
                         $MUser->compress_image($fichier, $fichier, 50);

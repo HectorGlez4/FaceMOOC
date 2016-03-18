@@ -14,7 +14,7 @@
                 <h3>Image</h3><br/>
 
                 <label for="avatar">
-                    <img id='avatar' class="responsive" src="<?php echo WEBROOT ?>img/avatar/<?php echo $_SESSION['avatar'] ?>"/>
+                    <img id='avatar' class="responsive" src="<?php echo $_SESSION['avatar'] ?>"/>
                 </label>
                 <div class="form-group">
                     <div class="input-group">

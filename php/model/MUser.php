@@ -265,8 +265,26 @@
 			return false;
 		}
 
+		function compress_image($src, $dest , $quality) {
+			$info = getimagesize($src);
+
+			if ($info['mime'] == 'image/jpeg')
+			{
+				$image = imagecreatefromjpeg($src);
+			}
+			elseif ($info['mime'] == 'image/png')
+			{
+				$image = imagecreatefrompng($src);
+			}
+			else
+			{
+				die('Unknown image file format');
+			}
+			//compress and save file to jpg
+			imagejpeg($image, $dest, $quality);
+
+			//return destination file
+			return $dest;
+		}
+
 	}
-	
-	//$mus = new MUser();
-	//echo "\n";
-	//echo $mus->DeleteUser(3);

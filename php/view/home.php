@@ -16,7 +16,13 @@ $pages = ceil($countFormations[0]/$perpage);
 ?>
 <body>
 	<div class="container">
-		<div class="jumbotron">
+		<form id="frmSearch">
+		    <div class="form-group">
+		    	<label for="keywords">Search Formations</label>
+		    	<input type="text" id="inputSearch" class="form-control" placeholder="Keywords..." name="keywords">
+		  	</div>
+		</form>
+		<div id="content" class="jumbotron">
 			<?php
 			for($i = 0; $i <= count($formations) -1; $i++){
 				echo "<div class ='row'>";

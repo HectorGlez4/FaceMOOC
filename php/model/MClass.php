@@ -9,6 +9,13 @@
 			return $this->Select($sql1);
 		}
 
+		function SelectInfoByJoin($info, $idClass)
+		{
+			$sql = "SELECT %s FROM formation AS f, chapter AS ch, class AS cl WHERE cl.id_chapter = ch.id_chapter AND ch.id_formation = f.id_formation AND cl.id_class = %d ";
+			$sql1 = sprintf($sql, $info, $idClass);
+			return $this->Select($sql1);
+		}
+
 		function InsertClass($idChapter, $title, $description, $video, $docs )
 		{
 			$this->Connect();

@@ -120,7 +120,6 @@
 			$this->Connect();
 			$sql = "INSERT INTO user (`email`, `password`, `firstname`, `lastname`) VALUES ('%s', '%s', '%s', '%s');";
 			$sql1 = sprintf($sql, $email, $password, $firstname, $lastname);
-			//echo $sql1;
 			if($this->Insert($sql1))
 			{
 				return true;

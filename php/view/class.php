@@ -22,5 +22,4 @@ $classInfo = $content['class'];
 	}
 	echo "</div>";
 	echo "</div>";
-	echo "yolo";
 ?>

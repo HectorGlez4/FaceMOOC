@@ -1,19 +1,32 @@
 $("#inputSearch").change(function()
 {
-	cleanPage();
-	loadFormations();
+	loadFormations(1);
 })
 
-function loadFormations(keywords)
+function loadFormations(page)
 {
+	cleanPage();
+	post = $("#frmSearch").serialize();
+	if(page)
+	{
+		post +="&page=" +page;
+	}
+	else
+	{
+		post +="&page=1";
+	}
 	$.ajax(
 	{
 		url: 'php/model/SearchFormations.php',
 		type: 'POST',
 		dataType: 'json',
-		data: $("#frmSearch").serialize(),
+		data: post,
 	}).done(function(data)
 	{
+		var ResultsMax = data[data.length -1];
+		data.pop();
+		var NbResults = data[data.length - 1];
+		data.pop();
 		var sRow = "";
 		for(i = 0; i <= data.length -1; i++)
 		{
@@ -46,6 +59,12 @@ function loadFormations(keywords)
 			}
 			i--;
 			sRow += "</div>";
+		}
+		
+		var pages = Math.ceil(NbResults[0] / ResultsMax);
+		for (iX =1 ; iX <= pages; iX++)
+		{
+			sRow += "<a class='btn btn-default' href='#' role='button' onclick='loadFormations("+iX+")''>"+iX+"</a>";
 		}
 		$("#divContent").append(sRow);
 	})

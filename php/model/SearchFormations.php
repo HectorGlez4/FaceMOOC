@@ -7,5 +7,8 @@
 
 	$mform = new MFormation();
 	$mform->Connect();
+	$response = $mform->SelectFormations($keywords, $page);
+	$response[] = $mform->CountFormations();
+	$response[] = $mform->NbResults;
 	
-	echo json_encode($mform->SelectFormations($keywords));
+	echo json_encode($response);

@@ -9,12 +9,10 @@ var_dump($content['userGestion'][0]); ?>
     <div class="jumbotron">
         <h1>Mon compte</h1>
     </div>
-
-
             <form  action="<?php ROOT ?>Gestion/updateaccount" method="POST">
 
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <h3>Image</h3><br/>
 
                         <div class="image-upload">
@@ -23,15 +21,13 @@ var_dump($content['userGestion'][0]); ?>
                             </label>
                             <div class="file-field input-field">
                                 <div class="file-path-wrapper">
-                                    <input id="student_avatar" type="file" name="student_avatar"/>
+                                    <input id="student_avatar" type="file" name="avatar"/>
                                 </div>
                             </div>
                         </div>
 
-
-
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <h3>Information Personnelle</h3>
 
                 <div class="form-group">
@@ -62,8 +58,6 @@ var_dump($content['userGestion'][0]); ?>
 
         </div>
         </form>
-
-
     </div>
     <?php include("changepass.php") ?>
 </div>

@@ -33,7 +33,9 @@
 				{
            			$Data[]=$Row;
 				}
-				return $Data;
+				if (!empty($Data)) {
+					return $Data;
+				}
 			}
 			catch(PDOException $e)
 			{
@@ -51,7 +53,9 @@
 				$this->Connect();
 				$resultSet = $this->PDO->query($SQL);
 				$Data = $resultSet->fetch();
-				return $Data;
+				if (!empty($Data)) {
+					return $Data;
+				}
 			}
 			catch(PDOException $e)
 			{

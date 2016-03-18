@@ -42,9 +42,9 @@
 
 
 		
-		function SelectFormation($keywords)
+		function SelectFormations($keywords, $Page)
 		{
-			
+			$offset = $this->NbResults * ($Page-1);	
 			$keyarray = explode(" ", $keywords);
 			$Data = null;
 			$sql = "SELECT * FROM formation ";
@@ -58,6 +58,7 @@
 					$sql .= " OR keywords LIKE '%$value%'";
 				}				
 			}
+			$sql .= " LIMIT " . $offset .", " . $this->NbResults;
 			//echo $sql;
 			return ($this->Select($sql));
 		}
@@ -106,3 +107,6 @@
 			return false;
 		}
 	}
+	//$mes = new MFormation();
+	//echo "\n";
+	//var_dump($mes->SelectFormations("test", 1));

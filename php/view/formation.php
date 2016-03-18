@@ -31,8 +31,8 @@ if ($chapterInfo == null) {
 		echo "<div class='panel-body'>";
 		if ($classInfo[$chapter['id_chapter']] != null) {
 			foreach ($classInfo[$chapter['id_chapter']] as $class) {
-				echo "<h3>".$class['title']."</h3>";
-			}		
+				echo "<a href='".WEBROOT."Classes/index/".$class['id_class']."'><h3>".$class['title']."</h3></a>";
+			}
 		}else{
 			echo "<p>Ce chapitre ne comporte pas encore de cours</p>";
 		}

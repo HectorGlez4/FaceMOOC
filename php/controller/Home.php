@@ -26,6 +26,10 @@ Class Home extends Controller {
     }
 
     function view($id) {
+        if(!isset($_SESSION['id'])) {
+            header('Location:'.WEBROOT.'User');
+            return;
+        }
         $MUser = new MUser();
         $MFormation = new MFormation();
         $d['userInfo'] = $MUser->SelectUserEmail($_SESSION['email']);

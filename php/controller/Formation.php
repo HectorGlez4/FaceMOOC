@@ -17,6 +17,10 @@ Class Formation extends Controller {
     }
 
     function view($id){
+    	if(!isset($_SESSION['id'])) {
+            header('Location:'.WEBROOT.'User');
+            return;
+        }
         $MFormation = new MFormation();
         $MChapter = new MChapter();
         $MClass = new MClass();

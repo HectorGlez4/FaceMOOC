@@ -25,7 +25,7 @@
 		}
 
 		
-		function SelectFormation($keywords)
+		function SelectFormations($keywords)
 		{
 			
 			$keyarray = explode(" ", $keywords);

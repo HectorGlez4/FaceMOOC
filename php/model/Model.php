@@ -7,7 +7,7 @@
 
 		public function Connect()
 		{
-			if($PDO != null)
+			if($this->PDO == null)
 			{
 				try
 				{

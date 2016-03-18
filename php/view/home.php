@@ -17,7 +17,7 @@ $pages = ceil($countFormations[0]/$perpage);
 //var_dump($content['page']);
 //var_dump($formations);
 ?>
-<link rel="stylesheet" href="<?php echo WEBROOT?>/css/home.css">
+<link rel="stylesheet" href="<?php echo WEBROOT?>css/home.css">
 
 <body>
 	<div class="container">
@@ -27,7 +27,7 @@ $pages = ceil($countFormations[0]/$perpage);
 		    	<input type="text" id="inputSearch" class="form-control" placeholder="Keywords..." name="keywords">
 		  	</div>
 		</form>
-		<div class="page-header">
+		<div id="divContent" class="page-header frm-content">
 
 			<?php
 			for($i = 0; $i <= count($formations) -1; $i++){
@@ -73,5 +73,5 @@ $pages = ceil($countFormations[0]/$perpage);
 		<a class='btn btn-default' href='<?php WEBROOT ?>Gestion'>Gestion de compte</a>
 		<a class='btn btn-default' href='<?php WEBROOT ?>GestionFormation'>Gestion de Cours</a>
 		<a class='btn btn-default' href='<?php WEBROOT ?>User/logout'>Deconnexion</a>
-	
+	<script src="<?php echo WEBROOT?>js/search.js"></script>
 </body>

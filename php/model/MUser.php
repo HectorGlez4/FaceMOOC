@@ -121,6 +121,7 @@
 			$sql = "INSERT INTO user (`email`, `password`, `firstname`, `lastname`, `avatar`) VALUES ('%s', '%s', '%s', '%s', '%s');";
 			$sql1 = sprintf($sql, $email, $password, $firstname, $lastname, $avatar);
 			//echo $sql1;
+
 			if($this->Insert($sql1))
 			{
 				return true;

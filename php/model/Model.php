@@ -7,14 +7,17 @@
 
 		public function Connect()
 		{
-			try
+			if($this->PDO == null)
 			{
-				$StringConnection=new Connection();
-				$this->PDO=new PDO("mysql:host=".$StringConnection->Server.";dbname=".$StringConnection->BD.";charset=utf8", $StringConnection->User, $StringConnection->Password);
-			}
-			catch(PDOException $e)
-			{
-				echo $e->getMessage();
+				try
+				{
+					$StringConnection=new Connection();
+					$this->PDO=new PDO("mysql:host=".$StringConnection->Server.";dbname=".$StringConnection->BD.";charset=utf8", $StringConnection->User, $StringConnection->Password);
+				}
+				catch(PDOException $e)
+				{
+					echo $e->getMessage();
+				}
 			}
 		}
 

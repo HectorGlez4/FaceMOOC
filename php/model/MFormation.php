@@ -22,7 +22,7 @@
 				$this->Connect();
 				$sql = "SELECT id_formation FROM formation f inner join expert e on f.id_expert=e.id_expert 
 				inner join user u on u.id_user=e.id_user 
-				WHERE u.email= '%s' and f.title= '%s'";
+				WHERE u.email= :email";
 				$stmt = $this->PDO->prepare($sql);
 				$stmt->bindParam(":email", $email, PDO::PARAM_STR);
 				$stmt->execute();
@@ -42,6 +42,12 @@
 			}
 
 		}
+
+
+
+
+
+
 		function SelectFormationTitle($email, $title)
 		{
 			$sql = "SELECT COUNT(title) FROM formation f inner join expert e on f.id_expert=e.id_expert 
@@ -113,7 +119,7 @@
 			$this->Connect();
 			$sql = "DELETE FROM formation WHERE id_formation = %d ";
 			$sql1 = sprintf($sql, $idFormation);
-			//echo $sql1;
+			echo $sql1;
 			if($this->Delete($sql1))
 			{
 				return true;

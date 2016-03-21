@@ -71,7 +71,7 @@ else {
                 $resultat = move_uploaded_file($_FILES['imag']['tmp_name'], $fichier);
                 if ($resultat){
                       
-                    $ver=$MFormation->InsertFormation($id_expert, $title, $description, $fichier, $requireskill, $diff, $keywords);
+                    $MFormation->InsertFormation($id_expert, $title, $description, $fichier, $requireskill, $diff, $keywords);
 
 
                 echo "the upload is okay";
@@ -97,7 +97,13 @@ else {
     }//gestionfor
 
 
-    
+function deleteFormations($id){
+
+$MFormation = new MFormation();
+$MFormation->DeleteFormation($id);
+
+}   
+
 }
 
 ?>

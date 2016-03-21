@@ -7,7 +7,7 @@
 
 	$mform = new MFormation();
 	$mform->Connect();
-	$response = $mform->SelectFormations($keywords, $page);
+	$response = $mform->SelectFormationsByKeywords($keywords, $page);
 	$response[] = $mform->CountFormations();
 	$response[] = $mform->NbResults;
 	

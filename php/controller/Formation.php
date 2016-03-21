@@ -25,19 +25,24 @@ Class Formation extends Controller {
         $MChapter = new MChapter();
         $MClass = new MClass();
         $d['formation'] = $MFormation->SelectFormationById($id);
-        $d['chapter'] = $MChapter->SelectChapters($id);
-        $chapters = $d['chapter'];
-        //var_dump($chapters);
-        if (isset($chapters)) {
-        	foreach ($chapters as $chapter) {
-	        	//var_dump($chapter);
-	        	$d['class'][$chapter['id_chapter']] = $MClass->SelectClassByChapterId($chapter['id_chapter']);
-	        	//var_dump($d['class']);
-	        }
+        if ($d['formation'] == null) {
+            echo "erreur 404";
+        }else{
+            $d['chapter'] = $MChapter->SelectChapters($id);
+            $chapters = $d['chapter'];
+            //var_dump($chapters);
+            if (isset($chapters)) {
+                foreach ($chapters as $chapter) {
+                    //var_dump($chapter);
+                    $d['class'][$chapter['id_chapter']] = $MClass->SelectClassByChapterId($chapter['id_chapter']);
+                    //var_dump($d['class']);
+                }
+            }
+            $this->set($d);
+            $this->render('formation');
+            return;
         }
-        $this->set($d);
-        $this->render('formation');
-        return;
+        
     }
 }
 ?>

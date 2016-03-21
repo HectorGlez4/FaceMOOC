@@ -1,6 +1,7 @@
 $("#inputSearch").keydown(function()
 {
-	loadFormations(1);
+	
+loadFormations(1);
 })
 
 function loadFormations(page)

@@ -1,18 +1,15 @@
 
 
-     </head>
-    <body>
-
-    <div class="container">
+<!--     <div class="container">
             <div class="row">
                 <h3>Liste de Cours</h3>
             </div>
-            <div class="row">
-                <table class="table table-striped table-bordered" >
-            <!-- <table cellpadding="0" cellspacing="0" border="0" class="display" id="listformations"> -->
+            <div class="row"> -->
+                <!-- <table class="table table-striped table-bordered" > -->
+           <table id="example" class="display" cellspacing="0" width="100%">
 
                 <thead>
-                    <tr>
+                        <tr>
                         <td>Id Course</td>
                         <td>Title</td>
                         <td>Description</td>
@@ -23,11 +20,29 @@
                         <td>Delete</td>
                     </tr>
                 </thead>
+                 </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                    <br>
+                        <th>Id Course</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Required Skills</th>
+                        <th>Difficulty</th>
+                        <th>Keywords</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </tfoot>
                 <tbody>
                 <?php
                 
                       global $content;
-                          var_dump($content['formations']);
+                      if (is_array($content['formations']) || is_object($content['formations'])){
+                        
+                     
+
                             foreach ($content['formations'] as $key) {
 
                                 echo '<tr>';
@@ -40,11 +55,12 @@
 
 
 
-                                echo '<td><a href="<?php WEBROOT ?>GestionFormation/updateFormation?id_formation='. $key["id_formation"] .'"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></td>';
+                                echo '<td><a href="<?php WEBROOT ?>GestionFormation/updateFormation/'. $key["id_formation"] .'"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></td>';
                                 echo '<td><a href="'.WEBROOT.'GestionFormation/deleteFormations/'. $key["id_formation"] .'"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>';
                                 echo '</tr>';
+                                
                             }
-                           
+                            }
          
                         
                     ?>

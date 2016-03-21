@@ -28,7 +28,7 @@
     </style>
 
     <link rel="stylesheet" href="<?php echo WEBROOT?>css/login.css">
-    <link type="text/css" href="css/style.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo WEBROOT?>css/style.css" rel="stylesheet" />
 
 
 </head>

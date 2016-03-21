@@ -8,10 +8,10 @@
 		      	<a class="nav-link" href='<?php echo WEBROOT ?>Home'>Home</a>
 		    </li>
 		    <li class="nav-item">
-		      	<a class="nav-link" href='<?php echo WEBROOT ?>Gestion'>Gestion de compte</a>
+		      	<a class="nav-link" href='<?php echo WEBROOT ?>Gestion'>My account</a>
 		    </li>
 		    <li class="nav-item">
-      			<a class="nav-link" href='<?php echo WEBROOT ?>GestionFormation'>Gestion de Cours</a>
+      			<a class="nav-link" href='<?php echo WEBROOT ?>GestionFormation'>Formation manager</a>
 		    </li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">

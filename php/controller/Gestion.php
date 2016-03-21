@@ -18,7 +18,7 @@ Class Gestion extends Controller
         $this->render('gestion');
     }
 
-    function updateaccount()
+     function updateaccount()
     {
         $MUser = new MUser();
         if (empty($_POST['email']) || empty($_POST['firstname']) || empty($_POST['lastname'])) {
@@ -28,14 +28,12 @@ Class Gestion extends Controller
             $_SESSION['email'] = $_POST['email'];
             var_dump('yo1');
         }
-
         if (isset($_FILES['avatar'])) {
             $maxsize = 2097152;
             $extensions_valides = array('gif', 'png', 'jpg', 'jpeg');
             $filename = $_FILES['avatar']['name'];
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
             $extension_upload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
-
             if ($_FILES['avatar']['error'] > 0) {
                 echo 'error';
             } else if (($_FILES['avatar']['size'] >= $maxsize) || ($_FILES["avatar"]["size"] == 0)) {

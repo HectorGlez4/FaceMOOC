@@ -22,9 +22,16 @@ Class User extends Controller
         } else {
             $MUser = new MUser();
             $connect = $MUser->SelectUserEmailPassword($_POST['email'], $_POST['password']);
+            $avatar = $MUser->SelectUserAvatar($_POST['email']);
+            if ($avatar[0]['avatar'] == '') {
+                $avatar = WEBROOT.'img/avatar.png';
+            } else {
+                $avatar = $avatar[0]['avatar'];
+            }
             if ($connect) {
                 session_start();
                 $_SESSION['id'] = 1;
+                $_SESSION['avatar'] = $avatar;
                 $_SESSION['email'] = $_POST['email'];
                 header('Location:' . WEBROOT . 'Home');
             } else {

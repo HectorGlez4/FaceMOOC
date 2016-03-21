@@ -5,7 +5,7 @@
 		public $NbResults = 16;
 
 		
-		function SelectFormations($email)
+		function SelectAllFormations($email)
 		{
 			$sql = "SELECT * FROM formation WHERE email = '%s'";
 			$sql1 = sprintf($sql, $email);

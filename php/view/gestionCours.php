@@ -1,8 +1,6 @@
 <?php include("head.php") ?>
 
 
-<link rel="stylesheet" href="<?php echo WEBROOT?>/css/login.css">
-
 <body>
 
 
@@ -10,9 +8,10 @@
     <div class="jumbotron">
         <h1>Formation Manager</h1>
     </div>
+   <div class="row">
+                
 
-
-            <form  action="<?php ROOT ?>GestionFormation/gestionfor" method="POST">
+            <form  action="<?php ROOT ?>GestionFormation/gestionfor" method="POST"  enctype="multipart/form-data">
         <h3>Add a new course</h3>
 
                 <div class="cont">
@@ -32,11 +31,13 @@
                             </select>
 
                              </div>
-                             <div class="form-group">
-                            <label for="image">Image :</label>
-                             <input type="file" name="image">
-
-                            </div>
+                          <div class="form-group">
+                    <label for="im">Image :</label>
+                        <input type="file" name="imag"/>
+                                  
+                      
+                        </div>
+              
                           <div class="form-group">
                             <label for="requireskill">Required skills :</label>
                             <textarea rows="4" cols="50" class="form-control" name="requireskill"> 
@@ -53,12 +54,26 @@
                             <label for="keywords">Keywords :</label>
                             <input type="text" class="form-control" name="keywords">
                             </div>
-                <button class="btn btn-md btn-primary btn-block" type="submit">Save Formation</button>
+                <div class="row">
+                <div class="col-md-6">
+                  <button class="btn btn-md btn-primary btn-block" type="submit">Save Formation</button>
+                  </div>
+                  <div class="col-md-6">
+                <a class='btn btn-md btn-primary btn-block' href='<?php WEBROOT ?>Home'>Cancel</a>
 
+                  </div>
+                </div>
         </div>
         </form>
 
 
-    </div>
+  
+    <?php include("cours.php") ?>
+
 </div>
+</div>
+
+  </div>
+</div>
+  
 </body>

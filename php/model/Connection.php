@@ -5,7 +5,7 @@
 		public $User="root";
 		//public $Password="root";
 		//public $Password="123456";
-		public $Password=""
+		public $Password="";
 		public $BD="mooc";
 	}
 ?>

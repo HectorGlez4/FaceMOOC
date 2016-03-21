@@ -9,28 +9,26 @@ $classesInfo = $content['currentclass'][0];
 ?>
 <a class="btn btn-default" href="<?php echo WEBROOT . 'Formation/view/' . $content['formation'][0]['id_formation']?>"><span class="glyphicon glyphicon-chevron-left"></span> Formation </a>
 <div class='container'>
-	<div class="panel-heading">
-			<h2><?php echo $formationInfo['title']; ?></h2>
+	<div class="jumbotron">
+			<h1><?php echo $formationInfo['title']; ?></h1>
 	</div>
 	<?php
 		echo "<div class='row'>";
-		echo "<div class='col-md-2'>";
+		echo "<div class='col-md-3'>";
 		foreach ($chapterInfo as $chapter) {
-			echo "<h3>".$chapter['title']."</h3>";
+			echo "<h2>".$chapter['title']."</h2>";
 			//var_dump(expression);
 			if ($classInfo[$chapter['id_chapter']] != null) {
 				foreach ($classInfo[$chapter['id_chapter']] as $class) {
-					echo "<a href='".WEBROOT."Classes/index/".$class['id_class']."'><h4>".$class['title']."</h4></a>";
+					echo "<a href='".WEBROOT."Classes/index/".$class['id_class']."'><h3>".$class['title']."</h3></a>";
 				}
 			}else{
 				echo "";
 			}
 		}
 		echo "</div>";
-		echo "<div class='col-md-1'>";
-		echo "</div>";
 		echo "<div class='col-md-9'>";
-		echo "<h3>".$classesInfo['title']."</h3>";
+		echo "<h2>".$classesInfo['title']."</h2>";
 		echo "<iframe width='100%' height='415' src='".$classesInfo['video']."' frameborder='0' allowfullscreen></iframe>";
 		echo "<p>".$classesInfo['description']."</p>";
 		if ($classesInfo['docs'] != null) {

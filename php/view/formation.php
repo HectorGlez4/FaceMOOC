@@ -9,8 +9,8 @@ if (isset($content['class'])) {
 }
 ?>
 <div class="container">
-	<div class="panel-heading">
-		<h2><?php echo $formationInfo['title']; ?></h2>
+	<div class="jumbotron">
+		<h1><?php echo $formationInfo['title']; ?></h1>
 	</div>
 	<div class="container">
 		<p><?php echo $formationInfo['description']; ?></p>
@@ -33,14 +33,14 @@ if (isset($content['class'])) {
 				echo "<div class ='row'>";
 				echo "<div class='panel panel-default'>";
 				echo "<div class='panel-body'>";
-				echo "<h3>".$chapter['title']."</h3>";
+				echo "<h2>".$chapter['title']."</h2>";
 				//var_dump(expression);
 				echo "<div class ='row'>";
 				echo "<div class='panel panel-default'>";
 				echo "<div class='panel-body'>";
 				if ($classInfo[$chapter['id_chapter']] != null) {
 					foreach ($classInfo[$chapter['id_chapter']] as $class) {
-						echo "<a href='".WEBROOT."Classes/index/".$class['id_class']."'><h4>".$class['title']."</h4></a>";
+						echo "<a href='".WEBROOT."Classes/index/".$class['id_class']."'><h3>".$class['title']."</h3></a>";
 					}
 				}else{
 					echo "<p>Ce chapitre ne comporte pas encore de cours</p>";

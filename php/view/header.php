@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
 	    <div class="navbar-header">
-	      	<img class="navbar-brand" id="logo" src="<?php echo WEBROOT ?>img/FaceMOOC.png">
+	      	<a href="<?php echo WEBROOT ?>Home"><img class="navbar-brand" id="logo" src="<?php echo WEBROOT ?>img/FaceMOOC.png"></a>
 	    </div>
 	    <ul class="nav navbar-nav">
 	      	<li class="nav-item">

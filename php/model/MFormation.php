@@ -4,12 +4,43 @@
 	{
 		public $NbResults = 16;
 
-		
-		function SelectAllFormations($email)
+
+		function SelectFormation($email)
 		{
-			$sql = "SELECT * FROM formation WHERE email = '%s'";
+			
+			$sql = "SELECT * FROM formation f inner join expert e on f.id_expert=e.id_expert 
+			inner join user u on u.id_user=e.id_user 
+			WHERE u.email= '%s'";
 			$sql1 = sprintf($sql, $email);
 			return ($this->Select($sql1));
+		}
+		function SelectFormationId($email)
+		{
+			try
+			{
+				$Data = null;
+				$this->Connect();
+				$sql = "SELECT id_formation FROM formation f inner join expert e on f.id_expert=e.id_expert 
+				inner join user u on u.id_user=e.id_user 
+				WHERE u.email= '%s' and f.title= '%s'";
+				$stmt = $this->PDO->prepare($sql);
+				$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+				$stmt->execute();
+				while($Row =$stmt->fetch(PDO::FETCH_ASSOC))
+				{
+					$Data[]=$Row;
+				}
+				return  $Data;
+			}
+			catch(PDOException $e)
+			{
+				echo $e->getMessage();
+			}
+			finally
+			{
+				$this->Close_Connection();
+			}
+
 		}
 		function SelectFormationTitle($email, $title)
 		{
@@ -63,8 +94,7 @@
 			return ($this->Select($sql));
 		}
 
-		function InsertFormation($idExpert, $title, $description, $image
-								, $req_skill, $difficulty, $keywords )
+		function InsertFormation($idExpert, $title, $description, $image, $req_skill, $difficulty, $keywords )
 		{
 			$this->Connect();
 			$sql = "INSERT INTO formation ('id_expert', 'title', 'description','image', 'required_skill', 'difficulty', 'keywords') VALUES (%d, '%s', '%s' ,'%s' ,'%s','%s','%s');";

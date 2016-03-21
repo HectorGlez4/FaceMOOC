@@ -1,5 +1,6 @@
 <?php
 include("head.php");
+include("header.php");
 
 global $content;
 foreach ($content['userInfo'] as $user){
@@ -29,9 +30,6 @@ $pages = ceil($countFormations[0]/$perpage);
 		</form>
 		<div id="divContent" class="page-header frm-content">
 		</div>
-		<a class='btn btn-default' href='<?php WEBROOT ?>Gestion'>Gestion de compte</a>
-		<a class='btn btn-default' href='<?php WEBROOT ?>GestionFormation'>Gestion de Cours</a>
-		<a class='btn btn-default' href='<?php WEBROOT ?>User/logout'>Deconnexion</a>
 	<script src="<?php echo WEBROOT?>js/search.js"></script>
 	<script>loadFormations(1)</script>
 </body>

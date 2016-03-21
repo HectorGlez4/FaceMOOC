@@ -1,4 +1,7 @@
-<?php include("head.php") ?>
+<?php 
+include("head.php");
+include("header.php");
+?>
 
 
 <body>
@@ -34,8 +37,7 @@
                           <div class="form-group">
                     <label for="im">Image :</label>
                         <input type="file" name="imag"/>
-                                  
-                      
+
                         </div>
               
                           <div class="form-group">
@@ -65,8 +67,6 @@
                 </div>
         </div>
         </form>
-
-
   
     <?php include("cours.php") ?>
 

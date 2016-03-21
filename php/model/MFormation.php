@@ -4,7 +4,7 @@
 	{
 		public $NbResults = 16;
 
-		
+
 		function SelectFormation($email)
 		{
 			
@@ -43,15 +43,19 @@
 
 		}
 
-
-
-
-
-
 		function SelectFormationTitle($email, $title)
 		{
 			$sql = "SELECT COUNT(title) FROM formation f inner join expert e on f.id_expert=e.id_expert 
 			inner join user u on u.id_user=e.id_user 
+			WHERE u.email= '%s' AND f.title= '%s'";
+			$sql1 = sprintf($sql, $email, $title);
+			return ($this->Select($sql1));
+		}
+
+		function SelectFormationIdByTitle($email, $title)
+		{
+			$sql = "SELECT id_formation FROM formation f inner join expert e on f.id_expert=e.id_expert
+			inner join user u on u.id_user=e.id_user
 			WHERE u.email= '%s' AND f.title= '%s'";
 			$sql1 = sprintf($sql, $email, $title);
 			return ($this->Select($sql1));
@@ -100,10 +104,10 @@
 			return ($this->Select($sql));
 		}
 
-		function InsertFormation($idExpert, $title, $description, $image, $req_skill, $difficulty, $keywords )
+		function InsertFormation($idExpert, $title, $description, $image, $req_skill, $difficulty, $keywords)
 		{
 			$this->Connect();
-			$sql = "INSERT INTO formation ('id_expert', 'title', 'description','image', 'required_skill', 'difficulty', 'keywords') VALUES (%d, '%s', '%s' ,'%s' ,'%s','%s','%s');";
+			$sql = "INSERT INTO formation (id_expert, title, description,image, required_skill, difficulty, keywords) VALUES (%d, '%s', '%s' ,'%s' ,'%s','%s','%s');";
 			$sql1 = sprintf($sql, $idExpert, $title, $description, $image,$req_skill, $difficulty, $keywords);
 			//echo $sql1;
 			if($this->Insert($sql1))

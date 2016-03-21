@@ -6,6 +6,7 @@ $chapterInfo = $content['chapter'];
 $classInfo = $content['class'];
 $classesInfo = $content['currentclass'][0];
 ?>
+<a class="btn btn-default" href="<?php echo WEBROOT . 'Formation/view/' . $content['formation'][0]['id_formation']?>"> < Formation</a>
 <h2><?php echo $formationInfo['title']; ?></h2>
 <?php
 	echo "<div class='row'>";
@@ -32,5 +33,3 @@ $classesInfo = $content['currentclass'][0];
 	echo "</div>";
 	echo "</div>";
 ?>
-
-<!-- ".ROOT."docs/".$classesInfo['docs']." -->

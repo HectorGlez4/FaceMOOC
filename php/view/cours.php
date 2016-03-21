@@ -26,14 +26,9 @@
                 <tbody>
                 <?php
                 
-                      //  global $content;
-                //$Formations = $content['..'];
-                    $MFormation = new MFormation();
-                    $requete = $MFormation->SelectFormation($_SESSION['email']);
-                          
-                          
-                            foreach ($requete as $key) {
-                                //            foreach ($pdo->query($sql) as $row) {
+                      global $content;
+                          var_dump($content['formations']);
+                            foreach ($content['formations'] as $key) {
 
                                 echo '<tr>';
                                 echo '<td>' . $key["id_formation"] . '</td>';

@@ -1,5 +1,8 @@
-<?php include("head.php") ?>
-<?php global $content;?>
+<?php 
+include("head.php");
+include("header.php");
+global $content;
+?>
 <link rel="stylesheet" href="<?php echo WEBROOT ?>/css/login.css">
 <body>
 

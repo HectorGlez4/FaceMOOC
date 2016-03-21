@@ -1,5 +1,6 @@
 <?php
 include("head.php");
+include("header.php");
 global $content;
 $formationInfo = $content['formation'][0];
 $chapterInfo = $content['chapter'];

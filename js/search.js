@@ -1,4 +1,4 @@
-$("#inputSearch").change(function()
+$("#inputSearch").keydown(function()
 {
 	loadFormations(1);
 })

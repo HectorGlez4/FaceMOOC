@@ -2,7 +2,9 @@
 <?php global $content;?>
 <link rel="stylesheet" href="<?php echo WEBROOT ?>/css/login.css">
 <body>
-
+<?php
+var_dump($content['userGestion']);
+?>
 <div class="container">
     <div class="jumbotron">
         <h1>Mon compte</h1>

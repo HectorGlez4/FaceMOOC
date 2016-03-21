@@ -16,15 +16,20 @@ Class Classes extends Controller {
         $d['formation'] = $MClass->SelectInfoByJoin('f.*', $id);
         $d['chapter'] = $MClass->SelectInfoByJoin('ch.*', $id);
         $d['currentclass'] = $MClass->SelectClass($id);
-        $chapters = $d['chapter'];
-        //var_dump($chapters);
-    	foreach ($chapters as $chapter) {
-        	//var_dump($chapter);
-        	$d['class'][$chapter['id_chapter']] = $MClass->SelectClassByChapterId($chapter['id_chapter']);
-        	//var_dump($d['class']);
+        if ($d['currentclass'] == null) {
+            echo "erreur 404";
         }
-        $this->set($d);
-        $this->render('class');
+        else{
+            $chapters = $d['chapter'];
+            //var_dump($chapters);
+            foreach ($chapters as $chapter) {
+                //var_dump($chapter);
+                $d['class'][$chapter['id_chapter']] = $MClass->SelectClassByChapterId($chapter['id_chapter']);
+                //var_dump($d['class']);
+            }
+            $this->set($d);
+            $this->render('class');
+        }
     }
 }
 ?>

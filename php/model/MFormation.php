@@ -4,6 +4,22 @@
 	{
 		public $NbResults = 16;
 
+		
+		function SelectFormations($email)
+		{
+			$sql = "SELECT * FROM formation WHERE email = '%s'";
+			$sql1 = sprintf($sql, $email);
+			return ($this->Select($sql1));
+		}
+		function SelectFormationTitle($email, $title)
+		{
+			$sql = "SELECT COUNT(title) FROM formation f inner join expert e on f.id_expert=e.id_expert 
+			inner join user u on u.id_user=e.id_user 
+			WHERE u.email= '%s' AND f.title= '%s'";
+			$sql1 = sprintf($sql, $email, $title);
+			return ($this->Select($sql1));
+		}
+
 		function SelectFormationsPage($Page)
 		{
 			$offset = $this->NbResults * ($Page-1);
@@ -24,10 +40,11 @@
 			return $this->SelectOne($sql);
 		}
 
+
 		
-		function SelectFormation($keywords)
+		function SelectFormations($keywords, $Page)
 		{
-			
+			$offset = $this->NbResults * ($Page-1);	
 			$keyarray = explode(" ", $keywords);
 			$Data = null;
 			$sql = "SELECT * FROM formation ";
@@ -41,6 +58,7 @@
 					$sql .= " OR keywords LIKE '%$value%'";
 				}				
 			}
+			$sql .= " LIMIT " . $offset .", " . $this->NbResults;
 			//echo $sql;
 			return ($this->Select($sql));
 		}
@@ -49,7 +67,7 @@
 								, $req_skill, $difficulty, $keywords )
 		{
 			$this->Connect();
-			$sql = "INSERT INTO formation ('id_expert', 'title', 'description','image', 'required_skill', 'difficulty', 'keywords') VALUES ('%d', '%s', '%s' ,'%s' ,'%s','%s','%s');";
+			$sql = "INSERT INTO formation ('id_expert', 'title', 'description','image', 'required_skill', 'difficulty', 'keywords') VALUES (%d, '%s', '%s' ,'%s' ,'%s','%s','%s');";
 			$sql1 = sprintf($sql, $idExpert, $title, $description, $image,$req_skill, $difficulty, $keywords);
 			//echo $sql1;
 			if($this->Insert($sql1))
@@ -89,3 +107,6 @@
 			return false;
 		}
 	}
+	//$mes = new MFormation();
+	//echo "\n";
+	//var_dump($mes->SelectFormations("test", 1));

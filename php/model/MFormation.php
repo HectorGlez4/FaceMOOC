@@ -73,7 +73,7 @@
 
 
 		
-		function SelectFormations($keywords, $Page)
+		function SelectFormationsByKeywords($keywords, $Page)
 		{
 			$offset = $this->NbResults * ($Page-1);	
 			$keyarray = explode(" ", $keywords);

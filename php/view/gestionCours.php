@@ -65,8 +65,6 @@
                 </div>
         </div>
         </form>
-
-
   
     <?php include("cours.php") ?>
 

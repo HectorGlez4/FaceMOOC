@@ -28,6 +28,7 @@ Class User extends Controller
             } else {
                 $avatar = $avatar[0]['avatar'];
             }
+
             if ($connect) {
                 session_start();
                 $_SESSION['id'] = 1;

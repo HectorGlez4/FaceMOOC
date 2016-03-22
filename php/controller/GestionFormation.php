@@ -47,7 +47,7 @@ Class GestionFormation extends Controller
             $id_user = $MUser->SelectUserId($_SESSION['email']);
             $id_expert = $MExpert->SelectExpertId($id_user[0]['id_user']);
             $id_formation = $MFormation->SelectFormationIdByTitle($_SESSION['email'], $title);
-            var_dump($id_formation);
+            //var_dump($id_formation);
 
 
             $checkTitle = $MFormation->SelectFormationTitle($_SESSION['email'], $title);
@@ -71,12 +71,15 @@ Class GestionFormation extends Controller
 
                         //$r = $MFormation->InsertFormation($id_expert, $title, $description, $fichier, $requireskill, $diff, $keywords);
                         $r = $MFormation->InsertFormation($id_expert[0]['id_expert'], $title, $description, $fichier, $requireskill, $diff, $keywords);
-                        var_dump($r);
-                        echo "the upload is okay";
+                       
+                        // echo "the upload is okay";
+                         header('Location:' . WEBROOT . 'GestionFormation');
                     }
                 }
             } else {
-                echo 'This title is already used';
+                
+                 header('Location:' . WEBROOT . 'GestionFormation');
+                 echo 'This title is already used';
             }
         }
     }//gestionfor
@@ -87,7 +90,7 @@ function deleteFormations($id){
 
 $MFormation = new MFormation();
 $MFormation->DeleteFormation($id);
-
+ header('Location:' . WEBROOT . 'GestionFormation');
 }   
 
 

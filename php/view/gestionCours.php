@@ -1,8 +1,11 @@
 <?php 
-include("head.php");
+ include("head.php");
 include("header.php");
 ?>
 
+<script type="text/javascript" language="javascript" src="<?php echo WEBROOT?>js/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="<?php echo WEBROOT?>js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="<?php echo WEBROOT?>js/tableformations.js"></script>
 
 <body>
 
@@ -76,4 +79,5 @@ include("header.php");
   </div>
 </div>
   
+
 </body>

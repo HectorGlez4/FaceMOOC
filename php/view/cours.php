@@ -54,7 +54,7 @@
 
 
 
-                                echo '<td><a href="<?php WEBROOT ?>GestionFormation/updateFormation/'. $key["id_formation"] .'"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></td>';
+                                echo '<td><a href="'.WEBROOT.'GestionFormation/editFormations/'. $key["id_formation"] .'"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></td>';
                                 echo '<td><a href="'.WEBROOT.'GestionFormation/deleteFormations/'. $key["id_formation"] .'"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>';
                                 echo '</tr>';
                                 

@@ -68,30 +68,99 @@ Class GestionFormation extends Controller
                     $fichier = 'img/formation/' . $title . ".$extension_upload";
                     $resultat = move_uploaded_file($_FILES['imag']['tmp_name'], $fichier);
                     if ($resultat) {
-
-                        //$r = $MFormation->InsertFormation($id_expert, $title, $description, $fichier, $requireskill, $diff, $keywords);
-                        $r = $MFormation->InsertFormation($id_expert[0]['id_expert'], $title, $description, $fichier, $requireskill, $diff, $keywords);
-                       
-                        // echo "the upload is okay";
-                         header('Location:' . WEBROOT . 'GestionFormation');
+                        $MFormation->InsertFormation($id_expert[0]['id_expert'], $title, $description, $fichier, $requireskill, $diff, $keywords);
+                        $_SESSION['imageFormation'] = $fichier;
+                        if ($extension_upload !== 'gif') {
+                            $MUser->compress_image($fichier, $fichier, 50);
+                        }
+                        header('Location:' . WEBROOT . 'GestionFormation');
                     }
                 }
             } else {
-                
-                 header('Location:' . WEBROOT . 'GestionFormation');
-                 echo 'This title is already used';
+
+                header('Location:' . WEBROOT . 'GestionFormation');
+                echo 'This title is already used';
             }
         }
     }//gestionfor
 
 
+    function updateFormation($id)
+    {
 
-function deleteFormations($id){
+        if (empty($_POST['titlef']) || empty($_POST['diff']) || empty($_POST['requireskill']) || empty($_POST['description']) ||
+            empty($_POST['keywords'])
+        ) {
 
-$MFormation = new MFormation();
-$MFormation->DeleteFormation($id);
- header('Location:' . WEBROOT . 'GestionFormation');
-}   
+            header('Location:' . WEBROOT . 'GestionFormation');
+        } else {
+            $title = $_POST['titlef'];
+            $diff = $_POST['diff'];
+            $requireskill = $_POST['requireskill'];
+            $description = $_POST['description'];
+            $keywords = $_POST['keywords'];
+            $MFormation = new MFormation();
+            $MUser = new MUser();
+            $MExpert = new MExpert();
+
+            $id_user = $MUser->SelectUserId($_SESSION['email']);
+            $id_expert = $MExpert->SelectExpertId($id_user[0]['id_user']);
+            $checkTitle = $MFormation->SelectFormationTitleExceptId($id, $title);
+            if ($checkTitle[0]['COUNT(title)'] == 0) {
+                $maxsize = 2097152;
+                $extensions_valides = array('gif', 'png', 'jpg', 'jpeg');
+                $filename = $_FILES['imag']['name'];
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                $extension_upload = strtolower(substr(strrchr($_FILES['imag']['name'], '.'), 1));
+                if ($_FILES['imag']['name'] == '' && $_FILES['imag']['type'] == '') {
+                    $fichier = $_SESSION['imageFormation'];
+                    $MFormation->UpdateFormation($id_expert[0]['id_expert'], $title, $description, $fichier, $requireskill, $diff, $keywords, $id);
+                    header('Location:' . WEBROOT . 'GestionFormation');
+                } else {
+                    if ($_FILES['imag']['error'] > 0) {
+                        echo 'error';
+                    } else if (($_FILES['imag']['size'] >= $maxsize) || ($_FILES["imag"]["size"] == 0)) {
+                        echo 'erreur size';
+                    } else if (!in_array($ext, $extensions_valides)) {
+                        echo 'erreur extension';
+                    } else {
+                        $fichier = 'img/formation/' . $title . ".$extension_upload";
+                        $resultat = move_uploaded_file($_FILES['imag']['tmp_name'], $fichier);
+                        if ($resultat) {
+                            $MFormation->UpdateFormation($id_expert[0]['id_expert'], $title, $description, $fichier, $requireskill, $diff, $keywords, $id);
+                            echo "the upload is okay";
+                            if ($extension_upload !== 'gif') {
+                                $MUser->compress_image($fichier, $fichier, 50);
+                            }
+                            header('Location:' . WEBROOT . 'GestionFormation');
+                        }
+                    }
+                }
+            } else {
+
+                //header('Location:' . WEBROOT . 'GestionFormation');
+                echo 'This title is already used';
+            }
+        }
+    }
+
+
+function deleteFormations($id)
+{
+
+    $MFormation = new MFormation();
+    $MFormation->DeleteFormation($id);
+    header('Location:' . WEBROOT . 'GestionFormation');
+}
+
+function editFormations($id)
+{
+
+    $MFormation = new MFormation();
+    $d['editFormation'] = $MFormation->SelectFormationById($id);
+    $this->set($d);
+    $this->render('editFormation');
+}
 
 
 }

@@ -27,7 +27,6 @@
                 <?php
                 
                       global $content;
-                          var_dump($content['formations']);
                             foreach ($content['formations'] as $key) {
 
                                 echo '<tr>';

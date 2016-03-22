@@ -6,7 +6,7 @@ global $content;
 <link rel="stylesheet" href="<?php echo WEBROOT ?>/css/login.css">
 <body>
 <?php
-var_dump($content['userGestion']);
+// var_dump($content['userGestion']);
 ?>
 <div class="container">
     <div class="jumbotron">

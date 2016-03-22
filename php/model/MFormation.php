@@ -52,6 +52,14 @@
 			return ($this->Select($sql1));
 		}
 
+		function SelectFormationTitleExceptId($id, $title)
+		{
+			$sql = "SELECT COUNT(title) FROM formation
+			WHERE id_formation != %d AND title = '%s'";
+			$sql1 = sprintf($sql, $id, $title);
+			return ($this->Select($sql1));
+		}
+
 		function SelectFormationIdByTitle($email, $title)
 		{
 			$sql = "SELECT id_formation FROM formation f inner join expert e on f.id_expert=e.id_expert
@@ -123,7 +131,6 @@
 			$this->Connect();
 			$sql = "DELETE FROM formation WHERE id_formation = %d ";
 			$sql1 = sprintf($sql, $idFormation);
-			echo $sql1;
 			if($this->Delete($sql1))
 			{
 				return true;
@@ -139,7 +146,7 @@
 			description = '%s', image = '%s', required_skill = '%s',
 			difficulty = '%s', keywords = '%s' WHERE id_formation = %d ";
 			$sql1 = sprintf($sql, $idExpert, $title, $description, $image, $req_skill, $difficulty, $keywords, $idFormation);
-			//echo $sql1;
+			echo $sql1;
 			if($this->Update($sql1))
 			{
 				return true;

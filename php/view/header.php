@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <title>Bootstrap Case</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php 
+ include("head.php");
+?>
+<script>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</head>
+</script>
+
 <body>
 
 <div class="bs-example">
@@ -24,15 +23,13 @@
 <a href="<?php echo WEBROOT ?>Home"><img class="navbar-brand" id="logo" src="<?php echo WEBROOT ?>img/FaceMOOC.png"></a>
         </div>
 <div id="navbarCollapse" class="collapse navbar-collapse">
-             <ul class="nav navbar-nav">
-                <li class="nav-item">
-		      	<a class="nav-link" href='<?php echo WEBROOT ?>Home'><span class="glyphicon glyphicon-home"></span> Home</a>
+            <ul class="nav navbar-nav">
+                
+		    <li class="divider">
+		      	<a class="nav-link" href='<?php echo WEBROOT ?>Gestion'>My compte</a>
 		    </li>
-		    <li class="nav-item">
-		      	<a class="nav-link" href='<?php echo WEBROOT ?>Gestion'><span class="glyphicon glyphicon-user"></span> My account</a>
-		    </li>
-		    <li class="nav-item">
-      			<a class="nav-link" href='<?php echo WEBROOT ?>GestionFormation'><span class="glyphicon glyphicon-book"></span> Formation manager</a>
+		    <li class="divider">
+      			<a class="nav-link" href='<?php echo WEBROOT ?>GestionFormation'>Formation manager</a>
 		    </li>
 	    </ul>
            <ul class="nav navbar-nav navbar-right">

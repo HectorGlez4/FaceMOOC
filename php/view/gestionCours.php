@@ -14,7 +14,7 @@ include("header.php");
     <div class="jumbotron">
         <h1>Formation Manager</h1>
     </div>
-   <div class="row">
+   
                 
 
             <form  action="<?php ROOT ?>GestionFormation/gestionfor" method="POST"  enctype="multipart/form-data">
@@ -45,12 +45,15 @@ include("header.php");
               
                           <div class="form-group">
                             <label for="requireskill">Required skills :</label>
+
                             <textarea rows="4" cols="50" class="form-control" name="requireskill"></textarea>
                             </div>
 
                             <div class="form-group">
                             <label for="desc">Description :</label>
-                            <textarea rows="4" cols="50" class="form-control" name="description" ></textarea>
+
+                            <textarea rows="4" cols="50" class="form-control" name="description" ></textarea>   
+
                             </div>
 
                               <div class="form-group">
@@ -71,7 +74,6 @@ include("header.php");
   
     <?php include("cours.php") ?>
 
-</div>
 </div>
 
   </div>

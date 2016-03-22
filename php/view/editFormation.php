@@ -23,7 +23,7 @@ if ($skill == 'Advanced') { $selected4 = 'selected'; } else { $selected4 = '';}
     <div class="row">
 
 
-        <form  action="../updateFormation/<?php echo $content['editFormation'][0]['id_formation']?>" method="POST"  enctype="multipart/form-data">
+        <form  action="../editFormations/<?php echo $content['editFormation'][0]['id_formation']?>" method="POST"  enctype="multipart/form-data">
             <h3>Modifiez cette formation</h3>
 
             <div class="cont">
@@ -70,7 +70,7 @@ if ($skill == 'Advanced') { $selected4 = 'selected'; } else { $selected4 = '';}
                         <button class="btn btn-md btn-primary btn-block" type="submit">Save Formation</button>
                     </div>
                     <div class="col-md-6">
-                        <a class='btn btn-md btn-primary btn-block' href='<?php WEBROOT ?>../../GestionFormation'>Cancel</a>
+                        <a class='btn btn-md btn-primary btn-block' href='<?php WEBROOT ?>../GestionFormation'>Cancel</a>
 
                     </div>
                 </div>

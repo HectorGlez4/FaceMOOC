@@ -85,7 +85,7 @@ Class GestionFormation extends Controller
     }//gestionfor
 
 
-    function updateFormation($id)
+    function editFormations($id)
     {
 
         if (empty($_POST['titlef']) || empty($_POST['diff']) || empty($_POST['requireskill']) || empty($_POST['description']) ||
@@ -153,7 +153,7 @@ function deleteFormations($id)
     header('Location:' . WEBROOT . 'GestionFormation');
 }
 
-function editFormations($id)
+function updateFormations($id)
 {
 
     $MFormation = new MFormation();

@@ -8,7 +8,7 @@ if (isset($content['class'])) {
 	$classInfo = $content['class'];	
 }
 ?>
-<div class="panel panel-info">
+<div class="panel panel-primary">
 	<div class="panel-heading">
 		<h1><?php echo $formationInfo['title']; ?></h1>
 	</div>

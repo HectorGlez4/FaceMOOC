@@ -6,7 +6,8 @@
             </div>
             <div class="row"> -->
                 <!-- <table class="table table-striped table-bordered" > -->
-           <table id="example" class="display" cellspacing="0" width="100%">
+          <div class="table-responsive">
+           <table id="example" class="table" cellspacing="0" width="100%">
 
                 <thead>
                         <tr>
@@ -16,8 +17,10 @@
                         <td>Required Skills</td>
                         <td>Difficulty</td>
                         <td>Keywords</td>
-                        <td>Edit</td>
-                        <td>Delete</td>
+                        <th>Modifier</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      
                     </tr>
                 </thead>
                  </tr>
@@ -31,8 +34,11 @@
                         <th>Required Skills</th>
                         <th>Difficulty</th>
                         <th>Keywords</th>
+                        <th>Modifier</th>
                         <th>Edit</th>
                         <th>Delete</th>
+                     
+                       
                     </tr>
                 </tfoot>
                 <tbody>
@@ -53,9 +59,8 @@
                                 echo '<td>' . $key["difficulty"] . '</td>';
                                 echo '<td>' . $key["keywords"] . '</td>';
 
-
-
-                                echo '<td><a href="<?php WEBROOT ?>GestionFormation/updateFormation/'. $key["id_formation"] .'"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></td>';
+                                echo '<td><a href="'.WEBROOT.'GestionFormation/updateFormation/'. $key["id_formation"] .'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>';
+                                echo '<td><a href="'.WEBROOT.'GestionFormation/updateFormation/'. $key["id_formation"] .'"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></td>';
                                 echo '<td><a href="'.WEBROOT.'GestionFormation/deleteFormations/'. $key["id_formation"] .'"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>';
                                 echo '</tr>';
                                 
@@ -66,7 +71,7 @@
                     ?>
                 </tbody>
             </table>
-
+</div>
                 
 
        

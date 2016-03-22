@@ -64,6 +64,9 @@ global $content;
 </div>
 
 <?php global $content ?>
+<?php 
+include("footer.php");
 
+?>
 </body>
 </html>

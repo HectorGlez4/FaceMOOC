@@ -8,8 +8,8 @@ if (isset($content['class'])) {
 	$classInfo = $content['class'];	
 }
 ?>
-<div class="container">
-	<div class="jumbotron">
+<div class="panel panel-info">
+	<div class="panel-heading">
 		<h1><?php echo $formationInfo['title']; ?></h1>
 	</div>
 	<div class="container">

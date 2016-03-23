@@ -1,5 +1,6 @@
 <?php
 include(ROOT . 'php/model/MUser.php');
+include(ROOT . 'php/model/MExpert.php');
 
 Class User extends Controller
 {
@@ -69,6 +70,7 @@ Class User extends Controller
             $email = $_POST['email'];
             $password = $_POST['password'];
             $passwordconf = $_POST['passwordconf'];
+            $status = $_POST['status'];
             $MUser = new MUser();
             $checkMail = $MUser->SelectUserEmail($email);
             if (!$checkMail) {
@@ -81,6 +83,11 @@ Class User extends Controller
                     $_SESSION['email'] = $email;
                     $_SESSION['firstname'] = $_POST['firstname'];
                     $_SESSION['lastname'] = $_POST['lastname'];
+                    if ($status == 'Etudiant') {
+                        $MExpert = new MExpert();
+                        $idUser = $MUser->SelectUserId($_SESSION['email']);
+                        $MExpert->InsertExpert($idUser[0]['id_user'],'','');
+                    }
                     header('Location:' . WEBROOT . 'Home');
                 } else {
                     echo "Mots de passe non identiques";

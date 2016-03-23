@@ -17,9 +17,9 @@
 		function InsertExpert($iduser, $address, $phone)
 		{
 			$this->Connect();
-			$sql = "INSERT INTO expert ('id_user', 'address', 'phone') VALUES ('%d', '%s', '%s');";
+			$sql = "INSERT INTO expert (id_user, address, phone) VALUES (%d, '%s', '%s');";
 			$sql1 = sprintf($sql, $iduser, $address, $phone);
-			//echo $sql1;
+			echo $sql1;
 			if($this->Insert($sql1))
 			{
 				return true;

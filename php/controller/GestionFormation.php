@@ -169,7 +169,6 @@ Class GestionFormation extends Controller
 
     }
 
-
     function deleteFormations($id)
     {
 

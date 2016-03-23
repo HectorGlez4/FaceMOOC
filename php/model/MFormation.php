@@ -107,7 +107,6 @@
 			$stmt->bindParam(":difficulty", $difficulty, PDO::PARAM_STR);
 			$stmt->bindParam(":keywords", $keywords, PDO::PARAM_STR);
 			return $this->Insert($sql1)
-			
 		}
 
 

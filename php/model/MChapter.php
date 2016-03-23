@@ -13,9 +13,9 @@
 		function InsertChapter($idFormation, $title, $description )
 		{
 			$this->Connect();
-			$sql = "INSERT INTO chapter ('id_formation', 'title', 'description') VALUES ('%d', '%s', '%s');";
+			$sql = "INSERT INTO chapter (id_formation, title, description) VALUES (%d, '%s', '%s');";
 			$sql1 = sprintf($sql, $idFormation, $title, $description);
-			//echo $sql1;
+			echo $sql1;
 			if($this->Insert($sql1))
 			{
 				return true;

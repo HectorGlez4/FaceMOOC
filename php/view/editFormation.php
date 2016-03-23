@@ -23,7 +23,7 @@ if ($skill == 'Advanced') { $selected4 = 'selected'; } else { $selected4 = '';}
     <div class="row">
 
 
-        <form  action="../editFormations/<?php echo $content['editFormation'][0]['id_formation']?>" method="POST"  enctype="multipart/form-data">
+        <form  action="../modifyFormations/<?php echo $content['editFormation'][0]['id_formation']?>" method="POST"  enctype="multipart/form-data">
             <h3>Modifiez cette formation</h3>
 
             <div class="cont">

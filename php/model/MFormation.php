@@ -117,7 +117,7 @@
 			$this->Connect();
 			$sql = "INSERT INTO formation (id_expert, title, description, image, required_skill, difficulty, keywords) VALUES (%d, '%s', '%s' ,'%s' ,'%s','%s','%s');";
 			$sql1 = sprintf($sql, $idExpert, $title, $description, $image,$req_skill, $difficulty, $keywords);
-			//echo $sql1;
+			echo $sql1;
 			if($this->Insert($sql1))
 			{
 				return true;

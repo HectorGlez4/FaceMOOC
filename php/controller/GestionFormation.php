@@ -6,6 +6,7 @@ include_once(ROOT . 'php/model/MClass.php');
 include_once(ROOT . 'php/model/MUser.php');
 include_once(ROOT . 'php/model/MExpert.php');
 
+
 Class GestionFormation extends Controller
 {
 
@@ -46,6 +47,7 @@ Class GestionFormation extends Controller
 
             $id_user = $MUser->SelectUserId($_SESSION['email']);
             $id_expert = $MExpert->SelectExpertId($id_user[0]['id_user']);
+            var_dump($id_expert);
             $id_formation = $MFormation->SelectFormationIdByTitle($_SESSION['email'], $title);
             //var_dump($id_formation);
 
@@ -70,22 +72,23 @@ Class GestionFormation extends Controller
                     if ($resultat) {
                         $MFormation->InsertFormation($id_expert[0]['id_expert'], $title, $description, $fichier, $requireskill, $diff, $keywords);
                         $_SESSION['imageFormation'] = $fichier;
+                        echo 'yo';
                         if ($extension_upload !== 'gif') {
                             $MUser->compress_image($fichier, $fichier, 50);
                         }
-                        header('Location:' . WEBROOT . 'GestionFormation');
+                        //header('Location:' . WEBROOT . 'GestionFormation');
                     }
                 }
             } else {
 
-                header('Location:' . WEBROOT . 'GestionFormation');
+                //header('Location:' . WEBROOT . 'GestionFormation');
                 echo 'This title is already used';
             }
         }
     }//gestionfor
 
 
-    function editFormations($id)
+    function modifyFormations($id)
     {
 
         if (empty($_POST['titlef']) || empty($_POST['diff']) || empty($_POST['requireskill']) || empty($_POST['description']) ||
@@ -145,24 +148,32 @@ Class GestionFormation extends Controller
     }
 
 
-function deleteFormations($id)
-{
+    function deleteFormations($id)
+    {
 
-    $MFormation = new MFormation();
-    $MFormation->DeleteFormation($id);
-    header('Location:' . WEBROOT . 'GestionFormation');
-}
+        $MFormation = new MFormation();
+        $MFormation->DeleteFormation($id);
+        header('Location:' . WEBROOT . 'GestionFormation');
+    }
 
-function updateFormations($id)
-{
+    function updateFormations($id)
+    {
 
-    $MFormation = new MFormation();
-    $d['editFormation'] = $MFormation->SelectFormationById($id);
-    $this->set($d);
-    $this->render('editFormation');
-}
+        $MFormation = new MFormation();
+        $d['editFormation'] = $MFormation->SelectFormationById($id);
+        $this->set($d);
+        $this->render('editFormation');
+    }
 
+    function editFormations($id)
+    {
 
+        $MFormation = new MFormation();
+        $d['FormationInfo'] = $MFormation->SelectFormationById($id);
+        $this->set($d);
+        $this->render('editFormationContent');
+
+    }
 }
 
 ?>

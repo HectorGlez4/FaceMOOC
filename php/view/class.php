@@ -8,12 +8,13 @@ $classInfo = $content['class'];
 $classesInfo = $content['currentclass'][0];
 ?>
 <div class='container'>
-
 	<div class="jumbotron">
-			<a class="btn btn-primary" href="<?php echo WEBROOT . 'Formation/view/' . $content['formation'][0]['id_formation']?>"><span class="glyphicon glyphicon-chevron-left"></span> Formation </a>
 
 			<h1 class="text-center"><?php echo $formationInfo['title']; ?></h1>
+
 	</div>
+	<a class="btn btn-primary" href="<?php echo WEBROOT . 'Formation/view/' . $content['formation'][0]['id_formation']?>"><span class="glyphicon glyphicon-chevron-left"></span> Formation </a>
+<br>
 	<?php
 		echo "<div class='row info-panel'>";
 		echo "<div class='col-md-3 server-action-menu'>";

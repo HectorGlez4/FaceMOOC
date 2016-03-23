@@ -47,7 +47,7 @@ Class GestionFormation extends Controller
 
             $id_user = $MUser->SelectUserId($_SESSION['email']);
             $id_expert = $MExpert->SelectExpertId($id_user[0]['id_user']);
-            var_dump($id_expert);
+            //var_dump($id_expert);
             $id_formation = $MFormation->SelectFormationIdByTitle($_SESSION['email'], $title);
             //var_dump($id_formation);
 
@@ -72,7 +72,7 @@ Class GestionFormation extends Controller
                     if ($resultat) {
                         $MFormation->InsertFormation($id_expert[0]['id_expert'], $title, $description, $fichier, $requireskill, $diff, $keywords);
                         $_SESSION['imageFormation'] = $fichier;
-                        echo 'yo';
+                        
                         if ($extension_upload !== 'gif') {
                             $MUser->compress_image($fichier, $fichier, 50);
                         }

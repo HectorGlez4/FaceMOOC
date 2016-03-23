@@ -44,17 +44,12 @@
 
 		function SelectExpertId($idUser)
 		{
-
 			$this->Connect();
 			$sql = "SELECT id_expert FROM expert WHERE id_user = :id_user ";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":id_user", $idUser, PDO::PARAM_INT);
 			return $this->Select($stmt)
 		}
-
-		
-
-
 	}
 	
 	//$mes = new MExpert();

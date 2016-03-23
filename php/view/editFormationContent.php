@@ -13,6 +13,7 @@ global $content;
  <div class='row'>
         <div class='col-md-3'>
 
+
 <!--            <td>
                 <a href=" <?php /*WEBROOT . 'GestionFormation/editFormationsChapter/' . $content["FormationInfo"][0]['id_formation'] */?> "><span
                         class="glyphicon glyphicon-plus" aria-hidden="true"></span>Chapter </a></td>
@@ -24,8 +25,10 @@ global $content;
                 echo "<h3>".$chapter['title']."</h3>";
             }
             ?>
-            <td><a href="" data-toggle="modal"data-target="#myModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Chapter </a></td>
-            <td><a href=""><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Class</a></td>
+
+            <td><a href="" data-toggle="modal"data-target="#myModal"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Chapter </a></td>
+            <td><a href="" data-toggle="modal"data-target="#myModal2"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Class </a></td>
+
         </div>
         <div class='col-md-9'>
             <form action="../updateClass" method="POST" enctype="multipart/form-data">
@@ -66,4 +69,5 @@ global $content;
        </form>
     </div>
 <?php include("addChapter.php") ?> 
+<?php include("addClass.php") ?> 
 </div>

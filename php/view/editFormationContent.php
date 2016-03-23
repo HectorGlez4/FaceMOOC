@@ -12,8 +12,8 @@ global $content;
     <form action="<?php ROOT ?>Gestion/" method="POST" enctype="multipart/form-data">
  <div class='row'>
         <div class='col-md-3'>
-            <td><a href="" data-toggle="modal"data-target="#myModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Chapter </a></td>
-            <td><a href=""><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Class</a></td>
+            <td><a href="" data-toggle="modal"data-target="#myModal"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Chapter </a></td>
+            <td><a href="" data-toggle="modal"data-target="#myModal2"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Class </a></td>
         </div>
         <div class='col-md-9'>
             <div class="form-group">
@@ -44,4 +44,5 @@ global $content;
        </form>
     </div>
 <?php include("addChapter.php") ?> 
+<?php include("addClass.php") ?> 
 </div>

@@ -147,6 +147,16 @@ Class GestionFormation extends Controller
         }
     }
 
+    function updateClass($id)
+    {
+        if (empty($_POST['title'])) {
+            echo "veuillez entrer un titre";
+        } else {
+            
+        }
+
+    }
+
 
     function deleteFormations($id)
     {

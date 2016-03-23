@@ -31,7 +31,7 @@
 			try
 			{
 				$this->Connect();
-				$resultSet = $this->PDO->query($SQL);
+				$resultSet = $this->PDO->execute($SQL);
 				while($Row =$resultSet->fetch(PDO::FETCH_ASSOC)) 
 				{
            			$Data[]=$Row;
@@ -42,7 +42,7 @@
 			}
 			catch(PDOException $e)
 			{
-				echo $e->getMessage();
+				return $e->getMessage();
 			}
 			{
 				$this->Close_Connection();
@@ -73,7 +73,7 @@
 		{
 			try
 			{
-				$success = $this->PDO->exec($SQL);
+				$success = $this->PDO->execute($SQL);
 				return $success;
 			}
 			catch(PDOException $e)
@@ -86,7 +86,7 @@
 		{
 			try
 			{
-				$success = $this->PDO->exec($SQL);
+				$success = $this->PDO->execute($SQL);
 				return $success;
 			}
 			catch(PDOException $e)
@@ -99,7 +99,7 @@
 		{
 			try
 			{
-				$success = $this->PDO->exec($SQL);
+				$success = $this->PDO->execute($SQL);
 				return $success;
 			}
 			catch(PDOException $e)

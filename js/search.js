@@ -1,6 +1,7 @@
-$("#inputSearch").change(function()
+$("#inputSearch").keydown(function()
 {
-	loadFormations(1);
+	
+loadFormations(1);
 })
 
 function loadFormations(page)
@@ -36,17 +37,18 @@ function loadFormations(page)
 			{
 				sRow +="<a href='Formation/view/" +data[i]['id_formation']+"'>";
 				sRow +="<div class ='col-md-3 text-center'>";
-				sRow +="<div  class='panel panel-info'>";
+				sRow +="<div class='panel panel-info well'>";
 				sRow +="<div class='panel-heading'>";
 				sRow +="<div class='panel-body'>";
-				sRow +="<h2>" + data[i]['title']+ "</h2>";
+				sRow +="<h3 class='panel-title'>" +data[i]['title']+ "</h3>";
+				sRow +="</div>";
 				sRow +="<img src='" + data[i]['image']+"' alt='Image formation' class='img-responsive img-thumbnail'>";
 				sRow +="<p>Difficulty : " +data[i]['difficulty']+" </p>";
 				sRow +="<p>Required skills : " + data[i]['required_skill']+ " </p>";
 				sRow +="</div>";
 				sRow +="</div>";
 				sRow +="</div>";
-				sRow +="</div>";
+			
 				sRow +="</a>";
 				
 				i++;
@@ -64,7 +66,7 @@ function loadFormations(page)
 		var pages = Math.ceil(NbResults[0] / ResultsMax);
 		for (iX =1 ; iX <= pages; iX++)
 		{
-			sRow += "<a class='btn btn-default' href='#' role='button' onclick='loadFormations("+iX+")''>"+iX+"</a>";
+			sRow += "<a class='btn btn-primary' href='#' role='button' onclick='loadFormations("+iX+")''>"+iX+"</a>";
 		}
 		$("#divContent").append(sRow);
 	})

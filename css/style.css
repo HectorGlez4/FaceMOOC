@@ -1,11 +1,12 @@
 *{margin:0;}
 
 body{
-   background:#F2F2F2;
-   color:#084B8A;
+   background:#e6f4f7;
+   /*background: #dfe5ed;*/
+   color: #3671a2;
    font-size:16px;
    font-family:Arial;
- 
+
 }
 #contenido{
    background:#fff;
@@ -33,7 +34,7 @@ header{
 footer{
   background:#1C4583;
    color:#fff;
-   padding:5px;
+   padding:15px;
    text-align: center
 
 }
@@ -44,4 +45,9 @@ footer a{
 footer a:hover{
     color:#F2F5A9;
 
+}
+
+#imageFormation {
+    width: 25%;
+    padding: 2%;
 }

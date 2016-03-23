@@ -1,8 +1,13 @@
-<?php include("head.php") ?>
-<?php global $content;?>
+<?php 
+include("head.php");
+include("header.php");
+global $content;
+?>
 <link rel="stylesheet" href="<?php echo WEBROOT ?>/css/login.css">
 <body>
-
+<?php
+// var_dump($content['userGestion']);
+?>
 <div class="container">
     <div class="jumbotron">
         <h1>Mon compte</h1>
@@ -14,7 +19,7 @@
                 <h3>Image</h3><br/>
 
                 <label for="avatar">
-                    <img id='avatar' class="responsive" src="<?php echo WEBROOT ?>img/avatar/<?php echo $_SESSION['avatar'] ?>"/>
+                    <img id='avatar' class="responsive" src="<?php echo $_SESSION['avatar'] ?>"/>
                 </label>
                 <div class="form-group">
                     <div class="input-group">
@@ -51,7 +56,7 @@
                 </button>
 
                 <button class="btn btn-md btn-primary btn-block" type="submit">Confirmer</button>
-
+                <a class="btn btn-md btn-primary btn-block" href="<?php WEBROOT ?>Home">Retour</a>
             </div>
     </form>
 </div>

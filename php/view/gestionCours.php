@@ -1,5 +1,11 @@
-<?php include("head.php") ?>
+<?php 
+ include("head.php");
+include("header.php");
+?>
 
+<script type="text/javascript" language="javascript" src="<?php echo WEBROOT?>js/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="<?php echo WEBROOT?>js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="<?php echo WEBROOT?>js/tableformations.js"></script>
 
 <body>
 
@@ -8,7 +14,7 @@
     <div class="jumbotron">
         <h1>Formation Manager</h1>
     </div>
-   <div class="row">
+   
                 
 
             <form  action="<?php ROOT ?>GestionFormation/gestionfor" method="POST"  enctype="multipart/form-data">
@@ -34,20 +40,20 @@
                           <div class="form-group">
                     <label for="im">Image :</label>
                         <input type="file" name="imag"/>
-                                  
-                      
+
                         </div>
               
                           <div class="form-group">
                             <label for="requireskill">Required skills :</label>
-                            <textarea rows="4" cols="50" class="form-control" name="requireskill"> 
-                            </textarea>    
+
+                            <textarea rows="4" cols="50" class="form-control" name="requireskill"></textarea>
                             </div>
 
                             <div class="form-group">
                             <label for="desc">Description :</label>
-                            <textarea rows="4" cols="50" class="form-control" name="description" > 
-                            </textarea>   
+
+                            <textarea rows="4" cols="50" class="form-control" name="description" ></textarea>   
+
                             </div>
 
                               <div class="form-group">
@@ -65,15 +71,13 @@
                 </div>
         </div>
         </form>
-
-
   
     <?php include("cours.php") ?>
 
-</div>
 </div>
 
   </div>
 </div>
   
+
 </body>

@@ -55,7 +55,34 @@
 
 		}
 
-		function InsertUser($email, $password, $firstname, $lastname)
+		function SelectUserAvatar($email)
+		{
+			try
+			{
+				$Data = null;
+				$this->Connect();
+				$sql = "SELECT avatar FROM user WHERE email = :email ";
+				$stmt = $this->PDO->prepare($sql);
+				$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+				$stmt->execute();
+				while($Row =$stmt->fetch(PDO::FETCH_ASSOC))
+				{
+					$Data[]=$Row;
+				}
+				return  $Data;
+			}
+			catch(PDOException $e)
+			{
+				echo $e->getMessage();
+			}
+			finally
+			{
+				$this->Close_Connection();
+			}
+
+		}
+
+		function InsertUser($email, $password, $firstname, $lastname, $avatar)
 		{
 			$this->Connect();
 			$sql = "INSERT INTO user ('email', 'password', 'firstname', 'lastname') VALUES (:email, :password, :firstname, :lastname);";

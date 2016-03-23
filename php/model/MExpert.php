@@ -18,7 +18,7 @@
 			$stmt->bindParam(":idUser", $idUser, PDO::PARAM_INT);
 			$stmt->bindParam(":address", $address, PDO::PARAM_STR);
 			$stmt->bindParam(":phone", $phone, PDO::PARAM_STR);
-			return $this->Insert($stmt)
+			return $this->Insert($stmt);
 		}
 
 
@@ -28,7 +28,7 @@
 			$sql = "DELETE FROM expert WHERE id_expert = :idExpert ";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":idExpert", $idExpert, PDO::PARAM_INT);
-			return $this->Delete($stmt)
+			return $this->Delete($stmt);
 		}
 
 		function UpdateExpert($address, $phone, $idExpert)
@@ -39,7 +39,7 @@
 			$stmt->bindParam(":address", $address, PDO::PARAM_sTR);
 			$stmt->bindParam(":phone", $phone, PDO::PARAM_sTR);
 			$stmt->bindParam(":idExpert", $idExpert, PDO::PARAM_INT);
-			return $this->Update($stmt)
+			return $this->Update($stmt);
 		}
 
 		function SelectExpertId($idUser)
@@ -48,7 +48,7 @@
 			$sql = "SELECT id_expert FROM expert WHERE id_user = :id_user ";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":id_user", $idUser, PDO::PARAM_INT);
-			return $this->Select($stmt)
+			return $this->Select($stmt);
 		}
 	}
 	

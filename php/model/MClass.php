@@ -39,7 +39,7 @@
 			$stmt->bindParam(":description", $description, PDO::PARAM_STR);
 			$stmt->bindParam(":video", $video, PDO::PARAM_STR);
 			$stmt->bindParam(":docs", $docs, PDO::PARAM_STR);
-			return $this->Insert($sql1)
+			return $this->Insert($sql1);
 		}
 
 

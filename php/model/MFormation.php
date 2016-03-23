@@ -3,11 +3,9 @@
 	class MFormation extends Model
 	{
 		public $NbResults = 16;
-
-
 		function SelectFormation($email)
 		{
-			
+			$this->Connect();
 			$sql = "SELECT * FROM formation f inner join expert e on f.id_expert=e.id_expert 
 			inner join user u on u.id_user=e.id_user 
 			WHERE u.email= :email";
@@ -18,6 +16,7 @@
 
 		function SelectFormationTitle($email, $title)
 		{
+			$this->Connect();
 			$sql = "SELECT COUNT(title) FROM formation f inner join expert e on f.id_expert=e.id_expert 
 			inner join user u on u.id_user=e.id_user 
 			WHERE u.email= :email AND f.title= :title";
@@ -40,6 +39,7 @@
 
 		function SelectFormationIdByTitle($email, $title)
 		{
+			$this->Connect();
 			$sql = "SELECT id_formation FROM formation f inner join expert e on f.id_expert=e.id_expert
 			inner join user u on u.id_user=e.id_user
 			WHERE u.email= :email AND f.title= :title";
@@ -51,6 +51,7 @@
 
 		function SelectFormationsPage($Page)
 		{
+			$this->Connect();
 			$offset = $this->NbResults * ($Page-1);
 			$sql = "Select * From formation LIMIT :offset, :nbResults";
 			$stmt = $this->PDO->prepare($sql);
@@ -61,6 +62,7 @@
 
 		function SelectFormationById($id)
 		{
+			$this->Connect();
 			$sql = "Select * From formation WHERE id_formation = :id";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":id", $id, PDO::PARAM_INT);
@@ -106,7 +108,7 @@
 			$stmt->bindParam(":req_skill", $req_skill, PDO::PARAM_STR);
 			$stmt->bindParam(":difficulty", $difficulty, PDO::PARAM_STR);
 			$stmt->bindParam(":keywords", $keywords, PDO::PARAM_STR);
-			return $this->Insert($sql1)
+			return $this->Insert($stmt);
 		}
 
 
@@ -136,8 +138,9 @@
 			$stmt->bindParam(":keywords", $keywords, PDO::PARAM_STR);
 			$stmt->bindParam(":idFormation", $idFormation, PDO::PARAM_INT);
 			return $this->Update($sql1);
-		
+		}
 	}
+
 	//$mes = new MFormation();
 	//echo "\n";
 	//var_dump($mes->SelectFormations("test", 1));

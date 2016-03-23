@@ -26,13 +26,14 @@
 			$this->PDO=NULL;
 		}
 
-		function Select($SQL)
+		function Select($STMT)
 		{
 			try
 			{
 				$this->Connect();
-				$resultSet = $this->PDO->execute($SQL);
-				while($Row =$resultSet->fetch(PDO::FETCH_ASSOC)) 
+				$STMT->execute();
+
+				while($Row = $STMT->fetch(PDO::FETCH_ASSOC)) 
 				{
            			$Data[]=$Row;
 				}
@@ -69,11 +70,11 @@
 			}
 		}
 
-		public function Insert($SQL)
+		public function Insert($STMT)
 		{
 			try
 			{
-				$success = $this->PDO->execute($SQL);
+				$success = $STMT->execute();
 				return $success;
 			}
 			catch(PDOException $e)

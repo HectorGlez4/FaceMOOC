@@ -9,15 +9,12 @@
 
 		function SelectUserEmailPassword($email, $password)
 		{
-			
-			$Data = null;
 			$this->Connect();
 			$sql = "SELECT * FROM user WHERE email = :email AND password = :password";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
 			$stmt->bindParam(":password", $password, PDO::PARAM_STR);
-			return $this->Select($stmt)
-				
+			return $this->Select($stmt);
 		}
 
 		function SelectUserEmail($email)
@@ -27,9 +24,7 @@
 			$sql = "SELECT * FROM user WHERE email = :email ";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
-			return $this->Select($stmt)
-				
-
+			return $this->Select($stmt);
 		}
 
 		function SelectUserPassword($email)

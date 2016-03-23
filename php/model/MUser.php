@@ -57,29 +57,12 @@
 
 		function SelectUserAvatar($email)
 		{
-			try
-			{
-				$Data = null;
-				$this->Connect();
-				$sql = "SELECT avatar FROM user WHERE email = :email ";
-				$stmt = $this->PDO->prepare($sql);
-				$stmt->bindParam(":email", $email, PDO::PARAM_STR);
-				$stmt->execute();
-				while($Row =$stmt->fetch(PDO::FETCH_ASSOC))
-				{
-					$Data[]=$Row;
-				}
-				return  $Data;
-			}
-			catch(PDOException $e)
-			{
-				echo $e->getMessage();
-			}
-			finally
-			{
-				$this->Close_Connection();
-			}
-
+			$Data = null;
+			$this->Connect();
+			$sql = "SELECT avatar FROM user WHERE email = :email ";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			return $this->Select($stmt);
 		}
 
 		function InsertUser($email, $password, $firstname, $lastname, $avatar)
@@ -224,9 +207,11 @@
 		function addAvatar($fichier, $email)
 		{
 			$this->Connect();
-			$sql = "UPDATE user SET avatar = '%s' WHERE email = '%s' ";
-			$sql1 = sprintf($sql, $fichier, $email);
-			if($this->Update($sql1))
+			$sql = "UPDATE user SET avatar = :fichier WHERE email = :email";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			$stmt->bindParam(":fichier", $fichier, PDO::PARAM_STR);
+			if($this->Update($stmt))
 			{
 				return true;
 			}

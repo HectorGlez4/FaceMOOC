@@ -50,7 +50,7 @@ global $content;
                 COURS
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="file" name="videoClass"/>
+                        <input type="file" name="cours"/>
                     </div>
                 </div>
                 <div class="row">

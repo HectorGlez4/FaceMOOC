@@ -20,7 +20,7 @@
 			$stmt->bindParam(":idFormation", $idFormation, PDO::PARAM_INT);
 			$stmt->bindParam(":title", $title, PDO::PARAM_STR);
 			$stmt->bindParam(":description", $description, PDO::PARAM_STR);
-			return $this->Insert($sql1);
+			return $this->Insert($stmt);
 		}
 
 
@@ -30,7 +30,7 @@
 			$sql = "DELETE FROM chapter WHERE id_chapter = :idChapter ";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":idChapter", $idChapter, PDO::PARAM_INT);
-			return $this->Delete($sql1);
+			return $this->Delete($stmt);
 		}
 
 		function UpdateChapter( $title, $description,$idChapter)
@@ -42,7 +42,7 @@
 			$stmt->bindParam(":idChapter", $idChapter, PDO::PARAM_INT);
 			$stmt->bindParam(":title", $title, PDO::PARAM_STR);
 			$stmt->bindParam(":description", $description, PDO::PARAM_STR);
-			return $this->Update($sql1);
+			return $this->Update($stmt);
 		}
 	}
 	

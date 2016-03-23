@@ -68,6 +68,7 @@ Class GestionFormation extends Controller
                     if ($resultat) {
                         $MFormation->InsertFormation($id_expert[0]['id_expert'], $title, $description, $fichier, $requireskill, $diff, $keywords);
                         $_SESSION['imageFormation'] = $fichier;
+
                         if ($extension_upload !== 'gif') {
                             $MUser->compress_image($fichier, $fichier, 50);
                         }

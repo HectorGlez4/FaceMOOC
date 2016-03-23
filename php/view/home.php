@@ -18,7 +18,6 @@ $pages = ceil($countFormations[0]/$perpage);
 //var_dump($content['page']);
 //var_dump($formations);
 ?>
-<link rel="stylesheet" href="<?php echo WEBROOT?>css/home.css">
 
 <body>
 	<div class="container">

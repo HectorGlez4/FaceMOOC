@@ -14,7 +14,7 @@ if (isset($content['class'])) {
 	</div>
 	<div class="container">
 		<p><?php echo $formationInfo['description']; ?></p>
-		<div class="pull-right">
+		<div class="pull-right"><br>
 			<a class="btn btn-success" href="#"><span class="glyphicon glyphicon-eye-open"></span> Sign up</a>
 		</div>
 	</div>
@@ -22,7 +22,7 @@ if (isset($content['class'])) {
 		<?php
 		if ($chapterInfo == null) {
 			echo "<div class ='row'>";
-			echo "<div class='panel panel-default'>";
+			echo "<div class='panel panel-info'>";
 			echo "<div class='panel-body'>";
 			echo "<p>Cette formation ne comporte pas encore de cours</p>";
 			echo "</div>";
@@ -31,12 +31,12 @@ if (isset($content['class'])) {
 		}else{
 			foreach ($chapterInfo as $chapter) {
 				echo "<div class ='row'>";
-				echo "<div class='panel panel-default'>";
+				echo "<div class='panel panel-info'>";
 				echo "<div class='panel-body'>";
 				echo "<h2>".$chapter['title']."</h2>";
 				//var_dump(expression);
 				echo "<div class ='row'>";
-				echo "<div class='panel panel-default'>";
+				echo "<div class='panel panel-info'>";
 				echo "<div class='panel-body'>";
 				if ($classInfo[$chapter['id_chapter']] != null) {
 					foreach ($classInfo[$chapter['id_chapter']] as $class) {

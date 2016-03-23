@@ -19,7 +19,11 @@ global $content;
             <td>
                 <a href=" <?php /*WEBROOT . 'GestionFormation/editFormations/' . $content["FormationInfo"][0]['id_formation'] */?> "><span
                         class="glyphicon glyphicon-plus" aria-hidden="true"></span> Class</a></td>-->
-
+            <?php //var_dump($content['ChapterInfo']);
+            foreach ($content['ChapterInfo'] as $chapter) {
+                echo "<h3>".$chapter['title']."</h3>";
+            }
+            ?>
             <td><a href="" data-toggle="modal"data-target="#myModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Chapter </a></td>
             <td><a href=""><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Class</a></td>
         </div>

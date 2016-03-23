@@ -147,6 +147,18 @@ Class GestionFormation extends Controller
         }
     }
 
+    function addChapter($id)
+    {
+        $MChapter = new MChapter();
+        $nameChapter = $_POST['nameChapter'];
+        $descriptionChapter = $_POST['descriptionChapter'];
+        if (empty($nameChapter) || empty($descriptionChapter)) {
+            echo "Veuillez entrer un nom et une description";
+        } else {
+            $MChapter->InsertChapter($id,$nameChapter,$descriptionChapter);
+        }
+    }
+
     function updateClass($id)
     {
         if (empty($_POST['title'])) {
@@ -179,7 +191,9 @@ Class GestionFormation extends Controller
     {
 
         $MFormation = new MFormation();
+        $MChapter = new MChapter();
         $d['FormationInfo'] = $MFormation->SelectFormationById($id);
+        $d['ChapterInfo'] = $MChapter->SelectChapters($id);
         $this->set($d);
         $this->render('editFormationContent');
 

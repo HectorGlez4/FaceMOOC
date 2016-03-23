@@ -8,14 +8,20 @@ global $content;
         <h1><?php echo $content['FormationInfo'][0]['title']; ?></h1>
     </div>
 
-    <div class='row'>
+   
+    <form action="<?php ROOT ?>Gestion/" method="POST" enctype="multipart/form-data">
+ <div class='row'>
         <div class='col-md-3'>
-            <td>
-                <a href=" <?php WEBROOT . 'GestionFormation/editFormationsChapter/' . $content["FormationInfo"][0]['id_formation'] ?> "><span
+
+<!--            <td>
+                <a href=" <?php /*WEBROOT . 'GestionFormation/editFormationsChapter/' . $content["FormationInfo"][0]['id_formation'] */?> "><span
                         class="glyphicon glyphicon-plus" aria-hidden="true"></span>Chapter </a></td>
             <td>
-                <a href=" <?php WEBROOT . 'GestionFormation/editFormations/' . $content["FormationInfo"][0]['id_formation'] ?> "><span
-                        class="glyphicon glyphicon-plus" aria-hidden="true"></span> Class</a></td>
+                <a href=" <?php /*WEBROOT . 'GestionFormation/editFormations/' . $content["FormationInfo"][0]['id_formation'] */?> "><span
+                        class="glyphicon glyphicon-plus" aria-hidden="true"></span> Class</a></td>-->
+
+            <td><a href="" data-toggle="modal"data-target="#myModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Chapter </a></td>
+            <td><a href=""><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Class</a></td>
         </div>
         <div class='col-md-9'>
             <form action="../updateClass" method="POST" enctype="multipart/form-data">
@@ -50,6 +56,10 @@ global $content;
                 </div>
             </form>
         </div>
+        <!--  <button type="button" class="btn btn-md btn-primary btn-block" data-toggle="modal"
+                        data-target="#myModal">Modifier mot de passe
+                </button> -->
+       </form>
     </div>
-
+<?php include("addChapter.php") ?> 
 </div>

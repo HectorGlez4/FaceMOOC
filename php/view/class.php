@@ -23,7 +23,7 @@ $classesInfo = $content['currentclass'][0];
 			//var_dump(expression);
 			if ($classInfo[$chapter['id_chapter']] != null) {
 				foreach ($classInfo[$chapter['id_chapter']] as $class) {
-					echo "<a href='".WEBROOT."Classes/index/".$class['id_class']."'><h3'>".$class['title']."</h3></a>";
+					echo "<a href='".WEBROOT."Classes/index/".$class['id_class']."'><h3>".$class['title']."</h3></a>";
 				}
 			}else{
 				echo "";

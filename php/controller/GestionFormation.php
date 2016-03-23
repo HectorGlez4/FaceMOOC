@@ -152,7 +152,7 @@ Class GestionFormation extends Controller
         if (empty($_POST['title'])) {
             echo "veuillez entrer un titre";
         } else {
-            
+
         }
 
     }

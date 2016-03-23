@@ -4,81 +4,52 @@
 	{
 		function SelectExpertsALL()
 		{
-			return $this->Select("Select * From expert");
+			$sql = "Select * From expert";
+			$stmt = $this->PDO->prepare($sql);
+			return $this->Select($stmt);
 		}
 
-		/*
-		function SelectExpert($param)
-		{
-			
-
-		}*/
-
-		function InsertExpert($iduser, $address, $phone)
+		function InsertExpert($idUser, $address, $phone)
 		{
 			$this->Connect();
-			$sql = "INSERT INTO expert ('id_user', 'address', 'phone') VALUES ('%d', '%s', '%s');";
-			$sql1 = sprintf($sql, $iduser, $address, $phone);
-			//echo $sql1;
-			if($this->Insert($sql1))
-			{
-				return true;
-			}
-			return false;
+			$sql = "INSERT INTO expert ('id_user', 'address', 'phone') 
+			VALUES (:idUSer, :address, :phone);";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":idUser", $idUser, PDO::PARAM_INT);
+			$stmt->bindParam(":address", $address, PDO::PARAM_STR);
+			$stmt->bindParam(":phone", $phone, PDO::PARAM_STR);
+			return $this->Insert($stmt)
 		}
 
 
 		function DeleteExpert($idExpert)
 		{
 			$this->Connect();
-			$sql = "DELETE FROM expert WHERE id_expert = %d ";
-			$sql1 = sprintf($sql, $idExpert);
-			//echo $sql1;
-			if($this->Delete($sql1))
-			{
-				return true;
-			}
-			return false;
+			$sql = "DELETE FROM expert WHERE id_expert = :idExpert ";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":idExpert", $idExpert, PDO::PARAM_INT);
+			return $this->Delete($stmt)
 		}
 
 		function UpdateExpert($address, $phone, $idExpert)
 		{
 			$this->Connect();
-			$sql = "UPDATE expert SET address = '%s', phone = '%s' WHERE id_expert = %d ";
-			$sql1 = sprintf($sql, $address, $phone, $idExpert);
-			//echo $sql1;
-			if($this->Update($sql1))
-			{
-				return true;
-			}
-			return false;
+			$sql = "UPDATE expert SET address = :address, phone = :phone WHERE id_expert = :idExpert ";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":address", $address, PDO::PARAM_sTR);
+			$stmt->bindParam(":phone", $phone, PDO::PARAM_sTR);
+			$stmt->bindParam(":idExpert", $idExpert, PDO::PARAM_INT);
+			return $this->Update($stmt)
 		}
 
 		function SelectExpertId($idUser)
 		{
-			try
-			{
-				$Data = null;
-				$this->Connect();
-				$sql = "SELECT id_expert FROM expert WHERE id_user = :id_user ";
-				$stmt = $this->PDO->prepare($sql);
-				$stmt->bindParam(":id_user", $idUser, PDO::PARAM_STR);
-				$stmt->execute();
-				while($Row =$stmt->fetch(PDO::FETCH_ASSOC))
-				{
-					$Data[]=$Row;
-				}
-				return  $Data;
-			}
-			catch(PDOException $e)
-			{
-				echo $e->getMessage();
-			}
-			finally
-			{
-				$this->Close_Connection();
-			}
 
+			$this->Connect();
+			$sql = "SELECT id_expert FROM expert WHERE id_user = :id_user ";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":id_user", $idUser, PDO::PARAM_INT);
+			return $this->Select($stmt)
 		}
 
 		

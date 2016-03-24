@@ -46,7 +46,7 @@
 		}
 	}
 	
-	//$mes = new MFormation();
+	//$mes = new MChapter();
 	//echo "\n";
 	//var_dump($mes->SelectFomrationsALL());
 	//var_dump($mes->SelectFormation("js css json php java"));

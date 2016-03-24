@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label for="descriptionChapter">Description Chapter :</label><textarea rows="4" cols="50" class="form-control" name="descriptionChapter" required></textarea>
                     </div>
-                    <button id="addChapter" class="btn btn-sm btn-primary btn-block" type="submit">Add Chapter</button>
+                    <button id="addChapter" class="btn btn-sm btn-primary btn-block" type="submit"  data-dismiss="modal" aria-label="Close">Add Chapter</button>
             </form>
         </div>
 

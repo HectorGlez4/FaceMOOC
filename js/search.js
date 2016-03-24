@@ -18,7 +18,7 @@ function loadFormations(page)
 	}
 	$.ajax(
 	{
-		url: 'php/model/SearchFormations.php',
+		url: 'php/controller/SearchFormations.php',
 		type: 'POST',
 		dataType: 'json',
 		data: post,

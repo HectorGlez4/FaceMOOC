@@ -12,20 +12,13 @@ global $content;
     <form action="<?php ROOT ?>Gestion/" method="POST" enctype="multipart/form-data">
  <div class='row'>
         <div class='col-md-3'>
-
-
-<!--            <td>
-                <a href=" <?php /*WEBROOT . 'GestionFormation/editFormationsChapter/' . $content["FormationInfo"][0]['id_formation'] */?> "><span
-                        class="glyphicon glyphicon-plus" aria-hidden="true"></span>Chapter </a></td>
-            <td>
-                <a href=" <?php /*WEBROOT . 'GestionFormation/editFormations/' . $content["FormationInfo"][0]['id_formation'] */?> "><span
-                        class="glyphicon glyphicon-plus" aria-hidden="true"></span> Class</a></td>-->
-            <?php //var_dump($content['ChapterInfo']);
-            foreach ($content['ChapterInfo'] as $chapter) {
-                echo "<h3>".$chapter['title']."</h3>";
-            }
-            ?>
-
+            <div class="ChapterClassMenu">
+                <!--<?php 
+                foreach ($content['ChapterInfo'] as $chapter) {
+                    echo "<h3>".$chapter['title']."</h3>";
+                }
+                ?>-->
+            </div>
             <td><a href="" data-toggle="modal"data-target="#myModal"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Chapter </a></td>
             <td><a href="" data-toggle="modal"data-target="#myModal2"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Class </a></td>
 
@@ -70,4 +63,7 @@ global $content;
     </div>
 <?php include("addChapter.php") ?> 
 <?php include("addClass.php") ?> 
+<?php  echo "<script> var idFormation = " . $content['FormationInfo'][0]['id_formation'] . "</script>" ?> 
+<script src="<?php echo WEBROOT?>js/formationcontent.js"></script>
+<script>loadChapterClassMenu(idFormation)</script>
 </div>

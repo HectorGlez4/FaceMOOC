@@ -49,7 +49,18 @@ global $content;
                     <input type="text" class="form-control" name="lastname"
                            value="<?php echo $content['userGestion'][0]['lastname'] ?>">
                 </div>
-
+                <?php if ($_SESSION['id_expert'] == 1) { ?>
+                <div class="form-group">
+                    <label>Adresse :</label>
+                    <input type="text" class="form-control" name="address"
+                           value="<?php echo $content['userGestion'][0]['lastname'] ?>">
+                </div>
+                <div class="form-group">
+                    <label>Téléphone :</label>
+                    <input type="text" class="form-control" name="phone"
+                           value="<?php echo $content['userGestion'][0]['lastname'] ?>">
+                </div>
+                <?php }  ?>
 
                 <button type="button" class="btn btn-md btn-primary btn-block" data-toggle="modal"
                         data-target="#myModal">Modifier mot de passe

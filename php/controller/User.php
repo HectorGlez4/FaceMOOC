@@ -31,10 +31,15 @@ Class User extends Controller
             }
 
             if ($connect) {
+                $MExpert = new MExpert();
                 session_start();
                 $_SESSION['id'] = 1;
                 $_SESSION['avatar'] = $avatar;
                 $_SESSION['email'] = $_POST['email'];
+                $idExpert = $MExpert->SelectExpertIdByEmail($_SESSION['email']);
+                if ($idExpert) {
+                    $_SESSION['id_expert'] = 1;
+                }
                 header('Location:' . WEBROOT . 'Home');
             } else {
                 header('Location:' . WEBROOT . 'index');
@@ -83,10 +88,12 @@ Class User extends Controller
                     $_SESSION['email'] = $email;
                     $_SESSION['firstname'] = $_POST['firstname'];
                     $_SESSION['lastname'] = $_POST['lastname'];
-                    if ($status == 'Etudiant') {
+                    $_SESSION['id_expert'] = 0;
+                    if ($status !== 'Etudiant') {
                         $MExpert = new MExpert();
                         $idUser = $MUser->SelectUserId($_SESSION['email']);
                         $MExpert->InsertExpert($idUser[0]['id_user'],'','');
+                        $_SESSION['id_expert'] = 1;
                     }
                     header('Location:' . WEBROOT . 'Home');
                 } else {

@@ -96,17 +96,17 @@
 			}
 		}
 
-		public function Update($SQL)
+		public function Update($STMT)
 		{
 			try
 			{
-				$success = $this->PDO->execute($SQL);
+				$success = $STMT->execute();
 				return $success;
 			}
 			catch(PDOException $e)
 			{
 				echo $e->getMessage();
 			}
-		}			
+		}
 	}
 ?>

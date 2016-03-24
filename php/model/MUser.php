@@ -63,12 +63,13 @@
 		function InsertUser($email, $password, $firstname, $lastname, $avatar)
 		{
 			$this->Connect();
-			$sql = "INSERT INTO user ('email', 'password', 'firstname', 'lastname') VALUES (:email, :password, :firstname, :lastname);";
+			$sql = "INSERT INTO user (email, password, firstname, lastname, avatar) VALUES (:email, :password, :firstname, :lastname, :avatar);";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
 			$stmt->bindParam(":password", $password, PDO::PARAM_STR);
 			$stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);
 			$stmt->bindParam(":lastname", $lastname, PDO::PARAM_STR);
+			$stmt->bindParam(":avatar", $avatar, PDO::PARAM_STR);
 			if($this->Insert($stmt))
 			{
 				return true;
@@ -99,7 +100,7 @@
 			$stmt->bindParam(":password", $password, PDO::PARAM_STR);
 			$stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);
 			$stmt->bindParam(":lastname", $lastname, PDO::PARAM_STR);
-			$stmt->bindParam(":idUser", $idUSer, PDO::PARAM_INT);
+			$stmt->bindParam(":idUser", $idUser, PDO::PARAM_INT);
 			if($this->Update($stmt))
 			{
 				return true;
@@ -110,7 +111,7 @@
 		function updateAccount($email, $firstname, $lastname, $sessionemail)
 		{
 			$this->Connect();
-			$sql = "UPDATE user SET email = :email, firstname = :firstname, lastname=:lastname WHERE email = :sessionemail ";
+			$sql = "UPDATE user SET email = :email, firstname = :firstname, lastname = :lastname WHERE email = :sessionemail ";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
 			$stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);

@@ -31,15 +31,15 @@
 		function InsertClass($idChapter, $title, $description, $video, $docs )
 		{
 			$this->Connect();
-			$sql = "INSERT INTO class ('id_chapter', 'title', 'description', 'video', 'docs')
+			$sql = "INSERT INTO class (id_chapter, title, description, video, docs)
 			 VALUES (:idChapter, :title, :description, :video, :docs);";
 			$stmt = $this->PDO->prepare($sql);
-			$stmt->bindParam(":idClass", $idClass, PDO::PARAM_INT);
+			$stmt->bindParam(":idChapter", $idChapter, PDO::PARAM_INT);
 			$stmt->bindParam(":title", $title, PDO::PARAM_STR);
 			$stmt->bindParam(":description", $description, PDO::PARAM_STR);
 			$stmt->bindParam(":video", $video, PDO::PARAM_STR);
 			$stmt->bindParam(":docs", $docs, PDO::PARAM_STR);
-			return $this->Insert($sql1);
+			return $this->Insert($stmt);
 		}
 
 
@@ -49,7 +49,7 @@
 			$sql = "DELETE FROM class WHERE id_class = :idClass ";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":idClass", $idClass, PDO::PARAM_INT);
-			return $this->Delete($sql1);
+			return $this->Delete($stmt);
 		}
 
 		function UpdateClass( $title, $description, $video, $docs, $idClass)
@@ -63,7 +63,7 @@
 			$stmt->bindParam(":description", $description, PDO::PARAM_STR);
 			$stmt->bindParam(":video", $video, PDO::PARAM_STR);
 			$stmt->bindParam(":docs", $docs, PDO::PARAM_STR);
-			return $this->Update($sql1);
+			return $this->Update($stmt);
 		}
 
 		

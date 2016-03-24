@@ -42,6 +42,9 @@ Class User extends Controller
                 } else {
                     $_SESSION['id_expert'] = 0;
                 }
+                else{
+                    $_SESSION['id_expert'] = 0;
+                }
                 header('Location:' . WEBROOT . 'Home');
             } else {
                 header('Location:' . WEBROOT . 'index');

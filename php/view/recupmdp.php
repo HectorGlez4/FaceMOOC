@@ -15,8 +15,10 @@
             Inserez votre email : <input type="email" id="email" class="form-control" placeholder="name@name.fr" name="email"  autofocus>
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Envoyer</button>
+        <button class="btn btn-md btn-primary btn-block" type="submit">Envoyer</button>
+        <a class='btn btn-md btn-primary btn-block' href='<?php WEBROOT ?>..'>Retour</a>
     </form>
+
 
 </div>
 

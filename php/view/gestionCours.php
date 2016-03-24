@@ -12,28 +12,28 @@ include("header.php");
 
 <div class="container">
     <div class="jumbotron">
-        <h1>Formation Manager</h1>
+        <h1>Gestion de formation</h1>
     </div>
    
                 
 
             <form  action="<?php ROOT ?>GestionFormation/gestionfor" method="POST"  enctype="multipart/form-data">
-        <h3>Add a new course</h3>
+        <h3>Ajouter une nouvelle formation</h3>
 
                 <div class="cont">
                         <div class="form-group">
-                            <label for="titlef">Title :</label>
+                            <label for="titlef">Titre :</label>
                             <input type="text" class="form-control" name="titlef">
                             </div>
 
                             <div class="form-group">
-                            <label for="diff">Difficulty :</label><br>
+                            <label for="diff">Difficulté :</label><br>
                             <select name="diff">
-                            <option value="">Select an option</option>
-                              <option value="Easy">Easy</option>
+                            <option value="">Choisissez une option</option>
+                              <option value="Easy">Facile</option>
                               <option value="Normal">Normal</option>
-                              <option value="Intermediate">Intermediate</option>
-                              <option value="Advanced">Advanced</option>
+                              <option value="Intermediate">Intermédiaire</option>
+                              <option value="Advanced">Avancé</option>
                             </select>
 
                              </div>
@@ -44,7 +44,7 @@ include("header.php");
                         </div>
               
                           <div class="form-group">
-                            <label for="requireskill">Required skills :</label>
+                            <label for="requireskill">Compétences requises :</label>
 
                             <textarea rows="4" cols="50" class="form-control" name="requireskill"></textarea>
                             </div>
@@ -57,15 +57,15 @@ include("header.php");
                             </div>
 
                               <div class="form-group">
-                            <label for="keywords">Keywords :</label>
+                            <label for="keywords">Mots clés :</label>
                             <input type="text" class="form-control" name="keywords">
                             </div>
                 <div class="row">
                 <div class="col-md-6">
-                  <button class="btn btn-md btn-primary btn-block" type="submit">Save Formation</button>
+                  <button class="btn btn-md btn-primary btn-block" type="submit">Ajouter cette formation</button>
                   </div>
                   <div class="col-md-6">
-                <a class='btn btn-md btn-primary btn-block' href='<?php WEBROOT ?>Home'>Cancel</a>
+                <a class='btn btn-md btn-primary btn-block' href='<?php WEBROOT ?>Home'>Retour</a>
 
                   </div>
                 </div>

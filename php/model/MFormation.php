@@ -28,6 +28,7 @@
 
 		function SelectFormationTitleExceptId($id, $title)
 		{
+			$this->Connect();
 			$sql = "SELECT COUNT(title) FROM formation
 			WHERE id_formation != :id AND title = :title";
 			$stmt = $this->PDO->prepare($sql);
@@ -75,6 +76,7 @@
 		
 		function SelectFormationsByKeywords($keywords, $Page)
 		{
+			$this->Connect();
 			$offset = $this->NbResults * ($Page-1);	
 			$keyarray = explode(" ", $keywords);
 			$Data = null;

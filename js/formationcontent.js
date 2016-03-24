@@ -1,3 +1,9 @@
+$("#addChapter").click(function(event)
+{
+	event.preventDefault();
+	addChapter();
+});
+
 function loadChapterMenu(idform)
 {
 	cleanChapterMenu();
@@ -46,4 +52,22 @@ function cleanChapterMenu()
 function cleanClassMenu()
 {
 	$(".chpMenu").empty();
+}
+$
+function addChapter(idform)
+{
+	alert($("#frmAddChapter").serialize());
+	$.ajax(
+	{
+		url: '/FaceMOOC/php/controller/InsertChapter.php',
+		type: 'POST',
+		dataType: 'json',
+		data: $("#frmAddChapter").serialize(),
+	}).done(function(r)
+	{
+		if(r)
+		{
+			alert("Chapter added succesfully");
+		}
+	});
 }

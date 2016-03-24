@@ -56,6 +56,7 @@ global $content;
                 </button> -->
        </form>
     </div>
+<?php $idForm = $content['FormationInfo'][0]['id_formation'] ?> 
 <?php include("addChapter.php") ?> 
 <?php include("addClass.php") ?> 
 <?php  echo "<script> var idFormation = " . $content['FormationInfo'][0]['id_formation'] . "</script>" ?> 

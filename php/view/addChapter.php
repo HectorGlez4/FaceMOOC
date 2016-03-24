@@ -7,8 +7,8 @@
             </div>
 
 
-            <form action="../addChapter/<?php echo $content['FormationInfo'][0]['id_formation'] ?>" method="post">
-
+            <form action="" method="post" id="frmAddChapter">
+                <input type="hidden" name="idFormation" value="<?php echo $idForm ?>">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="nameChapter" class="control-label">Chapter name</label>
@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label for="descriptionChapter">Description Chapter :</label><textarea rows="4" cols="50" class="form-control" name="descriptionChapter" required></textarea>
                     </div>
-                    <button class="btn btn-sm btn-primary btn-block" type="submit">Add Chapter</button>
+                    <button id="addChapter" class="btn btn-sm btn-primary btn-block" type="submit">Add Chapter</button>
             </form>
         </div>
 

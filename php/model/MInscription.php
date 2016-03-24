@@ -10,6 +10,7 @@
 		
 		function SelectInscription($idUser)
 		{
+			$this->Connect();
 			$sql = "SELECT * FROM formation WHERE id_user = :idUser";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":idUser", $idUser, PDO::PARAM_INT);

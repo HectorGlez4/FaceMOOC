@@ -10,7 +10,8 @@ create table user(
 		email varchar(255),
 		password varchar(255),
 		firstname varchar(255),
-		lastname varchar(255)
+		lastname varchar(255),
+		avatar varchar(255)
 		)engine=innodb;
 create table expert(
 		id_expert int primary key auto_increment,
@@ -27,7 +28,7 @@ create table formation(
   		description text,
   		image varchar(255),
   		required_skill text,
-  		difficulty varchar(10),
+  		difficulty varchar(20),
 		keywords text 
 		)engine=innodb;
 

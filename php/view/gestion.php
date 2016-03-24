@@ -6,6 +6,7 @@ global $content;
 <link rel="stylesheet" href="<?php echo WEBROOT ?>/css/login.css">
 <body>
 <?php
+//var_dump($content);
 ?>
 <div class="container">
     <div class="jumbotron">
@@ -52,12 +53,12 @@ global $content;
                 <div class="form-group">
                     <label>Adresse :</label>
                     <input type="text" class="form-control" name="address"
-                           value="<?php echo $content['userGestion'][0]['lastname'] ?>">
+                           value="<?php echo $content['expertGestion'][0]['address'] ?>">
                 </div>
                 <div class="form-group">
                     <label>Téléphone :</label>
-                    <input type="text" class="form-control" name="phone"
-                           value="<?php echo $content['userGestion'][0]['lastname'] ?>">
+                    <input type="tel" class="form-control" name="phone"
+                           value="<?php echo $content['expertGestion'][0]['phone'] ?>">
                 </div>
                 <?php }  ?>
 

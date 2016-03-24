@@ -18,8 +18,8 @@
 			VALUES (:idFormation, :title, :description);";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":idFormation", $idFormation, PDO::PARAM_INT);
-			$stmt->bindParam(":title", $title, PDO::PARAM_STR);
-			$stmt->bindParam(":description", $description, PDO::PARAM_STR);
+			$stmt->bindParam(":title", htmlspecialchars($title), PDO::PARAM_STR);
+			$stmt->bindParam(":description", htmlspecialchars($description), PDO::PARAM_STR);
 			return $this->Insert($stmt);
 		}
 

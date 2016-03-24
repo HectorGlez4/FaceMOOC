@@ -17,7 +17,7 @@ Class Classes extends Controller {
         $d['chapter'] = $MClass->SelectInfoByJoin('ch.*', $id);
         $d['currentclass'] = $MClass->SelectClass($id);
         if ($d['currentclass'] == null) {
-            echo "erreur 404";
+            require(ROOT.'error/error_404.html');
         }
         else{
             $chapters = $d['chapter'];

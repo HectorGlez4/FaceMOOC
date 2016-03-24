@@ -12,7 +12,7 @@
             
                     <div class="modal-body">
                             <div class="form-group">
-                            <label for="current_password" class="control-label">Current Password</label>
+                            <label for="current_password" class="control-label">Mot de passe actuel :</label>
                             <input type="password" class="form-control" placeholder="****" name="password" required autofocus>
                           </div>
                             <div class="form-group">
@@ -21,7 +21,7 @@
                         </div>
 
                     <div class="form-group">
-                         <label for="password">Confirmer :</label>
+                         <label for="password">Confirmer votre nouveau mot de passe :</label>
                          <input type="password" class="form-control" placeholder="****" name="password_confirm" required >
                     </div>
 
@@ -31,7 +31,7 @@
                       </div>
 
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
                       </div>
                     </div>  
                    </div>

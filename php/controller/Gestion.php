@@ -47,7 +47,7 @@ Class Gestion extends Controller
                 echo 'erreur extension';
             } else {
                 $UserId = $MUser->SelectUserId($_SESSION['email']);
-                $fichier = ROOT . 'img/avatar/' . $UserId[0]['id_user'] . ".$extension_upload";
+                $fichier = 'img/avatar/' . $UserId[0]['id_user'] . ".$extension_upload";
                 $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'], $fichier);
                 if ($resultat) {
                     $MUser->addAvatar($fichier, $_SESSION['email']);

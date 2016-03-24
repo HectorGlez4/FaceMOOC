@@ -14,9 +14,8 @@
 		function SelectClassByChapterId($idChapter)
 		{
 			$this->Connect();
-			$sql = "Select * From class WHERE id_chapter = %d";
-			$sql1 = sprintf($sql, $idChapter);
-			$stmt = $this->PDO->prepare($sql1);
+			$sql = "Select * From class WHERE id_chapter = :idChapter";
+			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":idChapter", $idChapter, PDO::PARAM_INT);
 			return $this->Select($stmt);
 		}

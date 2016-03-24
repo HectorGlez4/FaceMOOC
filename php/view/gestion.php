@@ -29,7 +29,7 @@ global $content;
 
             </div>
             <div class="col-md-6">
-                <h3>Information Personnelle</h3>
+                <h3>Informations Personnelles</h3>
 
                 <div class="form-group">
                     <label>Modifiez vos informations de compte :</label>

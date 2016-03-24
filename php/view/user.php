@@ -17,14 +17,14 @@ include("head.php");
 				</div>
 
 				<div class="form-group">
-					<label for="password">Password :</label>
+					<label for="password">Mot de passe :</label>
 					<input type="password" class="form-control" placeholder="*****" name="password">
 				</div>
 
-				<button class="btn btn-md btn-primary btn-block" type="submit"> <span class="glyphicon glyphicon-off"></span>Connexion</button>
+				<button class="btn btn-md btn-primary btn-block" type="submit"> <span class="glyphicon glyphicon-off"></span> Connexion</button>
 
 			<a href="<?php WEBROOT ?>User/inscription">Inscription</a>
-				 <p class="help-block"><a href="<?php WEBROOT ?>User/recupmdp">I forgot my password</a></p>
+				 <p class="help-block"><a href="<?php WEBROOT ?>User/recupmdp">Mot de passe oublié ?</a></p>
 			
 
 	    </form>

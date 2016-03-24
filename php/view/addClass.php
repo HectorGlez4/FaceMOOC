@@ -3,7 +3,7 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Adding a new Class</h4>
+                        <h4 class="modal-title">Ajouter un nouveau cours</h4>
                       </div>
                        
                      
@@ -11,19 +11,19 @@
             
                     <div class="modal-body">
                             <div class="form-group">
-                            <label for="titleClass" class="control-label">Class title</label>
+                            <label for="titleClass" class="control-label">Titre du cours</label>
                             <input type="text" class="form-control" placeholder="Math, Science..." name="titleClass" required autofocus>
                           </div>
                             
                   
 
-                    <button class="btn btn-sm btn-primary btn-block" type="submit">Add Class</button>
+                    <button class="btn btn-sm btn-primary btn-block" type="submit">Ajouter ce cours</button>
           
       </form>
                       </div>
 
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Retour</button>
                       </div>
                     </div>  
                    </div>

@@ -12,13 +12,8 @@ global $content;
     <form action="<?php ROOT ?>Gestion/" method="POST" enctype="multipart/form-data">
  <div class='row'>
         <div class='col-md-3'>
-            <div class="ChapterClassMenu">
-                <!--<?php 
-                foreach ($content['ChapterInfo'] as $chapter) {
-                    echo "<h3>".$chapter['title']."</h3>";
-                }
-                ?>-->
-            </div>
+            <div class="ChapterClassMenu"></div>
+
             <td><a href="" data-toggle="modal"data-target="#myModal"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Chapter </a></td>
             <td><a href="" data-toggle="modal"data-target="#myModal2"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Class </a></td>
 
@@ -65,5 +60,5 @@ global $content;
 <?php include("addClass.php") ?> 
 <?php  echo "<script> var idFormation = " . $content['FormationInfo'][0]['id_formation'] . "</script>" ?> 
 <script src="<?php echo WEBROOT?>js/formationcontent.js"></script>
-<script>loadChapterClassMenu(idFormation)</script>
+<script>loadChapterMenu(idFormation)</script>
 </div>

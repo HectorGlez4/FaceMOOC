@@ -4,6 +4,7 @@
 	{
 		function SelectExpertsALL()
 		{
+			$this->Connect();
 			$sql = "Select * From expert";
 			$stmt = $this->PDO->prepare($sql);
 			return $this->Select($stmt);
@@ -12,7 +13,6 @@
 		function InsertExpert($idUser, $address, $phone)
 		{
 			$this->Connect();
-
 			$sql = "INSERT INTO expert (id_user, address, phone)
 			VALUES (:idUser, :address, :phone);";
 			$stmt = $this->PDO->prepare($sql);

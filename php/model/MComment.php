@@ -4,6 +4,7 @@
 	{
 		function SelectComment($idFormation)
 		{
+			$this->Connect();
 			$sql = "SELECT * FROM comment WHERE id_formation = :idFormation";
 			$stmt = $this->PDO->prepare($sql);
 			return $this->Select($stmt);

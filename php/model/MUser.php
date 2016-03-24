@@ -65,6 +65,7 @@
 			$this->Connect();
 			$sql = "INSERT INTO user (email, password, firstname, lastname, avatar) VALUES (:email, :password, :firstname, :lastname, :avatar);";
 			$stmt = $this->PDO->prepare($sql);
+			$email = htmlspecialchars($email);
 			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
 			$stmt->bindParam(":password", $password, PDO::PARAM_STR);
 			$stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);

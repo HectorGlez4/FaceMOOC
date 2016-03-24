@@ -3,6 +3,7 @@ include("head.php");
 include("header.php");
 
 global $content;
+var_dump($content['userInfo']);
 foreach ($content['userInfo'] as $user){
 
 echo "<div class='container'>";

@@ -14,6 +14,10 @@ Class Gestion extends Controller
             return;
         }
         $MUser = new MUser();
+        $MExpert = new MExpert();
+        $userId = $MUser->SelectUserId($_SESSION['email']);
+        $userId = $userId[0]['id_user'];
+        $d['expertGestion'] = $MExpert->SelectExpertById($userId);
         $d['userGestion'] = $MUser->SelectGestionUser($_SESSION['email']);
         $this->set($d);
         $this->render('gestion');
@@ -71,6 +75,7 @@ Class Gestion extends Controller
                 $old_password = $MUser->SelectUserPassword($_SESSION['email']);
 
                 $password = $_POST["password"];
+                $password = md5($password);
                 $password_new = $_POST["password_new"];
                 $password_confirm = $_POST["password_confirm"];
                 if ($old_password[0]['password'] == $password) {

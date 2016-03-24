@@ -102,6 +102,11 @@
 			$sql = "INSERT INTO formation (id_expert, title, description, image, required_skill, difficulty, keywords)
 											 VALUES (:idExpert, :title, :description ,:image ,:req_skill,:difficulty,:keywords);";
 			$stmt = $this->PDO->prepare($sql);
+			$title = htmlspecialchars($title);
+			$description = htmlspecialchars($description);
+			$required_skill = htmlspecialchars($required_skill);
+			$difficulty = htmlspecialchars($difficulty);
+			$keywords = htmlspecialchars($keywords);
 			$stmt->bindParam(":idExpert", $idExpert, PDO::PARAM_INT);
 			$stmt->bindParam(":title", $title, PDO::PARAM_STR);
 			$stmt->bindParam(":description", $description, PDO::PARAM_STR);
@@ -130,6 +135,11 @@
 			description = :description, image = :image, required_skill = :req_skill,
 			difficulty = :difficulty, keywords = :keywords WHERE id_formation = :idFormation";
 			$stmt = $this->PDO->prepare($sql);
+			$title = htmlspecialchars($title);
+			$description = htmlspecialchars($description);
+			$required_skill = htmlspecialchars($required_skill);
+			$difficulty = htmlspecialchars($difficulty);
+			$keywords = htmlspecialchars($keywords);
 			$stmt->bindParam(":idExpert", $idExpert, PDO::PARAM_INT);
 			$stmt->bindParam(":title", $title, PDO::PARAM_STR);
 			$stmt->bindParam(":description", $description, PDO::PARAM_STR);

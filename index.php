@@ -27,7 +27,7 @@ if (isset($_SESSION['id']) && $controller == 'index') {
 }
 
 /*var_dump($controller);*/
-var_dump($_SESSION['email']);
+/*var_dump($_SESSION['email']);*/
 if (file_exists(ROOT.'php/controller/'.$controller.'.php')) {
 	require(ROOT.'php/controller/'.$controller.'.php');
 	$controller = new $controller();

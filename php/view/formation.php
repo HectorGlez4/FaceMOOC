@@ -12,7 +12,7 @@ if (isset($content['class'])) {
 
 <div class="panel panel-default">
 
-	<div class="panel-heading">
+	<div class="panel panel-heading">
 		<h3 class="text-center ">Bienvenue dans le cours <?php echo $formationInfo['title']; ?></h3>
 	</div>
 
@@ -28,14 +28,14 @@ if (isset($content['class'])) {
 		<?php
 		if ($chapterInfo == null) {
 			echo "<div class ='panel panel-default'>";
-			echo "<div class ='row'>";
+			// echo "<div class ='row'>";
 			echo "<div class='panel panel-heading'>";
 			echo "<div class='panel-body'>";
-			echo "<p>Cette formation ne comporte pas encore de cours</p>";
+			echo "<p p class='text-danger'>Cette formation ne comporte pas encore de cours</p>";
 			echo "</div>";
 			echo "</div>";
 			echo "</div>";
-			echo "</div>";
+			// echo "</div>";
 		}else{
 			//chapters panel
 			foreach ($chapterInfo as $chapter) {
@@ -53,7 +53,7 @@ if (isset($content['class'])) {
 						echo "<a href='".WEBROOT."Classes/index/".$class['id_class']."'><h3 class='text-info'>".$class['title']."</h3></a>";
 					}
 				}else{
-					echo "<p>Ce chapitre ne comporte pas encore de cours</p>";
+					echo "<p class='text-danger'>Ce chapitre ne comporte pas encore de cours</p>";
 				}
 				echo "</div>";
 				echo "</div>";

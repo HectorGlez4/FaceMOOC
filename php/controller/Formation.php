@@ -33,9 +33,9 @@ Class Formation extends Controller {
             //var_dump($chapters);
             if (isset($chapters)) {
                 foreach ($chapters as $chapter) {
-                    //var_dump($chapter);
+                    var_dump($chapter);
                     $d['class'][$chapter['id_chapter']] = $MClass->SelectClassByChapterId($chapter['id_chapter']);
-                    //var_dump($d['class']);
+                    var_dump($d['class']);
                 }
             }
             $this->set($d);

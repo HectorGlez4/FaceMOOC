@@ -31,7 +31,6 @@ $formation = $content['formation'][0]['id_formation'];
 				echo "";
 			}
 		}
-		echo "<a class='btn btn-default' href='".WEBROOT."Formation/view/" .$formation."'><span class='glyphicon glyphicon-chevron-left'></span> Formation </a>";
 		echo "</div>";
 		echo "<div class='col-md-9'>";
 		echo "<h2>".$classesInfo['title']."</h2>";

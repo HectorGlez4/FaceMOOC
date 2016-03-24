@@ -39,6 +39,8 @@
 			$this->Connect();
 			$sql = "UPDATE expert SET address = :address, phone = :phone WHERE id_expert = :idExpert ";
 			$stmt = $this->PDO->prepare($sql);
+			$address = htmlspecialchars($address);
+			$phone = htmlspecialchars($phone);
 			$stmt->bindParam(":address", $address, PDO::PARAM_STR);
 			$stmt->bindParam(":phone", $phone, PDO::PARAM_STR);
 			$stmt->bindParam(":idExpert", $idExpert, PDO::PARAM_INT);

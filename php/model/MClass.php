@@ -37,6 +37,9 @@
 			$sql = "INSERT INTO class (id_chapter, title, description, video, docs)
 			 VALUES (:idChapter, :title, :description, :video, :docs);";
 			$stmt = $this->PDO->prepare($sql);
+			$title = htmlspecialchars($title);
+			$description = htmlspecialchars($description);
+			$video = htmlspecialchars($video);
 			$stmt->bindParam(":idChapter", $idChapter, PDO::PARAM_INT);
 			$stmt->bindParam(":title", $title, PDO::PARAM_STR);
 			$stmt->bindParam(":description", $description, PDO::PARAM_STR);
@@ -61,6 +64,9 @@
 			$sql = "UPDATE chapter SET title = :title , 
 			description = :description , video = :video, docs = :docs WHERE id_class = :idClass";
 			$stmt = $this->PDO->prepare($sql);
+			$title = htmlspecialchars($title);
+			$description = htmlspecialchars($description);
+			$video = htmlspecialchars($video);
 			$stmt->bindParam(":idClass", $idClass, PDO::PARAM_INT);
 			$stmt->bindParam(":title", $title, PDO::PARAM_STR);
 			$stmt->bindParam(":description", $description, PDO::PARAM_STR);

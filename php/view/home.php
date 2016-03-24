@@ -6,7 +6,7 @@ global $content;
 foreach ($content['userInfo'] as $user){
 
 echo "<div class='container'>";
-echo "<div class='panel-headin'>";
+echo "<div class='panel-heading'>";
 echo '<h2>Bienvenue sur le site, '. $user['firstname'] .' !</h2>';
 echo "</div>";
 }

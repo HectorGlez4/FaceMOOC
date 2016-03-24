@@ -56,7 +56,6 @@
                 echo '<td>' . $key["difficulty"] . '</td>';
                 echo '<td>' . $key["keywords"] . '</td>';
 
-
                 echo '<td><a href="' . WEBROOT . 'GestionFormation/editFormations/' . $key["id_formation"] . '"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>';
                 echo '<td><a href="' . WEBROOT . 'GestionFormation/updateFormations/' . $key["id_formation"] . '"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></td>';
                 echo '<td><a href="' . WEBROOT . 'GestionFormation/deleteFormations/' . $key["id_formation"] . '"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>';

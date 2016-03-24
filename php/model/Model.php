@@ -26,13 +26,14 @@
 			$this->PDO=NULL;
 		}
 
-		function Select($SQL)
+		function Select($STMT)
 		{
 			try
 			{
 				$this->Connect();
-				$resultSet = $this->PDO->query($SQL);
-				while($Row =$resultSet->fetch(PDO::FETCH_ASSOC)) 
+				$STMT->execute();
+
+				while($Row = $STMT->fetch(PDO::FETCH_ASSOC)) 
 				{
            			$Data[]=$Row;
 				}
@@ -42,7 +43,7 @@
 			}
 			catch(PDOException $e)
 			{
-				echo $e->getMessage();
+				return $e->getMessage();
 			}
 			{
 				$this->Close_Connection();
@@ -69,11 +70,11 @@
 			}
 		}
 
-		public function Insert($SQL)
+		public function Insert($STMT)
 		{
 			try
 			{
-				$success = $this->PDO->exec($SQL);
+				$success = $STMT->execute();
 				return $success;
 			}
 			catch(PDOException $e)
@@ -86,7 +87,7 @@
 		{
 			try
 			{
-				$success = $this->PDO->exec($SQL);
+				$success = $this->PDO->execute($SQL);
 				return $success;
 			}
 			catch(PDOException $e)
@@ -99,7 +100,7 @@
 		{
 			try
 			{
-				$success = $this->PDO->exec($SQL);
+				$success = $this->PDO->execute($SQL);
 				return $success;
 			}
 			catch(PDOException $e)

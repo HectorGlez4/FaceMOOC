@@ -10,36 +10,33 @@
 		
 		function SelectInscription($idUser)
 		{
-			$sql = "SELECT * FROM formation WHERE id_user = %d";
-			$sql1 = sprintf($sql, $idUser);
-			return ($this->Select($sql1));
+			$sql = "SELECT * FROM formation WHERE id_user = :idUser";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":idUser", $idUser, PDO::PARAM_INT);
+			return ($this->Select($stmt));
 		}
 
 		function InsertInscription($idFormation, $idUser, $date_inscription)
 		{
 			$this->Connect();
-			$sql = "INSERT INTO formation ('id_formation', 'id_user', 'date_inscription') VALUES ('%d', '%d', '%s');";
-			$sql1 = sprintf($sql, $idFormation, $idUser, $date_inscription);
-			//echo $sql1;
-			if($this->Insert($sql1))
-			{
-				return true;
-			}
-			return false;
+			$sql = "INSERT INTO formation ('id_formation', 'id_user', 'date_inscription')
+			 VALUES (:idFormation, idUser, :date_inscription);";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":idFormation", $idFormation, PDO::PARAM_INT);
+			$stmt->bindParam(":idUser", $idUser, PDO::PARAM_INT);
+			$stmt->bindParam(":date_inscription", $date_inscription, PDO::PARAM_STR);
+			return $this->Insert($stmt);
 		}
 
 
 		function DeleteInscription($idInscription)
 		{
 			$this->Connect();
-			$sql = "DELETE FROM inscription WHERE id_inscription = %d ";
+			$sql = "DELETE FROM inscription WHERE id_inscription = :idInscription ";
 			$sql1 = sprintf($sql, $idInscription);
-			//echo $sql1;
-			if($this->Delete($sql1))
-			{
-				return true;
-			}
-			return false;
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":idInscription", $idInscription, PDO::PARAM_INT);
+			return $this->Delete($stmt);
 		}
 	}
 	

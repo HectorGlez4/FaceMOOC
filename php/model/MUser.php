@@ -9,147 +9,67 @@
 
 		function SelectUserEmailPassword($email, $password)
 		{
-			try
-			{
-				$Data = null;
-				$this->Connect();
-				$sql = "SELECT * FROM user WHERE email = :email AND password = :password";
-				$stmt = $this->PDO->prepare($sql);
-				$stmt->bindParam(":email", $email, PDO::PARAM_STR);
-				$stmt->bindParam(":password", $password, PDO::PARAM_STR);
-				$stmt->execute();
-				while($Row =$stmt->fetch(PDO::FETCH_ASSOC)) 
-				{
-           			$Data[]=$Row;
-				}
-				return  $Data;
-			}
-			catch(PDOException $e)
-			{
-				echo $e->getMessage();
-			}
-			finally
-			{
-				$this->Close_Connection();
-			}
+			$this->Connect();
+			$sql = "SELECT * FROM user WHERE email = :email AND password = :password";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			$stmt->bindParam(":password", $password, PDO::PARAM_STR);
+			return $this->Select($stmt);
 		}
 
 		function SelectUserEmail($email)
 		{
-			try
-			{
-				$Data = null;
-				$this->Connect();
-				$sql = "SELECT * FROM user WHERE email = :email ";
-				$stmt = $this->PDO->prepare($sql);
-				$stmt->bindParam(":email", $email, PDO::PARAM_STR);
-				$stmt->execute();
-				while($Row =$stmt->fetch(PDO::FETCH_ASSOC)) 
-				{
-           			$Data[]=$Row;
-				}
-				return  $Data;
-			}
-			catch(PDOException $e)
-			{
-				echo $e->getMessage();
-			}
-			finally
-			{
-				$this->Close_Connection();
-			}
-
+			$Data = null;
+			$this->Connect();
+			$sql = "SELECT * FROM user WHERE email = :email ";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			return $this->Select($stmt);
 		}
 
 		function SelectUserPassword($email)
 		{
-			try
-			{
-				$Data = null;
-				$this->Connect();
-				$sql = "SELECT password FROM user WHERE email = :email ";
-				$stmt = $this->PDO->prepare($sql);
-				$stmt->bindParam(":email", $email, PDO::PARAM_STR);
-				$stmt->execute();
-				while($Row =$stmt->fetch(PDO::FETCH_ASSOC)) 
-				{
-           			$Data[]=$Row;
-				}
-				return  $Data;
-			}
-			catch(PDOException $e)
-			{
-				echo $e->getMessage();
-			}
-			finally
-			{
-				$this->Close_Connection();
-			}
-
+			$Data = null;
+			$this->Connect();
+			$sql = "SELECT password FROM user WHERE email = :email ";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			return $this->Select($stmt);
 		}
 
 		function SelectUserId($email)
 		{
-			try
-			{
-				$Data = null;
-				$this->Connect();
-				$sql = "SELECT id_user FROM user WHERE email = :email ";
-				$stmt = $this->PDO->prepare($sql);
-				$stmt->bindParam(":email", $email, PDO::PARAM_STR);
-				$stmt->execute();
-				while($Row =$stmt->fetch(PDO::FETCH_ASSOC))
-				{
-					$Data[]=$Row;
-				}
-				return  $Data;
-			}
-			catch(PDOException $e)
-			{
-				echo $e->getMessage();
-			}
-			finally
-			{
-				$this->Close_Connection();
-			}
+
+			$Data = null;
+			$this->Connect();
+			$sql = "SELECT id_user FROM user WHERE email = :email ";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			return $this->Select($stmt);
+				
 
 		}
 
 		function SelectUserAvatar($email)
 		{
-			try
-			{
-				$Data = null;
-				$this->Connect();
-				$sql = "SELECT avatar FROM user WHERE email = :email ";
-				$stmt = $this->PDO->prepare($sql);
-				$stmt->bindParam(":email", $email, PDO::PARAM_STR);
-				$stmt->execute();
-				while($Row =$stmt->fetch(PDO::FETCH_ASSOC))
-				{
-					$Data[]=$Row;
-				}
-				return  $Data;
-			}
-			catch(PDOException $e)
-			{
-				echo $e->getMessage();
-			}
-			finally
-			{
-				$this->Close_Connection();
-			}
-
+			$Data = null;
+			$this->Connect();
+			$sql = "SELECT avatar FROM user WHERE email = :email ";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			return $this->Select($stmt);
 		}
 
 		function InsertUser($email, $password, $firstname, $lastname, $avatar)
 		{
 			$this->Connect();
-			$sql = "INSERT INTO user (`email`, `password`, `firstname`, `lastname`, `avatar`) VALUES ('%s', '%s', '%s', '%s', '%s');";
-			$sql1 = sprintf($sql, $email, $password, $firstname, $lastname, $avatar);
-			//echo $sql1;
-
-			if($this->Insert($sql1))
+			$sql = "INSERT INTO user ('email', 'password', 'firstname', 'lastname') VALUES (:email, :password, :firstname, :lastname);";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			$stmt->bindParam(":password", $password, PDO::PARAM_STR);
+			$stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);
+			$stmt->bindParam(":lastname", $lastname, PDO::PARAM_STR);
+			if($this->Insert($stmt))
 			{
 				return true;
 			}
@@ -160,22 +80,43 @@
 		function DeleteUser($idUser)
 		{
 			$this->Connect();
-			$sql = "DELETE FROM user WHERE id_user = %d ";
-			$sql1 = sprintf($sql, $idUser);
-			//echo $sql1;
-			if($this->Delete($sql1))
+			$sql = "DELETE FROM user WHERE id_user = :idUser ";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":idUser", $idUser, PDO::PARAM_INT);
+			if($this->Delete($stmt))
 			{
 				return true;
 			}
 			return false;
 		}
 
-		function UpdateUser($email, $password, $fname, $lname, $idUser)
+		function UpdateUser($email, $password, $firstname, $lastname, $idUser)
 		{
 			$this->Connect();
-			$sql = "UPDATE user SET email = '%s', password = '%s', firstname = '%s', lastname='%s' WHERE id_user = %d ";
-			$sql1 = sprintf($sql, $email, $password, $fname, $lname, $idUser);
-			if($this->Update($sql1))
+			$sql = "UPDATE user SET email = :email, password = :password, firstname = :firstname, lastname= :lastname WHERE id_user = :idUser ";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			$stmt->bindParam(":password", $password, PDO::PARAM_STR);
+			$stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);
+			$stmt->bindParam(":lastname", $lastname, PDO::PARAM_STR);
+			$stmt->bindParam(":idUser", $idUSer, PDO::PARAM_INT);
+			if($this->Update($stmt))
+			{
+				return true;
+			}
+			return false;
+		}
+
+		function updateAccount($email, $firstname, $lastname, $sessionemail)
+		{
+			$this->Connect();
+			$sql = "UPDATE user SET email = :email, firstname = :firstname, lastname=:lastname WHERE email = :sessionemail ";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			$stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);
+			$stmt->bindParam(":lastname", $lastname, PDO::PARAM_STR);
+			$stmt->bindParam(":sessionemail", $sessionemail, PDO::PARAM_STR);
+			if($this->Update($stmt))
 			{
 				return true;
 			}
@@ -185,9 +126,11 @@
 		function changePass($password, $email)
 		{
 			$this->Connect();
-			$sql = "UPDATE user SET password = '%s' WHERE email = '%s' ";
-			$sql1 = sprintf($sql,$password, $email);
-			if($this->Update($sql1))
+			$sql = "UPDATE user SET password = :password WHERE email = :email ";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			$stmt->bindParam(":password", $password, PDO::PARAM_STR);
+			if($this->Update($stmt))
 			{
 				return true;
 			}
@@ -246,48 +189,24 @@
 
 		function SelectGestionUser($email)
 		{
-			try
-			{
-				$Data = null;
-				$this->Connect();
-				$sql = "SELECT email, firstname, lastname, avatar FROM user WHERE email = :email";
-				$stmt = $this->PDO->prepare($sql);
-				$stmt->bindParam(":email", $email, PDO::PARAM_STR);
-				$stmt->execute();
-				while($Row =$stmt->fetch(PDO::FETCH_ASSOC))
-				{
-					$Data[]=$Row;
-				}
-				return  $Data;
-			}
-			catch(PDOException $e)
-			{
-				echo $e->getMessage();
-			}
-			finally
-			{
-				$this->Close_Connection();
-			}
+			$Data = null;
+			$this->Connect();
+			$sql = "SELECT email, firstname, lastname, avatar FROM user WHERE email = :email";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			return $this->Select($stmt);
 		}
 
-		function updateAccount($email, $firstname, $lastname, $sessionemail)
-		{
-			$this->Connect();
-			$sql = "UPDATE user SET email = '%s', firstname = '%s', lastname='%s' WHERE email = '%s' ";
-			$sql1 = sprintf($sql, $email, $firstname, $lastname, $sessionemail);
-			if($this->Update($sql1))
-			{
-				return true;
-			}
-			return false;
-		}
+		
 
 		function addAvatar($fichier, $email)
 		{
 			$this->Connect();
-			$sql = "UPDATE user SET avatar = '%s' WHERE email = '%s' ";
-			$sql1 = sprintf($sql, $fichier, $email);
-			if($this->Update($sql1))
+			$sql = "UPDATE user SET avatar = :fichier WHERE email = :email";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			$stmt->bindParam(":fichier", $fichier, PDO::PARAM_STR);
+			if($this->Update($stmt))
 			{
 				return true;
 			}

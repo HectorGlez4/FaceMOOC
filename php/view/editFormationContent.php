@@ -10,20 +10,12 @@ global $content;
 
 
     <form action="<?php ROOT ?>Gestion/" method="POST" enctype="multipart/form-data">
-        <div class='row'>
-            <div class='col-md-3'>
 
+         <div class='row'>
+                <div class='col-md-3'>
+                    <div class="ChapterClassMenu">
+                    </div>
 
-            <?php
-            
-            if (is_array($content['ChapterInfo']) || is_object($content['ChapterInfo'])) {
-
-
-            foreach ($content['ChapterInfo'] as $chapter) {
-                echo "<h3>".$chapter['title']."</h3>";
-            }
-        }
-            ?>
 
                 <td><a href="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-folder-open"
                                                                                 aria-hidden="true"></span> Chapter </a>
@@ -48,27 +40,20 @@ global $content;
                         VIDEO
                         <input type="url" class="form-control" name="video" placeholder="http://"/>
                     </div>
-                    <label for="videoClass">
-                        Cours :
-                    </label>
-                    COURS
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="file" name="cours"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-md btn-primary btn-block" type="submit">Valider</button>
-                        </div>
-                        <div class="col-md-6">
-                            <a class='btn btn-md btn-primary btn-block' href='<?php WEBROOT ?>../../GestionFormation'>Retour</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-    </form>
-</div>
-<?php include("addChapter.php") ?>
-<?php include("addClass.php") ?>
+                </div>
+            </form>
+        </div>
+        <!--  <button type="button" class="btn btn-md btn-primary btn-block" data-toggle="modal"
+                        data-target="#myModal">Modifier mot de passe
+                </button> -->
+       </form>
+    </div>
+<?php $idForm = $content['FormationInfo'][0]['id_formation']; ?>
+<?php echo $idForm  ?>  
+<?php include("addChapter.php") ?> 
+<?php include("addClass.php") ?> 
+<?php  echo "<script> var idFormation = " . $content['FormationInfo'][0]['id_formation'] . "</script>" ?> 
+<script src="<?php echo WEBROOT?>js/formationcontent.js"></script>
+<script>loadChapterMenu(idFormation)</script>
+
 </div>

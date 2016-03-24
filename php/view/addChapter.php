@@ -8,9 +8,9 @@
                 <h4 class="modal-title">Ajouter un nouveau chapitre</h4>
             </div>
 
+            <form action="" method="post" id="frmAddChapter">
+                <input type="hidden" name="idFormation" value="<?php echo $idForm ?>">
 
-            <form method="post">
-<!-- action="../addChapter/<?php echo $content['FormationInfo'][0]['id_formation'] ?>"  -->
                 <div class="modal-body">
                     <div class="form-group">
 
@@ -24,7 +24,7 @@
                                                                                                  name="descriptionChapter"
                                                                                                  required></textarea>
                     </div>
-                    <button class="btn btn-sm btn-primary btn-block" type="submit">Ajouter ce chapitre</button>
+                    <button id="addChapter" class="btn btn-sm btn-primary btn-block" type="submit"  data-dismiss="modal" aria-label="Close">Add Chapter</button>
             </form>
         </div>
 

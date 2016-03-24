@@ -3,8 +3,8 @@
 	{
 		public $Server="localhost";
 		public $User="root";
-
 		public $Password="root";
+		//public $Password="";
 		public $BD="mooc";
 	}
 ?>

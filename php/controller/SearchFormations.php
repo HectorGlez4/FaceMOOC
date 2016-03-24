@@ -1,7 +1,7 @@
 <?php
 
 	header('cContent-type: application/json');
-	include_once("MFormation.php");
+	include_once("../model/MFormation.php");
 
 	extract($_POST);
 

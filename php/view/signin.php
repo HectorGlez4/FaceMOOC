@@ -4,7 +4,9 @@
 <div class="container well" id="contenu">
 
     <form method="post" action="<?php WEBROOT ?>signin">
-
+        <div class="form-group">
+            <label for="signin">Inscrivez vous !</label>
+        </div>
         <div class="form-group">
             <label for="email">Email : </label>
             <input type="text" class="form-control" id="email" name="email" autofocus/>
@@ -37,6 +39,7 @@
         <hr>
         <button type="submit" name="submit" class="btn btn-md btn-primary btn-block" value="Inscription">Inscription
         </button>
+        <a class='btn btn-md btn-primary btn-block' href='<?php WEBROOT ?>..'>Retour</a>
     </form>
 </div>
 </body>

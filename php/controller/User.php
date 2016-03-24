@@ -39,8 +39,6 @@ Class User extends Controller
                 $idExpert = $MExpert->SelectExpertIdByEmail($_SESSION['email']);
                 if ($idExpert) {
                     $_SESSION['id_expert'] = 1;
-                } else {
-                    $_SESSION['id_expert'] = 0;
                 }
                 else{
                     $_SESSION['id_expert'] = 0;

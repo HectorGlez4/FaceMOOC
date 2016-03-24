@@ -1,5 +1,6 @@
 <?php
 include(ROOT . 'php/model/MUser.php');
+include(ROOT . 'php/model/MExpert.php');
 
 Class User extends Controller
 {
@@ -30,10 +31,18 @@ Class User extends Controller
             }
 
             if ($connect) {
+                $MExpert = new MExpert();
                 session_start();
                 $_SESSION['id'] = 1;
                 $_SESSION['avatar'] = $avatar;
                 $_SESSION['email'] = $_POST['email'];
+                $idExpert = $MExpert->SelectExpertIdByEmail($_SESSION['email']);
+                if ($idExpert) {
+                    $_SESSION['id_expert'] = 1;
+                }
+                else{
+                    $_SESSION['id_expert'] = 0;
+                }
                 header('Location:' . WEBROOT . 'Home');
             } else {
                 header('Location:' . WEBROOT . 'index');
@@ -69,6 +78,7 @@ Class User extends Controller
             $email = $_POST['email'];
             $password = $_POST['password'];
             $passwordconf = $_POST['passwordconf'];
+            $status = $_POST['status'];
             $MUser = new MUser();
             $checkMail = $MUser->SelectUserEmail($email);
             if (!$checkMail) {
@@ -81,6 +91,13 @@ Class User extends Controller
                     $_SESSION['email'] = $email;
                     $_SESSION['firstname'] = $_POST['firstname'];
                     $_SESSION['lastname'] = $_POST['lastname'];
+                    $_SESSION['id_expert'] = 0;
+                    if ($status !== 'Etudiant') {
+                        $MExpert = new MExpert();
+                        $idUser = $MUser->SelectUserId($_SESSION['email']);
+                        $MExpert->InsertExpert($idUser[0]['id_user'],'','');
+                        $_SESSION['id_expert'] = 1;
+                    }
                     header('Location:' . WEBROOT . 'Home');
                 } else {
                     echo "Mots de passe non identiques";

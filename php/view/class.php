@@ -6,6 +6,7 @@ $formationInfo = $content['formation'][0];
 $chapterInfo = $content['chapter'];
 $classInfo = $content['class'];
 $classesInfo = $content['currentclass'][0];
+$formation = $content['formation'][0]['id_formation'];
 ?>
 <div class='container'>
 	<div class="jumbotron">

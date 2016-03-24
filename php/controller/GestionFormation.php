@@ -47,10 +47,6 @@ Class GestionFormation extends Controller
 
             $id_user = $MUser->SelectUserId($_SESSION['email']);
             $id_expert = $MExpert->SelectExpertId($id_user[0]['id_user']);
-            //var_dump($id_expert);
-            $id_formation = $MFormation->SelectFormationIdByTitle($_SESSION['email'], $title);
-            //var_dump($id_formation);
-
 
             $checkTitle = $MFormation->SelectFormationTitle($_SESSION['email'], $title);
             if ($checkTitle[0]['COUNT(title)'] == 0) {
@@ -72,16 +68,16 @@ Class GestionFormation extends Controller
                     if ($resultat) {
                         $MFormation->InsertFormation($id_expert[0]['id_expert'], $title, $description, $fichier, $requireskill, $diff, $keywords);
                         $_SESSION['imageFormation'] = $fichier;
-                        
+
                         if ($extension_upload !== 'gif') {
                             $MUser->compress_image($fichier, $fichier, 50);
                         }
-                        //header('Location:' . WEBROOT . 'GestionFormation');
+                        header('Location:' . WEBROOT . 'GestionFormation');
                     }
                 }
             } else {
 
-                //header('Location:' . WEBROOT . 'GestionFormation');
+                header('Location:' . WEBROOT . 'GestionFormation');
                 echo 'This title is already used';
             }
         }
@@ -161,14 +157,18 @@ Class GestionFormation extends Controller
 
     function updateClass($id)
     {
-        if (empty($_POST['title'])) {
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $video = $_POST['video'];
+        if (empty($title)) {
             echo "veuillez entrer un titre";
         } else {
+            if ($_FILES['cours']['name'] == '' && $_FILES['cours']['type'] == '') {
 
+            }
         }
 
     }
-
 
     function deleteFormations($id)
     {

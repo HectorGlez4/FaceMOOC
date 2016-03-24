@@ -19,7 +19,7 @@
 		function InsertInscription($idFormation, $idUser, $date_inscription)
 		{
 			$this->Connect();
-			$sql = "INSERT INTO formation ('id_formation', 'id_user', 'date_inscription')
+			$sql = "INSERT INTO formation (id_formation, id_user, date_inscription)
 			 VALUES (:idFormation, idUser, :date_inscription);";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":idFormation", $idFormation, PDO::PARAM_INT);

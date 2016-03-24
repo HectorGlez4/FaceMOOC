@@ -30,7 +30,6 @@
 		{
 			$sql = "SELECT COUNT(title) FROM formation
 			WHERE id_formation != :id AND title = :title";
-			$sql1 = sprintf($sql, $id, $title);
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":id", $id, PDO::PARAM_INT);
 			$stmt->bindParam(":title", $title, PDO::PARAM_STR);
@@ -118,7 +117,7 @@
 			$sql = "DELETE FROM formation WHERE id_formation = :idFormation ";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":idFormation", $idFormation, PDO::PARAM_INT);
-			return $this->Delete($sql1);
+			return $this->Delete($stmt);
 		}
 
 		function UpdateFormation($idExpert, $title, $description, $image
@@ -137,7 +136,7 @@
 			$stmt->bindParam(":req_skill", $req_skill, PDO::PARAM_STR);
 			$stmt->bindParam(":keywords", $keywords, PDO::PARAM_STR);
 			$stmt->bindParam(":idFormation", $idFormation, PDO::PARAM_INT);
-			return $this->Update($sql1);
+			return $this->Update($stmt);
 		}
 	}
 

@@ -6,14 +6,16 @@ $formationInfo = $content['formation'][0];
 $chapterInfo = $content['chapter'];
 $classInfo = $content['class'];
 $classesInfo = $content['currentclass'][0];
+$formation = $content['formation'][0]['id_formation'];
 ?>
 <div class='container'>
-
 	<div class="jumbotron">
-			<a class="btn btn-primary" href="<?php echo WEBROOT . 'Formation/view/' . $content['formation'][0]['id_formation']?>"><span class="glyphicon glyphicon-chevron-left"></span> Formation </a>
 
 			<h1 class="text-center"><?php echo $formationInfo['title']; ?></h1>
+
 	</div>
+	<a class="btn btn-primary" href="<?php echo WEBROOT . 'Formation/view/' . $content['formation'][0]['id_formation']?>"><span class="glyphicon glyphicon-chevron-left"></span> Formation </a>
+<br>
 	<?php
 		echo "<div class='row info-panel'>";
 		echo "<div class='col-md-3 server-action-menu'>";
@@ -29,6 +31,7 @@ $classesInfo = $content['currentclass'][0];
 				echo "";
 			}
 		}
+		echo "<a class='btn btn-default' href='".WEBROOT."Formation/view/" .$formation."'><span class='glyphicon glyphicon-chevron-left'></span> Formation </a>";
 		echo "</div>";
 		echo "<div class='col-md-9'>";
 		echo "<h2>".$classesInfo['title']."</h2>";

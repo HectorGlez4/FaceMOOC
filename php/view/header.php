@@ -37,7 +37,7 @@
 	    </ul>
            <ul class="nav navbar-nav navbar-right">
 	      <li>
-	      	<a href='<?php WEBROOT ?>User/logout'><span class="glyphicon glyphicon-off"></span> Logout </a>
+	      	<a href='<?php WEBROOT ?>User/logout'><span class="glyphicon glyphicon-off"></span>Logout</a>
 	      </li>
 	    </ul>
         </div>

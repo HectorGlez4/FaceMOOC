@@ -4,6 +4,7 @@
 	{
 		function SelectClass($idClass)
 		{
+			$this->Connect();
 			$sql = "Select * From class WHERE id_class = :idClass";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":idClass", $idClass, PDO::PARAM_INT);
@@ -12,6 +13,7 @@
 
 		function SelectClassByChapterId($idChapter)
 		{
+			$this->Connect();
 			$sql = "Select * From class WHERE id_chapter = :idChapter";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":idChapter", $idChapter, PDO::PARAM_INT);
@@ -20,6 +22,7 @@
 
 		function SelectInfoByJoin($info, $idClass)
 		{
+			$this->Connect();
 			$sql = "SELECT %s FROM formation AS f, chapter AS ch, class AS cl
 			 WHERE cl.id_chapter = ch.id_chapter AND ch.id_formation = f.id_formation AND cl.id_class = :idClass ";
 			$sql1 = sprintf($sql, $info, $idClass);

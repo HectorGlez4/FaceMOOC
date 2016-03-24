@@ -9,15 +9,15 @@
 
         <thead>
         <tr>
-            <td>Id Course</td>
-            <td>Title</td>
+            <td>Id Cours</td>
+            <td>Titre</td>
             <td>Description</td>
-            <td>Required Skills</td>
-            <td>Difficulty</td>
-            <td>Keywords</td>
-            <th>Edit</th>
+            <td>Compétences requises</td>
+            <td>Difficulté</td>
+            <td>Mots clés</td>
+            <th>Editer</th>
             <th>Modifier</th>
-            <th>Delete</th>
+            <th>Supprimer</th>
 
         </tr>
         </thead>
@@ -26,15 +26,15 @@
         <tfoot>
         <tr>
             <br>
-            <th>Id Course</th>
-            <th>Title</th>
+            <th>Id Cours</th>
+            <th>Titre</th>
             <th>Description</th>
-            <th>Required Skills</th>
-            <th>Difficulty</th>
-            <th>Keywords</th>
+            <th>Compétences requises</th>
+            <th>Difficulté</th>
+            <th>Mots clés</th>
             <th>Edit</th>
             <th>Modifier</th>
-            <th>Delete</th>
+            <th>Supprimer</th>
 
 
         </tr>

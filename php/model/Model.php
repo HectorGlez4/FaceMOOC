@@ -83,11 +83,11 @@
 			}
 		}
 
-		public function Delete($SQL)
+		public function Delete($STMT)
 		{
 			try
 			{
-				$success = $this->PDO->execute($SQL);
+				$success = $STMT->execute();
 				return $success;
 			}
 			catch(PDOException $e)

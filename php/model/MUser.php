@@ -12,6 +12,7 @@
 			$this->Connect();
 			$sql = "SELECT * FROM user WHERE email = :email AND password = :password";
 			$stmt = $this->PDO->prepare($sql);
+            $password = md5($password);
 			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
 			$stmt->bindParam(":password", $password, PDO::PARAM_STR);
 			return $this->Select($stmt);
@@ -65,6 +66,10 @@
 			$this->Connect();
 			$sql = "INSERT INTO user (email, password, firstname, lastname, avatar) VALUES (:email, :password, :firstname, :lastname, :avatar);";
 			$stmt = $this->PDO->prepare($sql);
+			$email = htmlspecialchars($email);
+			$firstname = htmlspecialchars($firstname);
+			$lastname = htmlspecialchars($lastname);
+			$password = md5($password); 
 			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
 			$stmt->bindParam(":password", $password, PDO::PARAM_STR);
 			$stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);
@@ -96,6 +101,10 @@
 			$this->Connect();
 			$sql = "UPDATE user SET email = :email, password = :password, firstname = :firstname, lastname= :lastname WHERE id_user = :idUser ";
 			$stmt = $this->PDO->prepare($sql);
+			$email = htmlspecialchars($email);
+			$firstname = htmlspecialchars($firstname);
+			$lastname = htmlspecialchars($lastname);
+			$password = md5($password); 
 			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
 			$stmt->bindParam(":password", $password, PDO::PARAM_STR);
 			$stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);
@@ -113,6 +122,9 @@
 			$this->Connect();
 			$sql = "UPDATE user SET email = :email, firstname = :firstname, lastname = :lastname WHERE email = :sessionemail ";
 			$stmt = $this->PDO->prepare($sql);
+			$email = htmlspecialchars($email);
+			$firstname = htmlspecialchars($firstname);
+			$lastname = htmlspecialchars($lastname);
 			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
 			$stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);
 			$stmt->bindParam(":lastname", $lastname, PDO::PARAM_STR);
@@ -129,6 +141,7 @@
 			$this->Connect();
 			$sql = "UPDATE user SET password = :password WHERE email = :email ";
 			$stmt = $this->PDO->prepare($sql);
+			$password = md5($password);
 			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
 			$stmt->bindParam(":password", $password, PDO::PARAM_STR);
 			if($this->Update($stmt))

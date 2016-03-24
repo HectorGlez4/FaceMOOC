@@ -26,7 +26,7 @@ Class Formation extends Controller {
         $MClass = new MClass();
         $d['formation'] = $MFormation->SelectFormationById($id);
         if ($d['formation'] == null) {
-            echo "erreur 404";
+            echo require(ROOT.'error/error_404.html');
         }else{
             $d['chapter'] = $MChapter->SelectChapters($id);
             $chapters = $d['chapter'];
@@ -35,7 +35,7 @@ Class Formation extends Controller {
                 foreach ($chapters as $chapter) {
                     //var_dump($chapter);
                     $d['class'][$chapter['id_chapter']] = $MClass->SelectClassByChapterId($chapter['id_chapter']);
-                    //var_dump($d['class']);
+                   // var_dump($d['class']);
                 }
             }
             $this->set($d);

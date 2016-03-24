@@ -27,17 +27,17 @@
             <ul class="nav navbar-nav">
 
 		    <li class="divider">
-		      	<a class="nav-link" href='<?php echo WEBROOT ?>Gestion'>My compte</a>
+		      	<a class="nav-link" href='<?php echo WEBROOT ?>Gestion'>Mon compte</a>
 		    </li>
 				<?php if ($_SESSION['id_expert'] == 1) { ?>
 		    <li class="divider">
-      			<a class="nav-link" href='<?php echo WEBROOT ?>GestionFormation'>Formation manager</a>
+      			<a class="nav-link" href='<?php echo WEBROOT ?>GestionFormation'>Gestion de formation</a>
 		    </li>
 				<?php } ?>
 	    </ul>
            <ul class="nav navbar-nav navbar-right">
 	      <li>
-	      	<a href='<?php WEBROOT ?>User/logout'><span class="glyphicon glyphicon-off"></span>Logout</a>
+	      	<a href='<?php WEBROOT ?>User/logout'><span class="glyphicon glyphicon-off"></span>Déconnexion</a>
 	      </li>
 	    </ul>
         </div>

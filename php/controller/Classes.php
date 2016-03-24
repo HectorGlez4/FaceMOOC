@@ -3,6 +3,8 @@
 include_once(ROOT.'php/model/MFormation.php');
 include_once(ROOT.'php/model/MChapter.php');
 include_once(ROOT.'php/model/MClass.php');
+include_once(ROOT.'php/model/MUser.php');
+
 
 Class Classes extends Controller {
 	var $layout;
@@ -13,11 +15,13 @@ Class Classes extends Controller {
             return;
         }
         $MClass = new MClass();
+         $MUser = new MUser();
+        $d['userInfo'] = $MUser->SelectUserEmail($_SESSION['email']);
         $d['formation'] = $MClass->SelectInfoByJoin('f.*', $id);
         $d['chapter'] = $MClass->SelectInfoByJoin('ch.*', $id);
         $d['currentclass'] = $MClass->SelectClass($id);
         if ($d['currentclass'] == null) {
-            echo "erreur 404";
+            require(ROOT.'error/error_404.html');
         }
         else{
             $chapters = $d['chapter'];

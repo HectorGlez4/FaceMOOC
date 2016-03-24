@@ -26,16 +26,23 @@ if (isset($_SESSION['id']) && $controller == 'index') {
     $controller = 'Home';
 }
 
-/*var_dump($controller);
-var_dump($_SESSION['id']);*/
-require(ROOT.'php/controller/'.$controller.'.php');
-$controller = new $controller();
-if(method_exists($controller,$action)){
-    unset($params[0]); unset($params[1]);
-    call_user_func_array(array($controller,$action),$params);
+/*var_dump($controller);*/
+/*var_dump($_SESSION['email']);*/
+if (file_exists(ROOT.'php/controller/'.$controller.'.php')) {
+	require(ROOT.'php/controller/'.$controller.'.php');
+	$controller = new $controller();
+	if(method_exists($controller,$action)){
+	    unset($params[0]); unset($params[1]);
+	    call_user_func_array(array($controller,$action),$params);
+	}
+	else{
+	    require(ROOT.'error/error_404.html');
+	}
 }
-else{
-    echo 'erreur 404';
+else
+{
+	require(ROOT.'error/error_404.html');
 }
+
 
 ?>

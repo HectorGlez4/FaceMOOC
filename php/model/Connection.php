@@ -4,7 +4,7 @@
 		public $Server="localhost";
 		public $User="root";
 
-		public $Password="";
+		public $Password="root";
 		public $BD="mooc";
 	}
 ?>

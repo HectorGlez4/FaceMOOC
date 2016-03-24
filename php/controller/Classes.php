@@ -21,7 +21,7 @@ Class Classes extends Controller {
         $d['chapter'] = $MClass->SelectInfoByJoin('ch.*', $id);
         $d['currentclass'] = $MClass->SelectClass($id);
         if ($d['currentclass'] == null) {
-            require(ROOT.'error/error_404.html');
+            require(ROOT.'php/view/error.php');
         }
         else{
             $chapters = $d['chapter'];

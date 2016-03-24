@@ -245,20 +245,20 @@ drop procedure inclas;
 	end //
 	delimiter ;
 
-call inclas(1,'simple title','simple description','good video','your docs');
-call inclas(2,'simple title','simple description','good video','your docs');
-call inclas(3,'simple title','simple description','good video','your docs');
-call inclas(4,'simple title','simple description','good video','your docs');
-call inclas(5,'simple title','simple description','good video','your docs');
-call inclas(6,'simple title','simple description','good video','your docs');
-call inclas(7,'simple title','simple description','good video','your docs');
-call inclas(8,'simple title','simple description','good video','your docs');
-call inclas(9,'simple title','simple description','good video','your docs');
-call inclas(10,'simple title','simple description','good video','your docs');
-call inclas(11,'simple title','simple description','good video','your docs');
-call inclas(12,'simple title','simple description','good video','your docs');
-call inclas(13,'simple title','simple description','good video','your docs');
-call inclas(14,'simple title','simple description','good video','your docs');
+call inclas(1,'simple title','simple description','https://www.youtube.com/embed/oavMtUWDBTM','Cahier_des_charges_FaceMOOC.pdf');
+call inclas(2,'simple title','simple description','https://www.youtube.com/embed/oavMtUWDBTM','Cahier_des_charges_FaceMOOC.pdf');
+call inclas(3,'simple title','simple description','https://www.youtube.com/embed/oavMtUWDBTM','Cahier_des_charges_FaceMOOC.pdf');
+call inclas(4,'simple title','simple description','https://www.youtube.com/embed/oavMtUWDBTM','Cahier_des_charges_FaceMOOC.pdf');
+call inclas(5,'simple title','simple description','https://www.youtube.com/embed/oavMtUWDBTM','Cahier_des_charges_FaceMOOC.pdf');
+call inclas(6,'simple title','simple description','https://www.youtube.com/embed/oavMtUWDBTM','Cahier_des_charges_FaceMOOC.pdf');
+call inclas(7,'simple title','simple description','https://www.youtube.com/embed/oavMtUWDBTM','Cahier_des_charges_FaceMOOC.pdf');
+call inclas(8,'simple title','simple description','https://www.youtube.com/embed/oavMtUWDBTM','Cahier_des_charges_FaceMOOC.pdf');
+call inclas(9,'simple title','simple description','https://www.youtube.com/embed/oavMtUWDBTM','Cahier_des_charges_FaceMOOC.pdf');
+call inclas(10,'simple title','simple description','https://www.youtube.com/embed/oavMtUWDBTM','Cahier_des_charges_FaceMOOC.pdf');
+call inclas(11,'simple title','simple description','https://www.youtube.com/embed/oavMtUWDBTM','Cahier_des_charges_FaceMOOC.pdf');
+call inclas(12,'simple title','simple description','https://www.youtube.com/embed/oavMtUWDBTM','Cahier_des_charges_FaceMOOC.pdf');
+call inclas(13,'simple title','simple description','https://www.youtube.com/embed/oavMtUWDBTM','Cahier_des_charges_FaceMOOC.pdf');
+call inclas(14,'simple title','simple description','https://www.youtube.com/embed/oavMtUWDBTM','Cahier_des_charges_FaceMOOC.pdf');
 
 
 drop procedure incom;

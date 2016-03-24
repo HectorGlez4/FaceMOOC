@@ -12,18 +12,22 @@ if (isset($content['class'])) {
 
     <div class="panel panel-default">
 
-        <div class="panel-heading">
-            <h3 class="text-center ">Cours :<?php echo $formationInfo['title']; ?></h3>
-        </div>
 
-        <h1 class="text-justify"><?php echo $formationInfo['description']; ?></h1>
-        <div class="pull-right"><br>
-            <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-eye-open"></span> S'abonner à ce cours</a>
-            <br>
-        </div>
+	<div class="panel panel-heading">
+		<h3 class="text-center ">Bienvenue dans le cours <?php echo $formationInfo['title']; ?></h3>
+	</div>
+
+		<h1 class="text-justify"><?php echo $formationInfo['description']; ?></h1>
+		<div class="pull-right"><br>
+			<a class="btn btn-success" href="#"><span class="glyphicon glyphicon-eye-open"></span> S'abonner à ce cours</a>
+			<br>
+		</div>
+	
+		
+	</div>
+	
 
 
-    </div>
 
     <?php
     if ($chapterInfo == null) {
@@ -63,7 +67,12 @@ if (isset($content['class'])) {
             echo "</div>";
 
         }
+
     }
     ?>
+
+
+ 
+
 
 </div>

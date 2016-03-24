@@ -41,4 +41,34 @@ $formation = $content['formation'][0]['id_formation'];
 		echo "</div>";
 		echo "</div>";
 	?>
+	<div class='row info-panel'>
+	<div class='col-md-3'>
+	</div>
+	<div class='col-md-9'>
+	<div class="panel panel-default">
+	<div class="panel panel-heading">
+		<h3 class="text-center ">Commentaires</h3>
+	</div>
+
+	<form>
+						<div class="modal-body">
+                            <div class="form-group">
+                            <label for="name" class="control-label">Nom :</label>
+                            <input type="text" class="form-control" name="comm" value="<?php echo $content['userInfo'][0]['firstname'] ?>">
+                          </div>
+                          
+		 
+                            <div class="form-group">
+                            <label for="comm" class="control-label">Commentez et notez :</label>
+                            <textarea rows="4" cols="60" class="form-control" placeholder="Mes commentaires..." name="comm" required autofocus></textarea>
+                          </div>
+                          </div>
+
+                            
+	</form>
+	
+		
+	</div>
+	</div>
+		</div>
 </div>

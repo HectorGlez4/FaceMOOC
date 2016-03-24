@@ -13,11 +13,17 @@ global $content;
         <div class='row'>
             <div class='col-md-3'>
 
-                <?php
-                foreach ($content['ChapterInfo'] as $chapter) {
-                    echo "<h3>" . $chapter['title'] . "</h3>";
-                }
-                ?>
+
+            <?php
+            
+            if (is_array($content['ChapterInfo']) || is_object($content['ChapterInfo'])) {
+
+
+            foreach ($content['ChapterInfo'] as $chapter) {
+                echo "<h3>".$chapter['title']."</h3>";
+            }
+        }
+            ?>
 
                 <td><a href="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-folder-open"
                                                                                 aria-hidden="true"></span> Chapter </a>

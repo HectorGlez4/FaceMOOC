@@ -1,3 +1,5 @@
+
+
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -7,10 +9,11 @@
             </div>
 
 
-            <form action="../addChapter/<?php echo $content['FormationInfo'][0]['id_formation'] ?>" method="post">
-
+            <form method="post">
+<!-- action="../addChapter/<?php echo $content['FormationInfo'][0]['id_formation'] ?>"  -->
                 <div class="modal-body">
                     <div class="form-group">
+
                         <label for="nameChapter" class="control-label">Nom du chapitre</label>
                         <input type="text" class="form-control" placeholder="Chapter" name="nameChapter" required
                                autofocus>
@@ -28,7 +31,13 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
         </div>
+  </form>
+  <span></span>
+         <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                      </div>
     </div>
 </div>
+
 
 

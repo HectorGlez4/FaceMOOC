@@ -40,9 +40,7 @@ Class User extends Controller
                 if ($idExpert) {
                     $_SESSION['id_expert'] = 1;
                 }
-                else{
-                    $_SESSION['id_expert'] = 0;
-                }
+                
                 header('Location:' . WEBROOT . 'Home');
             } else {
                 header('Location:' . WEBROOT . 'index');

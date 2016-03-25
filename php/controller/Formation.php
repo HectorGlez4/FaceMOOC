@@ -3,6 +3,7 @@
 include_once(ROOT.'php/model/MFormation.php');
 include_once(ROOT.'php/model/MChapter.php');
 include_once(ROOT.'php/model/MClass.php');
+include_once(ROOT.'php/model/MComment.php');
 
 Class Formation extends Controller {
 
@@ -23,8 +24,11 @@ Class Formation extends Controller {
         }
         $MFormation = new MFormation();
         $MChapter = new MChapter();
+        $MComment = new MComment();
         $MClass = new MClass();
         $d['formation'] = $MFormation->SelectFormationById($id);
+        $d['comments'] = $MComment->SelectComment($id);
+
         if ($d['formation'] == null) {
             echo require(ROOT.'php/view/error.php');
         }else{

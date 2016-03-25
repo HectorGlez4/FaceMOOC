@@ -4,6 +4,8 @@ include_once(ROOT.'php/model/MFormation.php');
 include_once(ROOT.'php/model/MChapter.php');
 include_once(ROOT.'php/model/MClass.php');
 include_once(ROOT.'php/model/MUser.php');
+include_once(ROOT.'php/model/MComment.php');
+
 
 
 Class Classes extends Controller {
@@ -15,11 +17,15 @@ Class Classes extends Controller {
             return;
         }
         $MClass = new MClass();
-         $MUser = new MUser();
+        $MUser = new MUser();
+        $MComment = new MComment();
         $d['userInfo'] = $MUser->SelectUserEmail($_SESSION['email']);
         $d['formation'] = $MClass->SelectInfoByJoin('f.*', $id);
         $d['chapter'] = $MClass->SelectInfoByJoin('ch.*', $id);
         $d['currentclass'] = $MClass->SelectClass($id);
+        $d['comments'] = $MComment->SelectComment($id);
+
+        
         if ($d['currentclass'] == null) {
             require(ROOT.'php/view/error.php');
         }

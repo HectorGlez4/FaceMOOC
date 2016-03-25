@@ -7,6 +7,7 @@ $chapterInfo = $content['chapter'];
 $classInfo = $content['class'];
 $classesInfo = $content['currentclass'][0];
 $formation = $content['formation'][0]['id_formation'];
+$comments=$content['comments'][0]['description'];
 ?>
 <div class='container'>
 	<div class="jumbotron">
@@ -62,11 +63,36 @@ $formation = $content['formation'][0]['id_formation'];
                             <label for="comm" class="control-label">Commentez et notez :</label>
                             <textarea rows="4" cols="60" class="form-control" placeholder="Mes commentaires..." name="comm" required autofocus></textarea>
                           </div>
+                          <button type="button" class="btn btn-primary" data-id="'.$formation.'">Commenter</button>
                           </div>
 
                             
 	</form>
-	
+
+	<div id="comments">
+                          	<?php
+
+        global $content;
+var_dump($comments);
+        if (is_array($content['formation']) || is_object($content['formation'])) {
+
+            foreach ($content['formation'] as $key) {
+				echo '<table>';
+                echo '<tr>';
+                echo '<td>' . $key["id_formation"] . '</td>';
+               	echo '</tr>';
+               	echo '</table>';
+
+
+               
+
+            }
+        }
+
+
+        ?>
+                          	
+                          </div>
 		
 	</div>
 	</div>

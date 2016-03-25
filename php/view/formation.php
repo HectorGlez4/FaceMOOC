@@ -13,20 +13,22 @@ if (isset($content['class'])) {
     <div class="panel panel-default">
 
 
-	<div class="panel panel-heading">
-		<h3 class="text-center ">Bienvenue dans le cours <?php echo $formationInfo['title']; ?></h3>
-	</div>
+        <h1 class="text-justify"><?php echo $formationInfo['description']; ?></h1>
+        <div class="pull-right"><br>
 
-		<h1 class="text-justify"><?php echo $formationInfo['description']; ?></h1>
-		<div class="pull-right"><br>
-			<a class="btn btn-success" href="#"><span class="glyphicon glyphicon-eye-open"></span> S'abonner à ce cours</a>
-			<br>
-		</div>
-	
-		
-	</div>
-	
+            <?php if (!$content['checkSub']) { ?>
+                <a class="btn btn-success"
+                   href="<?php WEBROOT ?>../subscribe/<?php echo $content['formation'][0]['id_formation'] ?>"><span
+                        class="glyphicon glyphicon-eye-open"></span> S'abonner à ce cours</a>
+            <?php } else { ?>
+                <a class="btn btn-success"
+                   href="<?php WEBROOT ?>../subscribe/<?php echo $content['formation'][0]['id_formation'] ?>"><span
+                        class="glyphicon glyphicon-eye-open"></span> Se désabonner de ce cours</a>
+            <?php } ?>
+            <br>
+        </div>
 
+    </div>
 
 
     <?php
@@ -72,7 +74,7 @@ if (isset($content['class'])) {
     ?>
 
 
- 
+
 
 
 </div>

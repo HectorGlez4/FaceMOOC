@@ -17,11 +17,21 @@
 			return ($this->Select($stmt));
 		}
 
+		function SelectInscriptionByIds($idFormation, $idUser)
+		{
+			$this->Connect();
+			$sql = "SELECT * FROM inscription WHERE id_formation = :idFormation AND id_user = :idUser";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":idFormation", $idFormation, PDO::PARAM_INT);
+			$stmt->bindParam(":idUser", $idUser, PDO::PARAM_INT);
+			return ($this->Select($stmt));
+		}
+
 		function InsertInscription($idFormation, $idUser, $date_inscription)
 		{
 			$this->Connect();
-			$sql = "INSERT INTO formation (id_formation, id_user, date_inscription)
-			 VALUES (:idFormation, idUser, :date_inscription);";
+			$sql = "INSERT INTO inscription (id_formation, id_user, date_inscription)
+			 VALUES (:idFormation, :idUser, :date_inscription);";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":idFormation", $idFormation, PDO::PARAM_INT);
 			$stmt->bindParam(":idUser", $idUser, PDO::PARAM_INT);
@@ -39,6 +49,8 @@
 			$stmt->bindParam(":idInscription", $idInscription, PDO::PARAM_INT);
 			return $this->Delete($stmt);
 		}
+
+
 	}
 	
 	//$mes = new MInscription();

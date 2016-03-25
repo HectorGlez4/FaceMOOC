@@ -34,6 +34,9 @@
       			<a class="nav-link" href='<?php echo WEBROOT ?>GestionFormation'>Gestion de formation</a>
 		    </li>
 				<?php } ?>
+			<li class="divider">
+				<a class="nav-link" href='<?php echo WEBROOT ?>Abonnements'>Abonnements</a>
+			</li>
 	    </ul>
            <ul class="nav navbar-nav navbar-right">
 	      <li>

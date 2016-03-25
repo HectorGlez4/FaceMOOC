@@ -43,7 +43,8 @@ Class User extends Controller
                 
                 header('Location:' . WEBROOT . 'Home');
             } else {
-                header('Location:' . WEBROOT . 'index');
+//                header('Location:' . WEBROOT . 'index');
+                $this->showMessage("Email ou mot de passe incorrecte");
             }
         }
     }
@@ -98,10 +99,10 @@ Class User extends Controller
                     }
                     header('Location:' . WEBROOT . 'Home');
                 } else {
-                    echo "Mots de passe non identiques";
+                    $this->showMessage("Mots de passe non identiques");
                 }
             } else {
-                echo "Email déjà utilisé";
+                $this->showMessage("Email déjà utilisé");
             }
         }
     }
@@ -133,7 +134,5 @@ Class User extends Controller
     }
 
 }
-
-/*marvyn.duvauchelle@gmail.com*/
 
 ?>

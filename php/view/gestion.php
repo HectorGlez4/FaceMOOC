@@ -12,7 +12,7 @@ global $content;
     <div class="jumbotron">
         <h1>Mon compte</h1>
     </div>
-    <form action="<?php ROOT ?>Gestion/updateaccount" method="POST" enctype="multipart/form-data">
+    <form id="gestion" action="<?php ROOT ?>Gestion/updateaccount" method="POST" enctype="multipart/form-data">
 
         <div class="row">
             <div class="col-md-6">
@@ -57,7 +57,7 @@ global $content;
                 </div>
                 <div class="form-group">
                     <label>Téléphone :</label>
-                    <input type="tel" class="form-control" name="phone"
+                    <input type="tel" pattern = '[0-9]{10}' maxlength = '10' class="form-control" name="phone"
                            value="<?php echo $content['expertGestion'][0]['phone'] ?>">
                 </div>
                 <?php }  ?>
@@ -74,7 +74,6 @@ global $content;
 <?php include("changepass.php") ?>
 </div>
 
-<?php global $content ?>
 
 </body>
 </html>

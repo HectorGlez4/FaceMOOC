@@ -77,8 +77,7 @@ Class GestionFormation extends Controller
                 }
             } else {
 
-                header('Location:' . WEBROOT . 'GestionFormation');
-                echo 'This title is already used';
+                $this->showMessage("Vous avez déjà une formation avec ce titre");
             }
         }
     }//gestionfor

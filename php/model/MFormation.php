@@ -128,7 +128,7 @@
 			$stmt = $this->PDO->prepare($sql);
 			$title = htmlspecialchars($title);
 			$description = htmlspecialchars($description);
-			$required_skill = htmlspecialchars($required_skill);
+			$req_skill = htmlspecialchars($req_skill);
 			$difficulty = htmlspecialchars($difficulty);
 			$keywords = htmlspecialchars($keywords);
 			$stmt->bindParam(":idExpert", $idExpert, PDO::PARAM_INT);
@@ -178,7 +178,7 @@
 			$stmt = $this->PDO->prepare($sql);
 			$title = htmlspecialchars($title);
 			$description = htmlspecialchars($description);
-			$required_skill = htmlspecialchars($required_skill);
+			$req_skill = htmlspecialchars($req_skill);
 			$difficulty = htmlspecialchars($difficulty);
 			$keywords = htmlspecialchars($keywords);
 			$stmt->bindParam(":idExpert", $idExpert, PDO::PARAM_INT);

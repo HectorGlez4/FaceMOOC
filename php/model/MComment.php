@@ -7,6 +7,7 @@
 			$this->Connect();
 			$sql = "SELECT * FROM comment WHERE id_formation = :idFormation";
 			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":idFormation", $idFormation, PDO::PARAM_INT);
 			return $this->Select($stmt);
 		}
 

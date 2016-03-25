@@ -106,21 +106,6 @@ Class User extends Controller
         }
     }
 
-    function mailmdp()
-    {
-        if (empty($_POST['email'])) {
-            header('Location:' . WEBROOT . 'User/recupmdp');
-        } else {
-            $MUser = new MUser();
-            $checkMail = $MUser->SelectUserEmail($_POST['email']);
-            if ($checkMail) {
-                $MUser->recoverPassword($_POST['email']);
-            } else {
-                echo "Cet email n'a pas de compte sur ce site";
-            }
-        }
-    }
-
     function logout()
     {
         session_destroy();
@@ -132,6 +117,145 @@ Class User extends Controller
         return;
     }
 
+    function recoverPassword()
+    {
+        require ROOT . 'PHPMailer/PHPMailerAutoload.php';
+        require ROOT . 'PHPMailer/class.phpmailer.php';
+        if (empty($_POST['email'])) 
+        {
+            header('Location:' . WEBROOT . 'User/recupmdp');
+        } 
+        else 
+        {
+            $MUser = new MUser();
+            $checkMail = $MUser->SelectUserEmail($_POST['email']);
+            $codeRecup = rand(10000000, 99999999);
+            if (!$checkMail) {
+                echo "Cet email n'a pas de compte sur ce site";
+            } 
+            else 
+            {
+                $userMail = $_POST['email'];
+                $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
+                $token = str_shuffle($char);
+                $token = substr($token, 0);
+                //echo $token;
+                $MUser->UpdateCodeRecup($userMail, $codeRecup);
+                /*var_dump($userMail);
+                var_dump($codeRecup);
+                var_dump($test);*/
+                $MUser->UpdateToken($userMail, $token);
+                $body = "
+                    <h1>Réinitialisation du mot de passe</h1>
+                    <hr />
+                    <p>Bonjour, vous avez oublié votre mot de passe ? Pas de soucis.</p>
+                    <p>Suivez ce lien : </p>
+                    <a href='http://facemooc.esy.es/User/codemdp/".$token."'>Cliquez ici</a>
+                    <p>et veuillez saisir le code suivant</p>
+                    <h2>".$codeRecup."</h2>
+                    <hr />
+                    <p>Ce message a été généré automatiquement. Merci de ne pas y répondre.</p>
+                ";
+                $mailer = new PHPMailer();
+                $mailer->CharSet = "utf-8";
+                $mailer->IsHTML(true);
+                // De qui vient le message, e-mail puis nom
+                $mailer->From = "noreply@FaceMOOC.com";
+                $mailer->FromName = "Noreply - FaceMOOC";
+
+                // Définition du sujet/objet
+                $mailer->Subject = "FaceMOOC - Changement de mot de passe";
+                $mailer->AddAddress($userMail);
+                //$mailer->Subject ="Subject: =?UTF-8?B?".base64_encode("Réinitialisation du mot de passe | Zenetude")."?=";
+                $mailer->Body = $body;
+                if (!$mailer->Send())
+                {
+                    echo "Erreur lors de l'envoie du mail";
+                }
+                else
+                {
+                    echo "Un email vous a été envoyé à cette adresse";
+                }
+
+
+                /*          $mail = new PHPMailer();
+                            $mail->isSMTP();
+                            $mail->SMTPDebug = 2;
+                            $mail->SMTPAuth = true;
+                            $mail->SMTPSecure = "ssl";
+                            $mail->Host = "smtp.gmail.com";
+                            $mail->Port = 465;
+                            $mail->Username = "linyyoazz@gmail.com";
+                            $mail->Password = "";
+                            $mail->setFrom("linyyoazz@gmail.com", "Linda");
+                            $mail->Subject = "Récuperation de mot de passe";
+                            $mail->msgHTML('Bonjour');
+                            $address = "marvyn.duvauchelle@gmail.com";
+                            $mail->addAddress($address, "Marvyn");
+                            if(!$mail->Send())
+                                echo "Erreur lors de l'envoie du mail";
+                            else
+                                echo "Un email vous a été envoyé à cette adresse";*/
+            }
+        }  
+    }
+
+    function codeMdp($token){
+        $d['token'] = $token;
+        $this->set($d);
+        $this->render('codemdp');
+    }
+
+    function controlCode($token){
+        $MUser = new MUser();
+        $tokenVerif = $MUser->SelectUserToken($token);
+        if (!$token || !$tokenVerif) {
+            echo require(ROOT.'php/view/error.php');
+        }
+        else
+        {
+            $codeForm = $_POST['code'];
+            $codeForm = crc32($codeForm);
+            $codeVerif = $MUser->SelectUserCode($codeForm);
+            if (!$codeVerif) {
+                echo "Le code ne correspond pas";
+            }
+            else
+            {
+                $d['token'] = $token;
+                $this->set($d);
+                $this->render('formRecupMdp');
+            }
+        }
+    }
+
+    function newPassword($token){
+        if (empty($_POST['newMdp']) && empty($_POST['newMdpVerif'])) {
+            echo "Les champs doivent être remplis !";
+        }
+        else
+        {
+            $newMdp = $_POST['newMdp'];
+            $newMdpVerif = $_POST['newMdpVerif'];
+            if ($newMdp != $newMdpVerif) {
+                echo "Les mot de passe ne correspondent pas !";
+            }
+            else
+            {
+                $MUser = new MUser();
+                //var_dump($token);
+                $userMail = $MUser->SelectUserEmailByToken($token);
+                $userMail = $userMail[0]['email'];
+                //var_dump($userMail);
+                $MUser->UpdatePasswordByEmail($userMail, $newMdp);
+                //var_dump($test);
+                $MUser->DropCodeToken($userMail);
+                echo "Votre mot de passe à bien été modifié, vous allez être redirigé sur la page de connexion";
+                sleep(5);
+                header('Location:' . WEBROOT . 'User');
+            }
+        }
+    }
 }
 
 /*marvyn.duvauchelle@gmail.com*/

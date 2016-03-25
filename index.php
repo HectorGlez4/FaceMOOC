@@ -36,12 +36,12 @@ if (file_exists(ROOT.'php/controller/'.$controller.'.php')) {
 	    call_user_func_array(array($controller,$action),$params);
 	}
 	else{
-	    require(ROOT.'error/error_404.html');
+	    require(ROOT.'php/view/error.php');
 	}
 }
 else
 {
-	require(ROOT.'error/error_404.html');
+	require(ROOT.'php/view/error.php');
 }
 
 

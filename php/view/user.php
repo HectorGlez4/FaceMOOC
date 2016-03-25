@@ -33,7 +33,8 @@ include("head.php");
 	</div>
 	
 
-<?php global $content ?>
+<?php global $content;
+?>
 
 </body>
 </html>

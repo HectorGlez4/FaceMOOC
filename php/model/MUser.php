@@ -18,6 +18,26 @@
 			return $this->Select($stmt);
 		}
 
+		function SelectUserToken($token)
+		{
+			$Data = null;
+			$this->Connect();
+			$sql = "SELECT * FROM user WHERE token = :token";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":token", $token, PDO::PARAM_STR);
+			return $this->Select($stmt);
+		}
+
+		function SelectUserEmailByToken($token)
+		{
+			$Data = null;
+			$this->Connect();
+			$sql = "SELECT email FROM user WHERE token = :token";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":token", $token, PDO::PARAM_STR);
+			return $this->Select($stmt);
+		}
+
 		function SelectUserEmail($email)
 		{
 			$Data = null;
@@ -49,6 +69,16 @@
 			return $this->Select($stmt);
 				
 
+		}
+
+		function SelectUserCode($code)
+		{
+			$Data = null;
+			$this->Connect();
+			$sql = "SELECT code_recup FROM user WHERE code_recup = :code ";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":code", $code, PDO::PARAM_STR);
+			return $this->Select($stmt);
 		}
 
 		function SelectUserAvatar($email)
@@ -151,56 +181,6 @@
 			return false;
 		}
 
-		function recoverPassword($userMail)
-		{
-			require ROOT . 'PHPMailer/PHPMailerAutoload.php';
-			require ROOT . 'PHPMailer/class.phpmailer.php';
-			$body = "
-				<h1>Réinitialisation du mot de passe</h1>
-				<hr />
-				<p>Bonjour, vous avez oublié votre mot de passe ? Pas de soucis.</p>
-                <p><a href='#'>Cliquez ici pour modifier votre mot de passe.</a></p>
- 				<hr />
-				<p>Ce message a été généré automatiquement. Merci de ne pas y répondre.</p>
-			";
-			$mailer = new PHPMailer();
-			$mailer->CharSet = "utf-8";
-			$mailer->IsHTML(true);
-			// De qui vient le message, e-mail puis nom
-			$mailer->From = "noreply@FaceMOOC.com";
-			$mailer->FromName = "Noreply - FaceMOOC";
-
-			// Définition du sujet/objet
-			$mailer->Subject = "FaceMOOC - Changement de mot de passe";
-			$mailer->AddAddress($userMail);
-			//$mailer->Subject ="Subject: =?UTF-8?B?".base64_encode("Réinitialisation du mot de passe | Zenetude")."?=";
-			$mailer->Body = $body;
-			if (!$mailer->Send())
-				echo "Erreur lors de l'envoie du mail";
-			else
-				echo "Un email vous a été envoyé à cette adresse";
-
-
-			/*			$mail = new PHPMailer();
-                        $mail->isSMTP();
-                        $mail->SMTPDebug = 2;
-                        $mail->SMTPAuth = true;
-                        $mail->SMTPSecure = "ssl";
-                        $mail->Host = "smtp.gmail.com";
-                        $mail->Port = 465;
-                        $mail->Username = "linyyoazz@gmail.com";
-                        $mail->Password = "";
-                        $mail->setFrom("linyyoazz@gmail.com", "Linda");
-                        $mail->Subject = "Récuperation de mot de passe";
-                        $mail->msgHTML('Bonjour');
-                        $address = "marvyn.duvauchelle@gmail.com";
-                        $mail->addAddress($address, "Marvyn");
-                        if(!$mail->Send())
-                            echo "Erreur lors de l'envoie du mail";
-                        else
-                            echo "Un email vous a été envoyé à cette adresse";*/
-		}
-
 		function SelectGestionUser($email)
 		{
 			$Data = null;
@@ -247,6 +227,59 @@
 
 			//return destination file
 			return $dest;
+		}
+
+		function UpdateCodeRecup($email, $code){
+			$this->Connect();
+			$sql = "UPDATE  user SET  code_recup =  :code WHERE  email = :email";
+			$stmt = $this->PDO->prepare($sql);
+			$code = crc32($code); 
+			$stmt->bindParam(":code", $code, PDO::PARAM_STR);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			if($this->Update($stmt))
+			{
+				return true;
+			}
+			return false;
+		}
+
+		function UpdatePasswordByEmail($email, $password){
+			$this->Connect();
+			$sql = "UPDATE user SET password = :password WHERE email = :email";
+			$stmt = $this->PDO->prepare($sql);
+			$password = md5($password);
+			$stmt->bindParam(":password", $password, PDO::PARAM_STR);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			if($this->Update($stmt))
+			{
+				return true;
+			}
+			return false;
+		}
+
+		function UpdateToken($email, $token){
+			$this->Connect();
+			$sql = "UPDATE user SET token = :token WHERE email = :email";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":token", $token, PDO::PARAM_STR);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			if($this->Update($stmt))
+			{
+				return true;
+			}
+			return false;
+		}
+
+		function DropCodeToken($email){
+			$this->Connect();
+			$sql = "UPDATE user SET token = '', code_recup = '' WHERE email = :email";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+			if($this->Update($stmt))
+			{
+				return true;
+			}
+			return false;
 		}
 
 	}

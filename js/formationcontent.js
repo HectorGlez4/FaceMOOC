@@ -52,7 +52,6 @@ function loadClassMenu(idChap)
 
 function loadClass(idClass)
 {
-	cleanClassMenu();
 	post = "idClass=" + idClass;
 	$.ajax(
 	{

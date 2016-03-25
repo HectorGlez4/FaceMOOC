@@ -7,7 +7,7 @@
 
 	$mclass = new MClass();
 	$mclass->Connect();
-	$response = $mchlass->SelectClass($idClass);
+	$response = $mclass->SelectClass($idClass);
 	
 	
 	echo json_encode($response);

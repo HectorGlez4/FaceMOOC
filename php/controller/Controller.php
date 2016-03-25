@@ -1,13 +1,26 @@
 <?php
+/**
+ * Controlleur principal
+ * Ici on défini les méthodes principales utilisé par les autres controlleurs
+ *
+**/
 
 Class Controller {
-
+    // Déclaration du tableau stockant l'ensemble des données envoyé vers les vues
 	var $vars = array();
 
+    /**
+     * Fonction instanciant le tableau
+     *
+    **/ 
     function set($d) {
         $this->vars = array_merge($this->vars,$d);
     }
 
+    /**
+     * Fonction envoyant le tableau vers la vue $filename
+     *
+    **/
     function render($filename) {
         global $content;
         $content = $this->vars;

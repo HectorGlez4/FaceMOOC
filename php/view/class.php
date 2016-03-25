@@ -9,6 +9,10 @@ $classesInfo = $content['currentclass'][0];
 $formation = $content['formation'][0]['id_formation'];
 $comments=$content['comments'][0]['description'];
 ?>
+<!--<script src="<?php echo WEBROOT?>js/addComments.js"></script>!-->
+<script src="<?php echo WEBROOT?>js/addComments.js"></script>
+
+
 <div class='container'>
 	<div class="jumbotron">
 
@@ -51,19 +55,21 @@ $comments=$content['comments'][0]['description'];
 		<h3 class="text-center ">Commentaires</h3>
 	</div>
 
-	<form>
+	<form id="frmaddComment">
+		                <input type="hidden" name="idFormation" value="<?php echo $idForm ?>">
+
 						<div class="modal-body">
-                            <div class="form-group">
+                          <!--   <div class="form-group">
                             <label for="name" class="control-label">Nom :</label>
-                            <input type="text" class="form-control" name="comm" value="<?php echo $content['userInfo'][0]['firstname'] ?>">
-                          </div>
+                            <input type="text" id="nam" class="form-control" name="comm" value="<?php echo $content['userInfo'][0]['firstname'] ?>">
+                          </div> -->
                           
 		 
                             <div class="form-group">
                             <label for="comm" class="control-label">Commentez et notez :</label>
-                            <textarea rows="4" cols="60" class="form-control" placeholder="Mes commentaires..." name="comm" required autofocus></textarea>
+                            <textarea rows="4" id="desc" cols="60" class="form-control" placeholder="Mes commentaires..." name="comm" required autofocus></textarea>
                           </div>
-                          <button type="button" class="btn btn-primary" data-id="'.$formation.'">Commenter</button>
+                    <button id="btnc" class="btn btn-sm btn-primary btn-block" type="submit">Ajouter Comment</button>
                           </div>
 
                             
@@ -97,4 +103,13 @@ var_dump($comments);
 	</div>
 	</div>
 		</div>
+
+
+<?php $idForm = $content['formation'][0]['id_formation']; ?>
+<?php echo $idForm  ?>  
+<?php  echo "<script> var idFormation = " . $content['formation'][0]['id_formation'] . "</script>" ?> 
+<script src="<?php echo WEBROOT?>js/addComments.js"></script>
+<script>addComment(idFormation)</script>
+
+
 </div>

@@ -4,6 +4,12 @@ $("#addChapter").click(function(event)
 	addChapter(idFormation);
 });
 
+$("#addClass").click(function(event)
+{
+	event.preventDefault();
+	addClass();
+});
+
 function loadChapterMenu(idform)
 {
 	cleanChapterMenu();
@@ -23,6 +29,7 @@ function loadChapterMenu(idform)
 	});
 }
 
+
 function loadClassMenu(idChap)
 {
 	cleanClassMenu();
@@ -38,7 +45,29 @@ function loadClassMenu(idChap)
 		$.each(data, function(index, a)
 		{
 			idUL = "#chp" + idChap;
-			$(idUL).append("<a><li>"+ a.title +"</li></a>");
+			$(idUL).append("<a onclick='loadClass("+a.id_class+")'><li>"+ a.title +"</li></a>");
+		});
+	});
+}
+
+function loadClass(idClass)
+{
+	cleanClassMenu();
+	post = "idClass=" + idClass;
+	$.ajax(
+	{
+		url: '/FaceMOOC/php/controller/SelectClass.php',
+		type: 'POST',
+		dataType: 'json',
+		data: post,
+	}).done(function(data)
+	{
+		$.each(data, function(index, a)
+		{
+			$("#iclTitle").val(a.title);
+			$("#iclDescription").val(a.description);
+			$("#iclVideo").val(a.video);
+			$("#iclID").val(a.id_class);
 		});
 	});
 }
@@ -51,12 +80,33 @@ function cleanChapterMenu()
 
 function cleanClassMenu()
 {
+
 	$(".chpMenu").empty();
 }
-$
+
 function addChapter(idInsert)
 {
+	$.ajax(
+	{
+		url: '/FaceMOOC/php/controller/InsertChapter.php',
+		type: 'POST',
+		dataType: 'json',
+		data: $("#frmAddChapter").serialize(),
+	}).done(function(r)
+	{
+		if(r)
+		{
+			alert("Chapter added succesfully");
+			loadChapterMenu(idInsert);
+		}
+	});
+	cleanClassMenu();
+	alert(idform);
+	loadChapterMenu(idform);
+}
 
+function addClass(idInsert)
+{
 	$.ajax(
 	{
 		url: '/FaceMOOC/php/controller/InsertChapter.php',

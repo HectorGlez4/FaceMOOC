@@ -11,7 +11,9 @@ create table user(
 		password varchar(255),
 		firstname varchar(255),
 		lastname varchar(255),
-		avatar varchar(255)
+		avatar varchar(255),
+		code_recup varchar(255),
+		token varchar(255)
 		)engine=innodb;
 create table expert(
 		id_expert int primary key auto_increment,

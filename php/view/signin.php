@@ -3,7 +3,7 @@
 <body>
 <div class="container well" id="contenu">
 
-    <form method="post" action="<?php WEBROOT ?>signin">
+    <form id="sign" method="post" action="<?php WEBROOT ?>signin">
         <div class="form-group">
             <label for="signin">Inscrivez vous !</label>
         </div>
@@ -40,6 +40,10 @@
         <button type="submit" name="submit" class="btn btn-md btn-primary btn-block" value="Inscription">Inscription
         </button>
         <a class='btn btn-md btn-primary btn-block' href='<?php WEBROOT ?>..'>Retour</a>
+        <div id="result"></div><!-- Retour de l'erreur en json -->
     </form>
+
 </div>
+<script src="<?php echo WEBROOT ?>js/showmessage.js"></script>
+<script>showmessage("sign");</script>
 </body>

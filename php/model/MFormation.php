@@ -60,6 +60,18 @@
 			return ($this->Select($stmt));
 		}
 
+		function SelectFormationsAbonnementPage($idEmail, $Page)
+		{
+			$this->Connect();
+			$offset = $this->NbResults * ($Page-1);
+			$sql = "SELECT f.* FROM formation AS f JOIN inscription AS i ON f.id_formation = i.id_formation JOIN user AS u ON u.id_user = i.id_user WHERE u.email = :idEmail LIMIT :offset, :nbResults";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
+			$stmt->bindParam(":nbResults", $this->NbResults, PDO::PARAM_INT);
+			$stmt->bindParam(":idEmail", $idEmail, PDO::PARAM_STR);
+			return ($this->Select($stmt));
+		}
+
 		function SelectFormationById($id)
 		{
 			$this->Connect();
@@ -71,6 +83,18 @@
 
 		function CountFormations(){
 			$sql = "Select count(*) From formation";
+			return $this->SelectOne($sql);
+		}
+
+		function CountFormationsAbonnements($idEmail){
+			$this->Connect();
+			$sql = "SELECT count(f.id_formation) FROM formation AS f JOIN inscription AS i ON f.id_formation = i.id_formation JOIN user AS u ON u.id_user = i.id_user WHERE u.email = '" . $idEmail . "'"; //:idEmail";
+			//$stmt = $this->PDO->prepare($sql);
+			//$stmt->bindParam(":idEmail", $idEmail, PDO::PARAM_STR);
+			//$stmt->execute();
+			//return ($stmt->fetch());
+			//return $sql;
+			//return $this->($sql);
 			return $this->SelectOne($sql);
 		}
 		
@@ -117,7 +141,7 @@
 			$stmt = $this->PDO->prepare($sql);
 			$title = htmlspecialchars($title);
 			$description = htmlspecialchars($description);
-			$required_skill = htmlspecialchars($required_skill);
+			$req_skill = htmlspecialchars($req_skill);
 			$difficulty = htmlspecialchars($difficulty);
 			$keywords = htmlspecialchars($keywords);
 			$stmt->bindParam(":idExpert", $idExpert, PDO::PARAM_INT);
@@ -140,6 +164,23 @@
 			return $this->Delete($stmt);
 		}
 
+		function SelectInscriptionByKeywords($keywords, $Page, $idUser)
+		{
+			$this->Connect();
+			$offset = $this->NbResults * ($Page-1);
+			$keyarray = explode(" ", $keywords);
+			$Data = null;
+			$sql = "SELECT f.* FROM formation AS f JOIN inscription AS i ON f.id_formation = i.id_formation JOIN user AS u ON u.id_user = i.id_user WHERE u.email = :idUser";
+			foreach ($keyarray as $key => $value) {
+				$sql .= " OR keywords LIKE '%$value%'";
+			}
+			$sql .= " LIMIT " . $offset .", " . $this->NbResults;
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":idUser", $idUser, PDO::PARAM_STR);
+			//return $stmt->debugDumpParams();
+			return ($this->Select($stmt));
+		}
+
 		function UpdateFormation($idExpert, $title, $description, $image
 								, $req_skill, $difficulty, $keywords, $idFormation)
 		{
@@ -150,7 +191,7 @@
 			$stmt = $this->PDO->prepare($sql);
 			$title = htmlspecialchars($title);
 			$description = htmlspecialchars($description);
-			$required_skill = htmlspecialchars($required_skill);
+			$req_skill = htmlspecialchars($req_skill);
 			$difficulty = htmlspecialchars($difficulty);
 			$keywords = htmlspecialchars($keywords);
 			$stmt->bindParam(":idExpert", $idExpert, PDO::PARAM_INT);

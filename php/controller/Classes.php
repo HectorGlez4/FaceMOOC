@@ -1,4 +1,9 @@
 <?php
+/**
+ * Controlleur des classes
+ * Envoie les donner à afficher à la vue class.php
+ *
+**/
 
 include_once(ROOT.'php/model/MFormation.php');
 include_once(ROOT.'php/model/MChapter.php');
@@ -7,17 +12,31 @@ include_once(ROOT.'php/model/MUser.php');
 include_once(ROOT.'php/model/MComment.php');
 
 
-
+/**
+ * Class du controlleur des classes contenu dans les chapitres
+ *
+**/
 Class Classes extends Controller {
 	var $layout;
 
+    /**
+     * Fonction gérant l'affichage sur la page d'accueil du controlleur
+     *
+     * @param int $id
+     *      ID de la personne connectée
+    **/
     function index($id) {
+        // Si l'utilisateur n'est pas connecté, 
+        //il est redirigé vers la page de connexion
         if(!isset($_SESSION['id'])) {
             header('Location:'.WEBROOT.'User');
             return;
         }
+        // Création des objets
         $MClass = new MClass();
         $MUser = new MUser();
+        // Utilisation des méthodes des objets
+        // les données retourner par les méthodes sont stockées dans le tableau $d
         $MComment = new MComment();
         $MFormation = new MFormation();
 
@@ -27,11 +46,13 @@ Class Classes extends Controller {
         $d['currentclass'] = $MClass->SelectClass($id);
         $idFormation= $MFormation->SelectIdFormationByClass($id);
         $d['commentInfo']=$MComment->SelectComment($idFormation[0]['id_formation']);
-
-        
+        $d['comments'] = $MComment->SelectComment($id);
+        // Si la classe courrante n'existe pas, on affiche la page d'erreur 404
         if ($d['currentclass'] == null) {
             require(ROOT.'php/view/error.php');
         }
+        // Sinon les chapitres de la class courrante, 
+        //ainsi qu'elle même sont envoyés à la vue
         else{
             $chapters = $d['chapter'];
             //var_dump($chapters);
@@ -40,6 +61,8 @@ Class Classes extends Controller {
                 $d['class'][$chapter['id_chapter']] = $MClass->SelectClassByChapterId($chapter['id_chapter']);
                 //var_dump($d['class']);
             }
+            // Toutes les données stockées dans le tablea $d
+            // sont envoyées vers la vu class.php
             $this->set($d);
             $this->render('class');
         }

@@ -47,7 +47,23 @@ global $content;
                         data-target="#myModal">Modifier mot de passe
                 </button> -->
        </form>
+
     </div>
+
+
+    <script>
+            $("#btnc").on("submit", function(event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "/FaceMOOC/php/controller/Comments.php",
+                    data: $(this).serialize(),
+                    success: function(data) {
+                        $("#chatbox").append(data+"<br/>");//instead this line here you can call some function to read database values and display
+                    },
+                });
+            });
+        </script>
 <?php $idForm = $content['FormationInfo'][0]['id_formation']; ?>
 <?php echo $idForm  ?>  
 <?php include("addChapter.php") ?> 

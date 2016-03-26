@@ -27,7 +27,6 @@ Class Formation extends Controller {
         $MComment = new MComment();
         $MClass = new MClass();
         $d['formation'] = $MFormation->SelectFormationById($id);
-        $d['comments'] = $MComment->SelectComment($id);
 
         if ($d['formation'] == null) {
             echo require(ROOT.'php/view/error.php');

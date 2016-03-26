@@ -27,6 +27,7 @@ function loadClassMenu(idChap)
 {
 	cleanClassMenu();
 	post = "idChapter=" + idChap;
+
 	$.ajax(
 	{
 		url: '/FaceMOOC/php/controller/SearchClasses.php',
@@ -38,7 +39,7 @@ function loadClassMenu(idChap)
 		$.each(data, function(index, a)
 		{
 			idUL = "#chp" + idChap;
-			$(idUL).append("<a><li>"+ a.title +"</li></a>");
+			$(idUL).append("<a><li>"+ a.description +"</li></a>");
 		});
 	});
 }

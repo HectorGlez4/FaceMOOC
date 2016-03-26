@@ -19,11 +19,14 @@ Class Classes extends Controller {
         $MClass = new MClass();
         $MUser = new MUser();
         $MComment = new MComment();
+        $MFormation = new MFormation();
+
         $d['userInfo'] = $MUser->SelectUserEmail($_SESSION['email']);
         $d['formation'] = $MClass->SelectInfoByJoin('f.*', $id);
         $d['chapter'] = $MClass->SelectInfoByJoin('ch.*', $id);
         $d['currentclass'] = $MClass->SelectClass($id);
-        $d['comments'] = $MComment->SelectComment($id);
+        $idFormation= $MFormation->SelectIdFormationByClass($id);
+        $d['commentInfo']=$MComment->SelectComment($idFormation[0]['id_formation']);
 
         
         if ($d['currentclass'] == null) {

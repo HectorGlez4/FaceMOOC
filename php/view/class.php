@@ -7,10 +7,17 @@ $chapterInfo = $content['chapter'];
 $classInfo = $content['class'];
 $classesInfo = $content['currentclass'][0];
 $formation = $content['formation'][0]['id_formation'];
-$comments=$content['comments'][0]['description'];
+$idForm = $content['formation'][0]['id_formation']; 
+$idUser= $content['userInfo'][0]['id_user'];
+$Comments= $content['commentInfo'];
+
+date_default_timezone_set('Europe/Paris');
+$date=date("Y-m-d H:i:s");
+//var_dump($Comments);
+
 ?>
-<!--<script src="<?php echo WEBROOT?>js/addComments.js"></script>!-->
-<script src="<?php echo WEBROOT?>js/addComments.js"></script>
+
+
 
 
 <div class='container'>
@@ -55,37 +62,128 @@ $comments=$content['comments'][0]['description'];
 		<h3 class="text-center ">Commentaires</h3>
 	</div>
 
+
 	<form id="frmaddComment">
 		                <input type="hidden" name="idFormation" value="<?php echo $idForm ?>">
+		               	<input type="hidden" name="idUser" value="<?php echo $idUser ?>">
+		               	<input type="hidden" name="date" value="<?php echo $date ?>">
 
-						<div class="modal-body">
-                          <!--   <div class="form-group">
+						<!-- <div class="modal-body">
+                            <div class="form-group">
                             <label for="name" class="control-label">Nom :</label>
                             <input type="text" id="nam" class="form-control" name="comm" value="<?php echo $content['userInfo'][0]['firstname'] ?>">
                           </div> -->
-                          
+                          <div class="modal-body">
+                          <div class="form-group">
+                            <label for="mark" class="control-label">Notez le class :</label>
+                            <input type="radio" name="mark" value="10" required> 10
+                            <input type="radio" name="mark" value="20"> 20
+                            <input type="radio" name="mark" value="30"> 30
+                            <input type="radio" name="mark" value="40"> 40
+                            <input type="radio" name="mark" value="50"> 50
+                            <input type="radio" name="mark" value="60"> 60
+                            <input type="radio" name="mark" value="70"> 70
+                            <input type="radio" name="mark" value="80"> 80
+                            <input type="radio" name="mark" value="90"> 90
+                            <input type="radio" name="mark" value="100"> 100
+                          </div><br>
 		 
                             <div class="form-group">
-                            <label for="comm" class="control-label">Commentez et notez :</label>
-                            <textarea rows="4" id="desc" cols="60" class="form-control" placeholder="Mes commentaires..." name="comm" required autofocus></textarea>
+                            <label for="comm" class="control-label">Ajout un commentaire:</label><br>
+                            <span class="control-label"> </span>
+                      <textarea rows="4" name="des" id="desc" cols="60" class="form-control" placeholder="Mes commentaires.." name="comm" required></textarea>
                           </div>
-                    <button id="btnc" class="btn btn-sm btn-primary btn-block" type="submit">Ajouter Comment</button>
+                          
+                    <button id="btnc" class="btn btn-sm btn-primary btn-block" type="submit">Ajouter</button>
+
                           </div>
 
-                            
+          <!-- <div class="panel panel-default">
+		<div class="panel-body">
+		<ul class="comments-holder-ul">
+			<li class="comment-holder" id="_1">
+			<div class="user-img">
+			<img src="" class="user-img-pic">
+			</div>
+
+			<h3 class="username-field">
+				<?php echo $content['userInfo'][0]['firstname'].' '.$content['userInfo'][0]['lastname'] ?>
+			</h3>
+			<div class="comment-text" id="comments">
+			
+
+
+			</div>
+			</li>
+
+
+		</ul>
+		</div>
+</div> !-->
+
+
+
+                  
 	</form>
+	<div id="comments"></div>
+	<div id="flash"></div>
+<div id="display"></div>
+ <script>
+            
 
-	<div id="comments">
-                          	<?php
+            $("#frmaddComment").on("submit", function(event) {
 
+				var comment=$('#desc').val();
+
+				$("#flash").show();
+
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "/FaceMOOC/php/controller/Comments.php",
+                    data: $(this).serialize(),
+                    success: function(data) {
+                    	$("#comments").before( $( "#display" ));
+					document.getElementById('desc').value='';
+					document.getElementById('desc').focus();
+					$("#flash").hide();
+                       $("#comments").append("<p>The comment text: "+comment+"</p>");//instead this line here you can call some function to read database values and display
+
+                    },
+                });
+            });
+        </script>
+
+
+
+<?php $idForm = $content['formation'][0]['id_formation']; ?>
+<?php  echo "<script> var idFormation = " . $content['formation'][0]['id_formation'] . "</script>" ?> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      	<?php
+//var_dump($content['commentInfo']);
         global $content;
-var_dump($comments);
-        if (is_array($content['formation']) || is_object($content['formation'])) {
+        if (is_array($content['commentInfo']) || is_object($content['commentInfo'])) {
 
-            foreach ($content['formation'] as $key) {
+            foreach ($content['commentInfo'] as $key) {
 				echo '<table>';
+                echo '<thead>';
+
+    	 echo '<tr>';
                 echo '<tr>';
-                echo '<td>' . $key["id_formation"] . '</td>';
+                echo '<td> The comment text: ' . $key["description"] . '</td>';
                	echo '</tr>';
                	echo '</table>';
 
@@ -96,20 +194,30 @@ var_dump($comments);
         }
 
 
-        ?>
+        ?>  
+        
                           	
-                          </div>
+                          
 		
-	</div>
+	
 	</div>
 		</div>
+</div>
 
 
-<?php $idForm = $content['formation'][0]['id_formation']; ?>
-<?php echo $idForm  ?>  
-<?php  echo "<script> var idFormation = " . $content['formation'][0]['id_formation'] . "</script>" ?> 
-<script src="<?php echo WEBROOT?>js/addComments.js"></script>
-<script>addComment(idFormation)</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </div>

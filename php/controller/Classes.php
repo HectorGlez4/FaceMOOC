@@ -17,7 +17,7 @@ include_once(ROOT.'php/model/MComment.php');
  *
 **/
 Class Classes extends Controller {
-	var $layout;
+    var $layout;
 
     /**
      * Fonction gérant l'affichage sur la page d'accueil du controlleur
@@ -45,7 +45,9 @@ Class Classes extends Controller {
         $d['chapter'] = $MClass->SelectInfoByJoin('ch.*', $id);
         $d['currentclass'] = $MClass->SelectClass($id);
         $idFormation= $MFormation->SelectIdFormationByClass($id);
-        $d['commentInfo']=$MComment->SelectComment($idFormation[0]['id_formation']);
+        //cambie esta funcion y la cree en tu Mclass, esta funcion es la consulta de el comentario con inner join
+        //con user, asi sabremos quien lo comento :D te amo Linda <3 jaja
+        $d['commentInfo']=$MClass->SelectComment1($idFormation[0]['id_formation']);
         $d['comments'] = $MComment->SelectComment($id);
         // Si la classe courrante n'existe pas, on affiche la page d'erreur 404
         if ($d['currentclass'] == null) {

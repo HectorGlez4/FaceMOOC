@@ -32,7 +32,6 @@ Class User extends Controller
 
             if ($connect) {
                 $MExpert = new MExpert();
-                session_start();
                 $_SESSION['id'] = 1;
                 $_SESSION['avatar'] = $avatar;
                 $_SESSION['email'] = $_POST['email'];
@@ -40,8 +39,8 @@ Class User extends Controller
                 if ($idExpert) {
                     $_SESSION['id_expert'] = 1;
                 }
-                
-                header('Location:' . WEBROOT . 'Home');
+                $this->showMessage("Email ou mot de passe incorrecte", "ok", WEBROOT . 'Home');
+                //header('Location:' . WEBROOT . 'Home');
             } else {
 //                header('Location:' . WEBROOT . 'index');
                 $this->showMessage("Email ou mot de passe incorrecte");
@@ -84,7 +83,6 @@ Class User extends Controller
                 if ($password == $passwordconf) {
                     $avatar = WEBROOT.'img/avatar.png';
                     $MUser->InsertUser($email, $password, $_POST['firstname'], $_POST['lastname'], $avatar);
-                    session_start();
                     $_SESSION['id'] = 1;
                     $_SESSION['avatar'] = $avatar;
                     $_SESSION['email'] = $email;

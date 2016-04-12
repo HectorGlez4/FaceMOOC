@@ -26,6 +26,13 @@ if (isset($_SESSION['id']) && $controller == 'index') {
     $controller = 'Home';
 }
 
+$url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+$urlParams = explode("/", $url);
+if (end($urlParams) == "logout") {
+	$controller = 'User';
+	$action = 'logout';
+}
+
 /*var_dump($controller, $action);*/
 /*var_dump($_SESSION['email']);*/
 if (file_exists(ROOT.'php/controller/'.$controller.'.php')) {

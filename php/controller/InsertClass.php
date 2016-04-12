@@ -8,6 +8,6 @@
 	$mclass = new MClass();
 	$mclass->Connect();
 	$response = $mclass->InsertClass($idChapter, $titleClass, "", "", "");
-	
+
 	
 	echo json_encode($response);

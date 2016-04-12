@@ -66,7 +66,7 @@ class MClass extends Model {
 
     function UpdateClass($title, $description, $video, $docs, $idClass) {
         $this->Connect();
-        $sql = "UPDATE chapter SET title = :title , 
+        $sql = "UPDATE class SET title = :title ,
             description = :description , video = :video, docs = :docs WHERE id_class = :idClass";
         $stmt = $this->PDO->prepare($sql);
         $title = htmlspecialchars($title);
@@ -78,6 +78,62 @@ class MClass extends Model {
         $stmt->bindParam(":video", $video, PDO::PARAM_STR);
         $stmt->bindParam(":docs", $docs, PDO::PARAM_STR);
         return $this->Update($stmt);
+    }
+
+    function addDoc($fichier, $idClass)
+    {
+        $this->Connect();
+        $sql = "UPDATE class SET docs = :fichier WHERE id_class = :idClass";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->bindParam(":idClass", $idClass, PDO::PARAM_STR);
+        $stmt->bindParam(":fichier", $fichier, PDO::PARAM_STR);
+        if($this->Update($stmt))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    function addVideo($link, $idClass)
+    {
+        $this->Connect();
+        $sql = "UPDATE class SET video = :link WHERE id_class = :idClass";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->bindParam(":idClass", $idClass, PDO::PARAM_STR);
+        $stmt->bindParam(":link", $link, PDO::PARAM_STR);
+        if($this->Update($stmt))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    function addDescription($desc, $idClass)
+    {
+        $this->Connect();
+        $sql = "UPDATE class SET description = :desc WHERE id_class = :idClass";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->bindParam(":idClass", $idClass, PDO::PARAM_STR);
+        $stmt->bindParam(":desc", $desc, PDO::PARAM_STR);
+        if($this->Update($stmt))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    function addTitle($title, $idClass)
+    {
+        $this->Connect();
+        $sql = "UPDATE class SET title = :title WHERE id_class = :idClass";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->bindParam(":idClass", $idClass, PDO::PARAM_STR);
+        $stmt->bindParam(":title", $title, PDO::PARAM_STR);
+        if($this->Update($stmt))
+        {
+            return true;
+        }
+        return false;
     }
 
 }

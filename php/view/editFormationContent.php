@@ -9,7 +9,6 @@ global $content;
     </div>
 
 
-    <form id="editFormationContent" action="<?php echo WEBROOT ?>GestionFormation/updateClass" method="POST" enctype="multipart/form-data">
 
         <div class='row'>
             <div class='col-md-3'>
@@ -23,10 +22,9 @@ global $content;
                 <td><a href="" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-file"
                                                                                  aria-hidden="true"></span> Cours </a>
                 </td>
-
             </div>
             <div class='col-md-9'>
-                <form action="../updateClass" method="POST" enctype="multipart/form-data">
+                <form id="editFormationContent" action="<?php echo WEBROOT ?>GestionFormation/updateClass" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="iclID" id="iclID">
                     <div class="form-group">
                         <label for="title">Titre :</label>
@@ -42,10 +40,14 @@ global $content;
                         <input id="iclVideo" type="url" class="form-control" name="video" placeholder="http://"/>
                         <p>Le lien de la vidéo à copier se situe sous la vidéo "Partager"->"Intégrer" entre les apostrophes après "src", sous la forme "https://www.youtube.com/embed/oavMtUWDBTM"</p>
                     </div>
+                    <div class="form-group">
+                        <label for="video">Ajoutez votre cours (pdf) :</label>
+                        <div class="input-group">
+                            <input class="btn btn-md btn-primary btn-block" type="file" name="cours"/>
+                        </div>
+                    </div>
                     <button class="btn btn-md btn-primary btn-block" type="submit">Modifier ce cours</button>
-                    <div id="result"></div>
             </div>
-    </form>
 </div>
 </form>
 </div>
@@ -69,15 +71,15 @@ global $content;
 
 </script>
 
-<script src="<?php echo WEBROOT ?>js/showmessage.js"></script>
-<script>showmessage("editFormationContent");</script>
+
 
 <?php $idForm = $content['FormationInfo'][0]['id_formation']; ?>
 
-
-<?php echo $idForm;  ?>
 <?php include("addClassModal.php"); ?>
 <?php include("addChapterModal.php"); ?>
+
+
+
 <?php  echo "<script> var idFormation = " . $content['FormationInfo'][0]['id_formation'] . "</script>" ?>
 <script src="<?php echo WEBROOT?>js/formationcontent.js"></script>
 <script>loadChapterMenu(idFormation)</script>

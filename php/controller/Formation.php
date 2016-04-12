@@ -69,7 +69,7 @@ Class Formation extends Controller {
         $d['comments'] = $MComment->SelectComment($id);
         // Si la formation sélectionnée n'existe pas,
         // on affiche la page d'erreur 404
->
+
         if ($d['formation'] == null) {
 
             echo require(ROOT.'php/view/error.php');

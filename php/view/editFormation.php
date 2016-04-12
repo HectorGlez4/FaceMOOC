@@ -25,9 +25,6 @@ if ($skill == 'Advanced') {
 }
 ?>
 
-<script type="text/javascript" language="javascript" src="<?php echo WEBROOT ?>js/jquery.js"></script>
-<script type="text/javascript" language="javascript" src="<?php echo WEBROOT ?>js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" language="javascript" src="<?php echo WEBROOT ?>js/tableformations.js"></script>
 
 <body>
 
@@ -102,9 +99,5 @@ if ($skill == 'Advanced') {
 
     </div>
 </div>
-
-</div>
-</div>
-
-
 </body>
+<?php include('footer.php') ?>

@@ -1,9 +1,3 @@
-<!--     <div class="container">
-            <div class="row">
-                <h3>Liste de Cours</h3>
-            </div>
-            <div class="row"> -->
-<!-- <table class="table table-striped table-bordered" > -->
 <div class="table-responsive">
     <table id="example" class="table" cellspacing="0" width="100%">
 
@@ -69,7 +63,4 @@
         </tbody>
     </table>
 </div>
-
-
-</body>
-</html>
+<?php include('footer.php') ?>

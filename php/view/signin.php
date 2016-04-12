@@ -47,3 +47,4 @@
 <script src="<?php echo WEBROOT ?>js/showmessage.js"></script>
 <script>showmessage("sign");</script>
 </body>
+<?php include('footer.php') ?>

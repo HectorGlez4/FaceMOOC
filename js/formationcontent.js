@@ -1,3 +1,5 @@
+var idChapter;
+
 $("#addChapter").click(function(event)
 {
 	event.preventDefault();
@@ -7,7 +9,7 @@ $("#addChapter").click(function(event)
 $("#addClass").click(function(event)
 {
 	event.preventDefault();
-	addClass();
+	addClass(idChapter);
 });
 
 function loadChapterMenu(idform)
@@ -32,6 +34,7 @@ function loadChapterMenu(idform)
 
 function loadClassMenu(idChap)
 {
+	$("#hidChapter").val(idChap);
 	cleanClassMenu();
 	post = "idChapter=" + idChap;
 
@@ -107,20 +110,21 @@ function addChapter(idInsert)
 	loadChapterMenu(idform);
 }
 
-function addClass(idInsert)
+function addClass(idClass)
 {
+	
 	$.ajax(
 	{
-		url: '/FaceMOOC/php/controller/InsertChapter.php',
+		url: '/FaceMOOC/php/controller/InsertClass.php',
 		type: 'POST',
 		dataType: 'json',
-		data: $("#frmAddChapter").serialize(),
+		data: $("#frmAddClass").serialize(),
 	}).done(function(r)
 	{
 		if(r)
 		{
-			alert("Chapter added succesfully");
-			loadChapterMenu(idInsert);
+			alert("Class added succesfully");
+			loadClassMenu(idClass);
 		}
 	});
 	cleanClassMenu();

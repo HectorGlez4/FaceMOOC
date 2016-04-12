@@ -70,10 +70,10 @@ global $content;
 
 </script>
 <?php $idForm = $content['FormationInfo'][0]['id_formation']; ?>
-<?php echo $idForm ?>
-<?php include("addChapter.php") ?>
-<?php include("addClass.php") ?>
-<?php echo "<script> var idFormation = " . $content['FormationInfo'][0]['id_formation'] . "</script>" ?>
+<?php echo $idForm;  ?>
+<?php include("addClassModal.php"); ?>   
+<?php include("addChapterModal.php"); ?> 
+<?php  echo "<script> var idFormation = " . $content['FormationInfo'][0]['id_formation'] . "</script>" ?>
 
 <script>loadChapterMenu(idFormation)</script>
 

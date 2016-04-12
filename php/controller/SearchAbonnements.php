@@ -9,7 +9,7 @@ $mform = new MFormation();
 $mform->Connect();
 
 $response = $mform->SelectInscriptionByKeywords($keywords, $page, $idUser);
-$response[] = $mform->CountFormationsAbonnements($idUser);
+$response[] = $mform->CountFormationsAbonnements($keywords, $idUser);
 $response[] = $mform->NbResults;
 
 echo json_encode($response);

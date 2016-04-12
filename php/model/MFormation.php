@@ -86,9 +86,13 @@
 			return $this->SelectOne($sql);
 		}
 
-		function CountFormationsAbonnements($idEmail){
+		function CountFormationsAbonnements($keywords, $idEmail){
 			$this->Connect();
+			$keyarray = explode(" ", $keywords);
 			$sql = "SELECT count(f.id_formation) FROM formation AS f JOIN inscription AS i ON f.id_formation = i.id_formation JOIN user AS u ON u.id_user = i.id_user WHERE u.email = '" . $idEmail . "'"; //:idEmail";
+			foreach ($keyarray as $key => $value) {
+				$sql .= " OR keywords LIKE '%$value%'";
+			}
 			//$stmt = $this->PDO->prepare($sql);
 			//$stmt->bindParam(":idEmail", $idEmail, PDO::PARAM_STR);
 			//$stmt->execute();

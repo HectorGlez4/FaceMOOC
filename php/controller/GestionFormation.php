@@ -154,13 +154,14 @@ Class GestionFormation extends Controller
         }
     }
 
-    function updateClass($id)
+    function updateClass()
     {
         $title = $_POST['title'];
         $description = $_POST['description'];
         $video = $_POST['video'];
         if (empty($title)) {
-            echo "veuillez entrer un titre";
+            echo 'f';
+            $this->showMessage("yolo");
         } else {
             if ($_FILES['cours']['name'] == '' && $_FILES['cours']['type'] == '') {
 

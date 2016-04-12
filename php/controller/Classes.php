@@ -68,7 +68,13 @@ Class Classes extends Controller {
         }
     }
 
-    function updateClass
+    function updateClass() {
+        if (empty($_POST['title'])) {
+            $this->showMessage($_POST['']);
+        } else {
+            $this->showMessage("Sélectionnez un truc de bg");
+        }
+    }
 
 }
 ?>

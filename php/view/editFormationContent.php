@@ -9,7 +9,7 @@ global $content;
     </div>
 
 
-    <form action="<?php ROOT ?>/" method="POST" enctype="multipart/form-data">
+    <form id="editFormationContent" action="<?php echo WEBROOT ?>GestionFormation/updateClass" method="POST" enctype="multipart/form-data">
 
         <div class='row'>
             <div class='col-md-3'>
@@ -43,13 +43,13 @@ global $content;
                         <input id="iclVideo" type="url" class="form-control" name="video" placeholder="http://"/>
                     </div>
                     <button class="btn btn-md btn-primary btn-block" type="submit">Modifier ce cours</button>
-
+                    <div id="result"></div>
             </div>
     </form>
 </div>
 </form>
-
 </div>
+
 
 <?php include('footer.php') ?>
 <script>
@@ -68,6 +68,10 @@ global $content;
 
 
 </script>
+
+<script src="<?php echo WEBROOT ?>js/showmessage.js"></script>
+<script>showmessage("editFormationContent");</script>
+
 <?php $idForm = $content['FormationInfo'][0]['id_formation']; ?>
 
 

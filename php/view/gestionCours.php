@@ -68,14 +68,12 @@ include("header.php");
 
                 </div>
             </div>
-            <div id="result"></div><!-- Retour de l'erreur en json -->
         </div>
     </form>
 
     <?php include("cours.php") ?>
 
-    <script src="<?php echo WEBROOT ?>js/showmessage.js"></script>
-    <script>showmessage("form");</script>
+
 
 
 </body>

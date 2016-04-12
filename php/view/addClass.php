@@ -5,21 +5,15 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Ajouter un nouveau cours</h4>
                       </div>
-                       
-                     
-<form name="addClass" action="<?php ROOT ?>"  method="post">
-            
-                    <div class="modal-body">
-                            <div class="form-group">
+                      <div class="modal-body">
+                        <form name="addClass" action="<?php ROOT ?>"  method="post">
+                          <input type="hidden" name="idChapter" id="hidChapter">
+                          <div class="form-group">
                             <label for="titleClass" class="control-label">Titre du cours</label>
                             <input type="text" class="form-control" placeholder="Math, Science..." name="titleClass" required autofocus>
                           </div>
-                            
-                  
-
-                    <button class="btn btn-sm btn-primary btn-block" type="submit">Ajouter ce cours</button>
-          
-      </form>
+                          <button class="btn btn-sm btn-primary btn-block" type="submit">Ajouter ce cours</button>
+                        </form>
                       </div>
 
                       <div class="modal-footer">

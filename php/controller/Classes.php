@@ -38,10 +38,14 @@ Class Classes extends Controller {
         // Utilisation des méthodes des objets
         // les données retourner par les méthodes sont stockées dans le tableau $d
         $MComment = new MComment();
+        $MFormation = new MFormation();
+
         $d['userInfo'] = $MUser->SelectUserEmail($_SESSION['email']);
         $d['formation'] = $MClass->SelectInfoByJoin('f.*', $id);
         $d['chapter'] = $MClass->SelectInfoByJoin('ch.*', $id);
         $d['currentclass'] = $MClass->SelectClass($id);
+        $idFormation= $MFormation->SelectIdFormationByClass($id);
+        $d['commentInfo']=$MComment->SelectComment($idFormation[0]['id_formation']);
         $d['comments'] = $MComment->SelectComment($id);
         // Si la classe courrante n'existe pas, on affiche la page d'erreur 404
         if ($d['currentclass'] == null) {

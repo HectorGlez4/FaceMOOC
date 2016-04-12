@@ -27,18 +27,20 @@ global $content;
             </div>
             <div class='col-md-9'>
                 <form action="../updateClass" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="iclID" id="iclID">
                     <div class="form-group">
-                        <label for="title">Titre :</label>
-                        <input type="text" class="form-control" name="title"/>
+                        <label  for="title">Titre :</label>
+                        <input id="iclTitle" type="text" class="form-control" name="title"/>
                     </div>
                     <div class="form-group">
-                        <label for="desc">Description :</label><textarea rows="4" cols="50" class="form-control"
+                        <label for="desc">Description :</label>
+                        <textarea id="iclDescription" rows="4" cols="50" class="form-control"
                                                                          name="description"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="video">Vidéo :</label>
                         VIDEO
-                        <input type="url" class="form-control" name="video" placeholder="http://"/>
+                        <input id="iclVideo" type="url" class="form-control" name="video" placeholder="http://"/>
                     </div>
                 </div>
             </form>
@@ -47,7 +49,23 @@ global $content;
                         data-target="#myModal">Modifier mot de passe
                 </button> -->
        </form>
+
     </div>
+
+
+    <script>
+            $("#btnc").on("submit", function(event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "/FaceMOOC/php/controller/Comments.php",
+                    data: $(this).serialize(),
+                    success: function(data) {
+                        $("#chatbox").append(data+"<br/>");//instead this line here you can call some function to read database values and display
+                    },
+                });
+            });
+        </script>
 <?php $idForm = $content['FormationInfo'][0]['id_formation']; ?>
 <?php echo $idForm  ?>  
 <?php include("addChapter.php") ?> 

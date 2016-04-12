@@ -120,6 +120,19 @@
 			return ($this->Select($stmt));
 		}
 
+
+		function SelectIdFormationByClass($idClass)
+		{
+			$this->Connect();
+			$sql = "SELECT c.id_formation FROM comment as c INNER JOIN formation as f
+			on c.id_formation=f.id_formation INNER JOIN chapter as ch on 
+			ch.id_formation=f.id_formation INNER JOIN class as cl 
+			on ch.id_chapter=cl.id_chapter WHERE id_class =:idClass";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":idClass", $idClass, PDO::PARAM_INT);
+			return $this->Select($stmt);
+		}
+
 		function InsertFormation($idExpert, $title, $description, $image, $req_skill, $difficulty, $keywords)
 		{
 			$this->Connect();

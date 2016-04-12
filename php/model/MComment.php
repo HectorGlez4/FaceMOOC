@@ -14,17 +14,20 @@
 		function InsertComment($idFormation, $idUser, $mark,$description, $date_comment)
 		{
 			$this->Connect();
-			$sql = "INSERT INTO expert (id_formation, id_user, mark, description, date_comment)
+			$sql = "INSERT INTO comment(id_formation, id_user, mark, description, date_comment)
 							VALUES (:idFormation, :idUser ,:mark, :description , :date_comment);";
 			$stmt = $this->PDO->prepare($sql);
 			$description = htmlspecialchars($description);
 			$stmt->bindParam(":idFormation", $idFormation, PDO::PARAM_INT);
 			$stmt->bindParam(":idUser", $idUser, PDO::PARAM_INT);
 			$stmt->bindParam(":mark", $mark, PDO::PARAM_STR);
-			$stmt->bindParam(":description", $description, PDO::PARAM_INT);
+			$stmt->bindParam(":description", $description, PDO::PARAM_STR);
 			$stmt->bindParam(":date_comment", $date_comment, PDO::PARAM_STR);
 			return $this->Insert($stmt);
 		}
+
+
+
 
 
 		function DeleteComment($idComment)

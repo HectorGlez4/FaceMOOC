@@ -14,7 +14,7 @@ Class Abonnements extends Controller {
         $MFormation = new MFormation();
         $page = 1;
         $d['page'] = $MFormation->SelectFormationsAbonnementPage($_SESSION['email'], $page);
-        $d['countFormations'] = $MFormation->CountFormationsAbonnements($_SESSION['email']);
+        $d['countFormations'] = $MFormation->CountFormationsAbonnements("",$_SESSION['email']);
         $d['perPage'] = $MFormation->NbResults;
         $this->set($d);
         $this->render('abonnements');

@@ -26,8 +26,29 @@ function loadChapterMenu(idform)
 	{
 		$.each(data, function(index, a)
 		{
-			$(".ChapterClassMenu").append("<a onclick='loadClassMenu("+a.id_chapter+")''><h3>"+ a.title +"</h3></a><ul id=chp"+a.id_chapter+" class='chpMenu'></ul>");
+			$(".ChapterClassMenu").append("<h3><a onclick='loadClassMenu("+a.id_chapter+")'>" +a.title +"</a>"
+										+"<button onclick='RemoveChapter("+a.id_chapter+")' type='button' class='btn btn-primary btn-xs' >"
+										+"<span class='glyphicon glyphicon-remove' style='color:red;font-size:1em;' aria-hidden='true'>.</span></button></h3>"
+										+"<ul id=chp"+a.id_chapter+" class='chpMenu'></ul>");
 		});
+	});
+}
+
+function RemoveChapter(idChap)
+{
+
+	post = "idChapter=" + idChap;
+	$.ajax(
+	{
+		url: '/FaceMOOC/php/controller/RemoveChapter.php',
+		type: 'POST',
+		dataType: 'json',
+		data: post,
+	}).done(function(data){
+		if(data)
+		{
+			loadChapterMenu(idFormation);
+		}
 	});
 }
 

@@ -72,24 +72,64 @@ $date = date("Y-m-d H:i:s");
 <input type="text" id="nam" class="form-control" name="comm" value="<?php echo $content['userInfo'][0]['firstname'] ?>">
 </div> -->
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label for="mark" class="control-label">Notez le class :</label>
-                            <input type="radio" name="mark" value="10" required> 10
-                            <input type="radio" name="mark" value="20"> 20
-                            <input type="radio" name="mark" value="30"> 30
-                            <input type="radio" name="mark" value="40"> 40
-                            <input type="radio" name="mark" value="50"> 50
-                            <input type="radio" name="mark" value="60"> 60
-                            <input type="radio" name="mark" value="70"> 70
-                            <input type="radio" name="mark" value="80"> 80
-                            <input type="radio" name="mark" value="90"> 90
-                            <input type="radio" name="mark" value="100"> 100
+                        <div class="form-group">Notez le cours sur 5 : 
+                        
+<!-- <div class="ec-stars-wrapper">  Notez le cours sur 5 :
+    <a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+    <a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+    <a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+    <a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+    <a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+</div>
+<noscript>Necesitas tener habilitado javascript para poder votar</noscript> -->
+
+
+
+<label class="Form-label--tick">
+
+  <input type="radio" value="1" name="mark" class="Form-label-radio" required>
+
+  <span class="Form-label-text">1</span>
+
+</label>
+
+<label class="Form-label--tick">
+
+  <input type="radio" value="2" name="mark" class="Form-label-radio">
+
+  <span class="Form-label-text">2</span>
+
+</label>
+
+<label class="Form-label--tick">
+
+  <input type="radio" value="3" name="mark" class="Form-label-radio">
+
+  <span class="Form-label-text">3</span>
+
+</label>
+<label class="Form-label--tick">
+
+  <input type="radio" value="4" name="mark" class="Form-label-radio">
+
+  <span class="Form-label-text">4</span>
+
+</label>
+<label class="Form-label--tick">
+
+  <input type="radio" value="5" name="mark" class="Form-label-radio">
+
+  <span class="Form-label-text">5</span>
+
+</label>
+
+
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="comm" class="control-label">Ajout un commentaire:</label><br>
                             <span class="control-label"> </span>
-                            <textarea rows="4" name="des" id="desc" cols="60" class="form-control" placeholder="Mes commentaires.." name="comm" required></textarea>
+                            <textarea rows="4" name="des" id="desc" cols="60" class="form-control" placeholder="Donnez votre avis..." name="comm" required></textarea>
                         </div>
                         <button id="btnc" class="btn btn-sm btn-primary btn-block" type="submit">Ajouter</button>
                     </div>
@@ -109,6 +149,9 @@ $date = date("Y-m-d H:i:s");
                     $("#frmaddComment").on("submit", function (event) {
                         //comment es lo que toma de la caja de texto
                         var comment = $('#desc').val();
+                    
+                        var now = new Date();
+                        var date_show = now.getDate() + '-' + now.getMonth() + '-' + now.getFullYear() + ' ' + now.getHours() + ':' + + now.getMinutes() + ':' + + now.getSeconds();
 
                         $("#flash").show();
 
@@ -122,7 +165,7 @@ $date = date("Y-m-d H:i:s");
                                 document.getElementById('desc').value = '';
                                 document.getElementById('desc').focus();
                                 $("#flash").hide();
-                                $("#comments").append("<p>The comment text: " + comment + "</p>");//instead this line here you can call some function to read database values and display
+                                $("#comments").append('<div><div><img width="48" height="48" src="img/avatar/1.jpg" /></div><div><strong>hh</strong> dice:<br/><small>'+date_show+'</small></div><div>'+comment+'</div></div>');//instead this line here you can call some function to read database values and display
 
                             },
                         });
@@ -132,7 +175,9 @@ $date = date("Y-m-d H:i:s");
 
 
                 <?php $idForm = $content['formation'][0]['id_formation']; ?>
-                <?php echo "<script> var idFormation = " . $content['formation'][0]['id_formation'] . "</script>" ?>
+
+                <?php echo "<script> var idFormation = " . $content['formation'][0]['id_formation'] . "</script>" ?> 
+
 
                 <?php
 
@@ -175,9 +220,9 @@ $date = date("Y-m-d H:i:s");
                                         <div class="user-img">
                                             <img src="<?= $key['avatar'] ?>" height="50 px" width="50 px"  class="user-img-pic">
                                         </div>
-                                        <h5 class="username-field">
-                                            <p style="">&nbsp;<?= $key['firstname'] ?><p>
-                                        </h5>
+                                        <h4 class="username-field">
+                                            <p class="text-info">&nbsp;<?= $key['firstname'] ?> a dit :<p>
+                                        </h4>
                                         <div class="comment-text" id="comments">
                                             &nbsp;&nbsp; <?= $key["description"] ?>
                                             <br>
@@ -193,7 +238,9 @@ $date = date("Y-m-d H:i:s");
 
                                 </ul>
                             </div>
+
                         </div>
+
                         <?php
                     }
                 }

@@ -85,43 +85,43 @@ $date = date("Y-m-d H:i:s");
 
 
 
-<label class="Form-label--tick">
+        <label class="Form-label--tick">
 
-  <input type="radio" value="1" name="mark" class="Form-label-radio" required>
+          <input type="radio" value="1" name="mark" class="Form-label-radio" required>
 
-  <span class="Form-label-text">1</span>
+          <span class="Form-label-text">1</span>
 
-</label>
+        </label>
 
-<label class="Form-label--tick">
+        <label class="Form-label--tick">
 
-  <input type="radio" value="2" name="mark" class="Form-label-radio">
+          <input type="radio" value="2" name="mark" class="Form-label-radio">
 
-  <span class="Form-label-text">2</span>
+          <span class="Form-label-text">2</span>
 
-</label>
+        </label>
 
-<label class="Form-label--tick">
+        <label class="Form-label--tick">
 
-  <input type="radio" value="3" name="mark" class="Form-label-radio">
+          <input type="radio" value="3" name="mark" class="Form-label-radio">
 
-  <span class="Form-label-text">3</span>
+          <span class="Form-label-text">3</span>
 
-</label>
-<label class="Form-label--tick">
+        </label>
+        <label class="Form-label--tick">
 
-  <input type="radio" value="4" name="mark" class="Form-label-radio">
+          <input type="radio" value="4" name="mark" class="Form-label-radio">
 
-  <span class="Form-label-text">4</span>
+          <span class="Form-label-text">4</span>
 
-</label>
-<label class="Form-label--tick">
+        </label>
+        <label class="Form-label--tick">
 
-  <input type="radio" value="5" name="mark" class="Form-label-radio">
+          <input type="radio" value="5" name="mark" class="Form-label-radio">
 
-  <span class="Form-label-text">5</span>
+          <span class="Form-label-text">5</span>
 
-</label>
+        </label>
 
 
                         </div>
@@ -221,7 +221,8 @@ $date = date("Y-m-d H:i:s");
                                             <img src="<?= $key['avatar'] ?>" height="50 px" width="50 px"  class="user-img-pic">
                                         </div>
                                         <h4 class="username-field">
-                                            <p class="text-info">&nbsp;<?= $key['firstname'] ?> a dit :<p>
+                                            <p class="text-info">&nbsp;<?= $key['firstname'] ?> a dit (<?= $key['mark'] ?>/5) :<p>
+                                               
                                         </h4>
                                         <div class="comment-text" id="comments">
                                             &nbsp;&nbsp; <?= $key["description"] ?>

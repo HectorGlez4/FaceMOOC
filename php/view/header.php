@@ -1,8 +1,4 @@
-<script>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</script>
+
 
 
 <body>
@@ -37,12 +33,17 @@
 	    </ul>
            <ul class="nav navbar-nav navbar-right">
 	      <li>
-	      	<a href='<?php WEBROOT ?>User/logout'><span class="glyphicon glyphicon-off"></span>Déconnexion</a>
+	      	<a href='<?php WEBROOT ?>User/logout'><span class="glyphicon glyphicon-off"></span> Déconnexion</a>
 	      </li>
 	    </ul>
         </div>
 
 </nav>
 </div>
+<script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</script>
 </body>
 	</html>

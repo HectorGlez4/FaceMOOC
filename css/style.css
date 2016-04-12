@@ -11,6 +11,35 @@ body{
 textarea{
   resize: none;
 }
+.comments-list{
+  height: 50px;
+  margin: 10px 5px 10px 5px;
+  font-size: 13px;
+  color: #555;
+  border: 1px solid #e1e1e1;
+}
+
+
+ul.comments-holder-ul li.comment-holder{
+  list-style-type: none;
+  background: #fffff5;
+  height: auto;
+  width: auto;
+  margin: 5px 0 5px 0;
+  border: 1px solid #e1e1e1;
+  overflow: hidden;
+}
+ul.comments-holder-ul li.comment-holder:hover{
+  background: #FFFFDB;
+}
+UL.comments-holder-ul li.comment-holder .user-img{
+  float: left;
+  height: 50px;
+  width: 50px;
+  background: #a1a1a1;
+  
+}
+
 
 #contenido{
    background:#fff;

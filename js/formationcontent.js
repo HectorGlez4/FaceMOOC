@@ -37,6 +37,7 @@ function loadClassMenu(idChap)
 	$("#hidChapter").val(idChap);
 	cleanClassMenu();
 	post = "idChapter=" + idChap;
+
 	$.ajax(
 	{
 		url: '/FaceMOOC/php/controller/SearchClasses.php',
@@ -48,6 +49,7 @@ function loadClassMenu(idChap)
 		$.each(data, function(index, a)
 		{
 			idUL = "#chp" + idChap;
+
 			$(idUL).append("<a onclick='loadClass("+a.id_class+")'><li>"+ a.title +"</li></a>");
 		});
 	});
@@ -70,6 +72,7 @@ function loadClass(idClass)
 			$("#iclDescription").val(a.description);
 			$("#iclVideo").val(a.video);
 			$("#iclID").val(a.id_class);
+
 		});
 	});
 }

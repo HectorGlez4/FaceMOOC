@@ -43,8 +43,8 @@ function loadFormations(page)
 				sRow +="<h3 class='panel-title'>" +data[i]['title']+ "</h3>";
 				sRow +="</div>";
 				sRow +="<img src='" + data[i]['image']+"' alt='Image formation' class='img-responsive img-thumbnail'>";
-				sRow +="<p>Difficulty : " +data[i]['difficulty']+" </p>";
-				sRow +="<p>Required skills : " + data[i]['required_skill']+ " </p>";
+				sRow +="<p>Difficulté : " +data[i]['difficulty']+" </p>";
+				sRow +="<p>Compétences requises : " + data[i]['required_skill']+ " </p>";
 				sRow +="</div>";
 				sRow +="</div>";
 				sRow +="</div>";

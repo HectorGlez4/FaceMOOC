@@ -73,6 +73,6 @@ if (isset($content['class'])) {
     }
     ?>
 
-</div>
 
+</div>
 <?php include('footer.php') ?>

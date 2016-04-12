@@ -30,8 +30,6 @@
     <link rel="stylesheet" href="<?php echo WEBROOT?>css/login.css">
     <link type="text/css" href="<?php echo WEBROOT?>css/style.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<?php echo WEBROOT?>css/jquery.dataTables.min.css">
-    <script type="text/javascript" language="javascript" src="<?php echo WEBROOT ?>js/jquery.js"></script>
-    <script type="text/javascript" language="javascript" src="<?php echo WEBROOT ?>js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" language="javascript" src="<?php echo WEBROOT ?>js/tableformations.js"></script>
+
 
 </head>

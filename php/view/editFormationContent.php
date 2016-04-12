@@ -51,9 +51,9 @@ global $content;
        </form>
     </div>
 <?php $idForm = $content['FormationInfo'][0]['id_formation']; ?>
-<?php echo $idForm  ?>  
-<?php include("addChapter.php") ?> 
-<?php include("addClass.php") ?> 
+<?php echo $idForm;  ?>
+<?php include("addClassModal.php"); ?>   
+<?php include("addChapterModal.php"); ?> 
 <?php  echo "<script> var idFormation = " . $content['FormationInfo'][0]['id_formation'] . "</script>" ?> 
 <script src="<?php echo WEBROOT?>js/formationcontent.js"></script>
 <script>loadChapterMenu(idFormation)</script>

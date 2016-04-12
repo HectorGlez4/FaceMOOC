@@ -6,13 +6,13 @@
                         <h4 class="modal-title">Ajouter un nouveau cours</h4>
                       </div>
                       <div class="modal-body">
-                        <form name="addClass" action="<?php ROOT ?>"  method="post">
+                        <form id="frmAddClass" name="addClass" action="<?php ROOT ?>"  method="post">
                           <input type="hidden" name="idChapter" id="hidChapter">
                           <div class="form-group">
                             <label for="titleClass" class="control-label">Titre du cours</label>
                             <input type="text" class="form-control" placeholder="Math, Science..." name="titleClass" required autofocus>
                           </div>
-                          <button class="btn btn-sm btn-primary btn-block" type="submit">Ajouter ce cours</button>
+                          <button id="addClass" class="btn btn-sm btn-primary btn-block" type="submit" data-dismiss="modal">Ajouter ce cours</button>
                         </form>
                       </div>
 

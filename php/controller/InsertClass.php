@@ -7,7 +7,7 @@
 
 	$mclass = new MClass();
 	$mclass->Connect();
-	$response = $mchlass->InsertClass($idFormation, $nameChapter, $descriptionChapter);
+	$response = $mclass->InsertClass($idChapter, $titleClass, "", "", "");
 	
 	
 	echo json_encode($response);

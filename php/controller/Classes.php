@@ -67,5 +67,8 @@ Class Classes extends Controller {
             $this->render('class');
         }
     }
+
+    function updateClass
+
 }
 ?>

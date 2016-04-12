@@ -9,7 +9,7 @@ global $content;
     </div>
 
 
-    <form action="<?php ROOT ?>Gestion/" method="POST" enctype="multipart/form-data">
+    <form action="<?php ROOT ?>/" method="POST" enctype="multipart/form-data">
 
         <div class='row'>
             <div class='col-md-3'>
@@ -18,10 +18,10 @@ global $content;
 
 
                 <td><a href="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-folder-open"
-                                                                                aria-hidden="true"></span> Chapter </a>
+                                                                                aria-hidden="true"></span> Chapitre </a>
                 </td>
                 <td><a href="" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-file"
-                                                                                 aria-hidden="true"></span> Class </a>
+                                                                                 aria-hidden="true"></span> Cours </a>
                 </td>
 
             </div>
@@ -42,17 +42,16 @@ global $content;
                         VIDEO
                         <input id="iclVideo" type="url" class="form-control" name="video" placeholder="http://"/>
                     </div>
+                    <button class="btn btn-md btn-primary btn-block" type="submit">Modifier ce cours</button>
+
             </div>
     </form>
 </div>
-<!--  <button type="button" class="btn btn-md btn-primary btn-block" data-toggle="modal"
-                data-target="#myModal">Modifier mot de passe
-        </button> -->
 </form>
 
 </div>
 
-
+<?php include('footer.php') ?>
 <script>
     $("#btnc").on("submit", function (event) {
         event.preventDefault();
@@ -66,14 +65,16 @@ global $content;
         });
     });
 
-    <?php include('footer.php') ?>
+
 
 </script>
 <?php $idForm = $content['FormationInfo'][0]['id_formation']; ?>
-<?php echo $idForm;  ?>
-<?php include("addClassModal.php"); ?>   
-<?php include("addChapterModal.php"); ?> 
-<?php  echo "<script> var idFormation = " . $content['FormationInfo'][0]['id_formation'] . "</script>" ?>
 
+
+<?php echo $idForm;  ?>
+<?php include("addClassModal.php"); ?>
+<?php include("addChapterModal.php"); ?>
+<?php  echo "<script> var idFormation = " . $content['FormationInfo'][0]['id_formation'] . "</script>" ?>
+<script src="<?php echo WEBROOT?>js/formationcontent.js"></script>
 <script>loadChapterMenu(idFormation)</script>
 

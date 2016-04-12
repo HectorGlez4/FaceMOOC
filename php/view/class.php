@@ -71,7 +71,7 @@ $date = date("Y-m-d H:i:s");
 <input type="text" id="nam" class="form-control" name="comm" value="<?php echo $content['userInfo'][0]['firstname'] ?>">
 </div> -->
                     <div class="modal-body">
-                        <div class="form-group">Notez le cours sur 5 : <br>
+                        <div class="form-group">Notez le cours sur 5 : 
                         
 <!-- <div class="ec-stars-wrapper">  Notez le cours sur 5 :
     <a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
@@ -86,28 +86,41 @@ $date = date("Y-m-d H:i:s");
 
 <label class="Form-label--tick">
 
-  <input type="radio" value="1" name="SomeRadio" class="Form-label-radio" checked>
+  <input type="radio" value="1" name="mark" class="Form-label-radio" required>
 
-  <span class="Form-label-text">Option 1</span>
-
-</label>
-
-<label class="Form-label--tick">
-
-  <input type="radio" value="2" name="SomeRadio" class="Form-label-radio">
-
-  <span class="Form-label-text">Option 2</span>
+  <span class="Form-label-text">1</span>
 
 </label>
 
 <label class="Form-label--tick">
 
-  <input type="radio" value="3" name="SomeRadio" class="Form-label-radio">
+  <input type="radio" value="2" name="mark" class="Form-label-radio">
 
-  <span class="Form-label-text">Option 3</span>
+  <span class="Form-label-text">2</span>
 
 </label>
 
+<label class="Form-label--tick">
+
+  <input type="radio" value="3" name="mark" class="Form-label-radio">
+
+  <span class="Form-label-text">3</span>
+
+</label>
+<label class="Form-label--tick">
+
+  <input type="radio" value="4" name="mark" class="Form-label-radio">
+
+  <span class="Form-label-text">4</span>
+
+</label>
+<label class="Form-label--tick">
+
+  <input type="radio" value="5" name="mark" class="Form-label-radio">
+
+  <span class="Form-label-text">5</span>
+
+</label>
 
 
                         </div>

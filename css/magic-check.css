@@ -78,15 +78,15 @@
 
 .Form-label-radio+.Form-label-text:hover::before,
 .Form-label-checkbox+.Form-label-text:hover::before {
-    border-color: #373c6f !important;
-    box-shadow: 0 0 0 0 #373c6f !important
+    border-color: #446e9b !important;
+    box-shadow: 0 0 0 0 #446e9b !important
 }
 
 .Form-label-radio:checked+.Form-label-text::before,
 .Form-label-checkbox:checked+.Form-label-text::before {
-    background-color: #373c6f;
-    border-color: #373c6f;
-    box-shadow: 0 0 0 0 #373c6f;
+    background-color: #446e9b;
+    border-color: #446e9b;
+    box-shadow: 0 0 0 0 #446e9b;
     font-family: FontAwesome;
     content: "\f00c"
 }
@@ -95,7 +95,7 @@
 .Form-label-checkbox:focus+.Form-label-text::before,
 .Form-label-radio:active+.Form-label-text::before,
 .Form-label-checkbox:active+.Form-label-text::before {
-    border-color: #3bb8ff;
+    border-color: #446e9b;
     box-shadow: 0 0 2px 0 rgba(0, 135, 212, 0.2)
 }
 

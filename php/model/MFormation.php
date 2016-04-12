@@ -174,10 +174,17 @@
 			$offset = $this->NbResults * ($Page-1);
 			$keyarray = explode(" ", $keywords);
 			$Data = null;
-			$sql = "SELECT f.* FROM formation AS f JOIN inscription AS i ON f.id_formation = i.id_formation JOIN user AS u ON u.id_user = i.id_user WHERE u.email = :idUser";
+			$sql = "SELECT f.* FROM formation AS f JOIN inscription AS i ON f.id_formation = i.id_formation JOIN user AS u ON u.id_user = i.id_user WHERE u.email = :idUser and (" ;
 			foreach ($keyarray as $key => $value) {
-				$sql .= " OR keywords LIKE '%$value%'";
+				if ($key == 0) {
+					$sql .= " keywords LIKE '%$value%'";
+				}
+				else{
+					$sql .= " OR keywords LIKE '%$value%'";
+				}
+				
 			}
+			$sql .= ")";
 			$sql .= " LIMIT " . $offset .", " . $this->NbResults;
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":idUser", $idUser, PDO::PARAM_STR);

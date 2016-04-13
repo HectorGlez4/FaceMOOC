@@ -217,7 +217,10 @@ Class GestionFormation extends Controller
     {
 
         $MFormation = new MFormation();
-        $d['editFormation'] = $MFormation->SelectFormationById($id);
+        $MUser = new MUser();
+        $id_user = $MUser->SelectUserId($_SESSION['email']);
+        $id_user = $id_user[0]['id_user'];
+        $d['editFormation'] = $MFormation->SelectFormationById($id, $id_user);
         $this->set($d);
         $this->render('editFormation');
     }

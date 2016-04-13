@@ -38,6 +38,7 @@ function ConfirmRemoveChapter()
 {
 
 	post = "idChapter=" + $("#idConChpSup").val();
+
 	$.ajax(
 	{
 		url: '/FaceMOOC/php/controller/RemoveChapter.php',
@@ -51,6 +52,13 @@ function ConfirmRemoveChapter()
 		}
 	});
 }
+}
+
+// 
+
+
+
+
 
 function RemoveChapter(idChap)
 {

@@ -1,4 +1,4 @@
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModal3" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -6,8 +6,8 @@
                 <h4 class="modal-title">Supprimer ce chapitre ?</h4>
             </div>
             <div class="modal-body">
-                <button class="btn btn-sm btn-primary btn-block" type="submit">Oui</button>
-                <button class="btn btn-sm btn-primary btn-block" type="submit">Non</button>
+                <button class="btn btn-sm btn-primary btn-block" type="button">Oui</button>
+                <button class="btn btn-sm btn-primary btn-block" type="button">Non</button>
                 </form>
             </div>
         </div>

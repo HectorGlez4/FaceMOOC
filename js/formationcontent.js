@@ -27,17 +27,19 @@ function loadChapterMenu(idform)
 		$.each(data, function(index, a)
 		{
 			$(".ChapterClassMenu").append("<h3><a onclick='loadClassMenu("+a.id_chapter+")'>" +a.title +"</a>"
-										+"<button onclick='RemoveChapter("+a.id_chapter+")' type='button' class='btn btn-primary btn-xs' >"
-										+"<span class='glyphicon glyphicon-remove' style='color:red;font-size:1em;' aria-hidden='true'>.</span></button></h3>"
+										+"	"+"<button onclick='RemoveChapter("+a.id_chapter+")' type='button' class='btn btn-info btn-xs btn-round' data-toggle='modal' data-target='#myModal3'>"
+										+" <span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button></h3>"
 										+"<ul id=chp"+a.id_chapter+" class='chpMenu'></ul>");
 		});
 	});
 }
 
-function RemoveChapter(idChap)
+function ConfirmRemoveChapter()
 {
 
-	post = "idChapter=" + idChap;
+	post = "idChapter=" + $("#idConChpSup").val();
+
+
 	$.ajax(
 	{
 		url: '/FaceMOOC/php/controller/RemoveChapter.php',
@@ -52,7 +54,31 @@ function RemoveChapter(idChap)
 	});
 }
 
+function RemoveChapter(idChap)
+{
+	$("#btnSupCon").click(ConfirmRemoveChapter);
+	$("#idConChpSup").val(idChap);
+	
+}
 
+function RemoveClass(obj)
+{
+	post = "idClass=" + obj.idClass;
+	$.ajax(
+	{
+		url: '/FaceMOOC/php/controller/RemoveClass.php',
+		type: 'POST',
+		dataType: 'json',
+		data: post,
+	}).done(function(data){
+		if(data)
+		{
+			loadClassMenu(obj.idChap);
+		}
+	});
+}
+
+// 
 function loadClassMenu(idChap)
 {
 	$("#hidChapter").val(idChap);
@@ -71,7 +97,9 @@ function loadClassMenu(idChap)
 		{
 			idUL = "#chp" + idChap;
 
-			$(idUL).append("<a onclick='loadClass("+a.id_class+")'><li>"+ a.title +"</li></a>");
+			$(idUL).append("<a onclick='loadClass("+a.id_class+")'><li>"+ a.title +"</li></a>" 
+							+"<button onclick='RemoveClass({idClass:"+a.id_class+ " , idChap:"+ idChap+"})' type='button'  class='btn btn-primary btn-xs' >"
+							+"<span class='glyphicon glyphicon-remove' style='color:red;font-size:1em;' aria-hidden='true'></span></button>");
 		});
 	});
 }

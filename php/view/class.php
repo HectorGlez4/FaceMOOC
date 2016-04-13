@@ -152,7 +152,9 @@ $date = date("Y-m-d H:i:s");
                     $("#frmaddComment").on("submit", function (event) {
                         //comment es lo que toma de la caja de texto
                         var comment = $('#desc').val();
+
                         var mark = $('#mark').val();
+
                         var now = new Date();
                         var date_show = now.getDate() + '-' + now.getMonth() + '-' + now.getFullYear() + ' ' + now.getHours() + ':' + +now.getMinutes() + ':' + +now.getSeconds();
 
@@ -169,7 +171,8 @@ $date = date("Y-m-d H:i:s");
                                 document.getElementById('desc').value = '';
                                 document.getElementById('desc').focus();
                                 $("#flash").hide();
-                                alert(data);
+
+                                // alert(data);
                                 $("#comments").append('<div class="panel panel-default"><div class="panel-body"><ul class="comments-holder-ul"><li class="comment-holder" id="_1"><div class="user-img"><img width="50" height="50" src="/FaceMOOC/' + data[0].avatar + '" /></div><h4 class="username-field"><p class="text-info">'+data[0].firstname+' a dit ('+mark+'/5) :</p></h4><div class="comment-text" id="comments">&nbsp;&nbsp;'+comment+'<br/><div style="text-align: right; font-size: 10px"><u>' + date_show + '</u></div></div></li></ul></div><div>');//instead this line here you can call some function to read database values and display
 
                             },
@@ -223,8 +226,10 @@ $date = date("Y-m-d H:i:s");
                                 <ul class="comments-holder-ul">
                                     <li class="comment-holder" id="_1">
                                         <div class="user-img">
+
                                             <img src="<?php echo WEBROOT . $key['avatar'] ?>" height="50 px"
                                                  width="50 px" class="user-img-pic">
+
                                         </div>
                                         <h4 class="username-field">
                                             <p class="text-info">&nbsp;<?= $key['firstname'] ?> a dit

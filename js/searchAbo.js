@@ -21,10 +21,11 @@ function loadFormations(page) {
             data: post,
         }).done(function (data) {
         var ResultsMax = data[data.length - 1];
+        data.pop();
         //alert(ResultsMax);
         //var NbResults = data[data.length - 1];
         var NbResults = data[data.length - 1];
-        //alert(data[data.length - 1]);
+        data.pop();
         //alert(NbResults[0]);
         //alert(data.join(""));
         var sRow = "";

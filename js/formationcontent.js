@@ -38,6 +38,8 @@ function RemoveChapter(idChap)
 {
 
 	post = "idChapter=" + idChap;
+    if (confirm('Are you sure you want to delete this?')) {
+
 	$.ajax(
 	{
 		url: '/FaceMOOC/php/controller/RemoveChapter.php',
@@ -51,6 +53,13 @@ function RemoveChapter(idChap)
 		}
 	});
 }
+}
+
+// 
+
+
+
+
 
 
 function loadClassMenu(idChap)

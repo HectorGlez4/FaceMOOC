@@ -75,8 +75,9 @@ global $content;
 
 <?php $idForm = $content['FormationInfo'][0]['id_formation']; ?>
 
-<?php include("addClassModal.php"); ?>
-<?php include("addChapterModal.php"); ?>
+
+<?php include("modals.php"); ?>
+
 
 
 

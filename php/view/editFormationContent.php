@@ -77,6 +77,7 @@ global $content;
 
 <?php include("addClassModal.php"); ?>
 <?php include("addChapterModal.php"); ?>
+<?php include("confirmSuppChap.php"); ?>
 
 
 

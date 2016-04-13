@@ -149,6 +149,7 @@ $date = date("Y-m-d H:i:s");
                     $("#frmaddComment").on("submit", function (event) {
                         //comment es lo que toma de la caja de texto
                         var comment = $('#desc').val();
+                        var mark= $($)
                     
                         var now = new Date();
                         var date_show = now.getDate() + '-' + now.getMonth() + '-' + now.getFullYear() + ' ' + now.getHours() + ':' + + now.getMinutes() + ':' + + now.getSeconds();
@@ -165,7 +166,44 @@ $date = date("Y-m-d H:i:s");
                                 document.getElementById('desc').value = '';
                                 document.getElementById('desc').focus();
                                 $("#flash").hide();
-                                $("#comments").append('<div><div><img width="48" height="48" src="img/avatar/1.jpg" /></div><div><strong>hh</strong> dice:<br/><small>'+date_show+'</small></div><div>'+comment+'</div></div>');//instead this line here you can call some function to read database values and display
+                                $("#comments").append('
+                                    <div class="panel panel-default">
+                            <div class="panel-body">
+                                <ul class="comments-holder-ul">
+                                    <li class="comment-holder" id="_1">
+                                        <div class="user-img">
+                                            <img src="<?php '.$_SESSION['avatar'] ?>.'" height="50 px" width="50 px"  class="user-img-pic">
+                                        </div>
+                                        <h4 class="username-field">
+                                            <p class="text-info">&nbsp;man a dit (<?= $key['mark'] ?>/5) :<p>
+                                               
+                                        </h4>
+                                        <div class="comment-text" id="comments">
+                                            &nbsp;&nbsp; <?= $key["description"] ?>
+                                            <br>
+                                            <div style="text-align: right; font-size: 10px">
+                                                <u>
+
+                                                    <?= date_comment($key['date_comment']) ?>
+                                                </u>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </div> 
+
+
+
+
+
+
+
+
+
+                                <div><div><img width="48" height="48" src="img/avatar/1.jpg" /></div><div><strong>hh</strong> dice:<br/><small>'+date_show+'</small></div><div>'+comment+'</div></div>');//instead this line here you can call some function to read database values and display
 
                             },
                         });
@@ -218,7 +256,7 @@ $date = date("Y-m-d H:i:s");
                                 <ul class="comments-holder-ul">
                                     <li class="comment-holder" id="_1">
                                         <div class="user-img">
-                                            <img src="<?= $key['avatar'] ?>" height="50 px" width="50 px"  class="user-img-pic">
+                                            <img src="<?php echo WEBROOT.$key['avatar'] ?>" height="50 px" width="50 px"  class="user-img-pic">
                                         </div>
                                         <h4 class="username-field">
                                             <p class="text-info">&nbsp;<?= $key['firstname'] ?> a dit (<?= $key['mark'] ?>/5) :<p>

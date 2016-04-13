@@ -39,12 +39,11 @@ function loadFormations(page)
 				sRow +="<div class ='col-md-3 text-center'>";
 				sRow +="<div class='panel panel-info well'>";
 				sRow +="<div class='panel-heading'>";
-				sRow +="<div class='panel-body'>";
-				sRow +="<h3 class='panel-title'>" +data[i]['title']+ "</h3>";
+				sRow +="<div style='text-overflow: ellipsis; width: 178px;white-space: nowrap;overflow: hidden;' class='panel-body'>";
+				sRow +="<p class='panel-title'><b>" +data[i]['title']+ "</b></p>";
 				sRow +="</div>";
-				sRow +="<img src='" + data[i]['image']+"' alt='Image formation' class='img-responsive img-thumbnail'>";
-				sRow +="<p>Difficulté : " +data[i]['difficulty']+" </p>";
-				sRow +="<p>Compétences requises : " + data[i]['required_skill']+ " </p>";
+				sRow +="<img style='height: 150px;width: 200px;' src='" + data[i]['image']+"' alt='Image formation' class='img-responsive img-thumbnail'>";
+				sRow +="<p><b>Difficulté : </b>" +data[i]['difficulty']+" </p>";
 				sRow +="</div>";
 				sRow +="</div>";
 				sRow +="</div>";

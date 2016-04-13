@@ -79,9 +79,13 @@
             </div>
             <div class="modal-body">
                 <form id="frmAddClass" name="addClass" action="<?php ROOT ?>" method="post">
+                <div class="row">
+                <div class="col-sm-6">
                 <button class="btn btn-sm btn-primary btn-block" type="button">Oui</button>
+                </div>
+                <div class="col-sm-6">
                 <button type="button" class="btn btn-sm btn-primary btn-block" data-dismiss="modal">Non</button>
-
+                </div>
                 </form>
             </div>
            

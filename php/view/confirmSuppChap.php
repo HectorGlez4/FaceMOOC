@@ -6,7 +6,7 @@
                 <h4 class="modal-title">Supprimer ce chapitre ?</h4>
             </div>
             <div class="modal-body">
-                <button class="btn btn-sm btn-primary btn-block" type="button">Oui</button>
+                <button class="btn btn-sm btn-primary btn-block" type="button">Ouiiunkj</button>
                 <button class="btn btn-sm btn-primary btn-block" type="button">Non</button>
                 </form>
             </div>

@@ -226,11 +226,20 @@ Class GestionFormation extends Controller
     {
 
         $MFormation = new MFormation();
+        $MUser = new MUser();
         $MChapter = new MChapter();
-        $d['FormationInfo'] = $MFormation->SelectFormationById($id);
-        $d['ChapterInfo'] = $MChapter->SelectChapters($id);
-        $this->set($d);
-        $this->render('editFormationContent');
+        $id_user = $MUser->SelectUserId($_SESSION['email']);
+        $id_user = $id_user[0]['id_user'];
+        $verifFormation = $MFormation->SelectFormationById($id, $id_user);
+        if ($verifFormation == null) {
+            echo "Vous n'avez pas les permissions pour éditer cette formation";
+        }
+        else{
+            $d['FormationInfo'] = $verifFormation;
+            $d['ChapterInfo'] = $MChapter->SelectChapters($id);
+            $this->set($d);
+            $this->render('editFormationContent');
+        }
 
     }
 }

@@ -8,19 +8,20 @@ global $content;
         <h1><?php echo $content['FormationInfo'][0]['title']; ?></h1>
     </div>
 
-
+<p class="text-success">Chapitres :<p>
 
         <div class='row'>
             <div class='col-md-3'>
                 <div class="ChapterClassMenu">
                 </div>
-
+                    
 
                 <td><a href="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-folder-open"
-                                                                                aria-hidden="true"></span> Chapitre </a>
+                                                                                aria-hidden="true"></span> Ajouter Chapitre </a>
                 </td>
+                <br><br>
                 <td><a href="" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-file"
-                                                                                 aria-hidden="true"></span> Cours </a>
+                                                                                 aria-hidden="true"></span> Ajouter Cours </a>
                 </td>
             </div>
             <div class='col-md-9'>

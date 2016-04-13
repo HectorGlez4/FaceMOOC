@@ -27,8 +27,8 @@ function loadChapterMenu(idform)
 		$.each(data, function(index, a)
 		{
 			$(".ChapterClassMenu").append("<h3><a onclick='loadClassMenu("+a.id_chapter+")'>" +a.title +"</a>"
-										+"<button onclick='RemoveChapter("+a.id_chapter+")' type='button' data-toggle='modal' data-target='#myModal3' class='btn btn-primary btn-xs' >"
-										+"<span class='glyphicon glyphicon-remove' style='color:red;font-size:1em;' aria-hidden='true'></span></button></h3>"
+										+"	"+"<button onclick='RemoveChapter("+a.id_chapter+")' type='button' class='btn btn-info btn-xs btn-round' data-toggle='modal' data-target='#myModal3'>"
+										+" <span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button></h3>"
 										+"<ul id=chp"+a.id_chapter+" class='chpMenu'></ul>");
 		});
 	});
@@ -38,6 +38,7 @@ function ConfirmRemoveChapter()
 {
 
 	post = "idChapter=" + $("#idConChpSup").val();
+
 
 	$.ajax(
 	{
@@ -52,13 +53,6 @@ function ConfirmRemoveChapter()
 		}
 	});
 }
-}
-
-// 
-
-
-
-
 
 function RemoveChapter(idChap)
 {
@@ -84,6 +78,7 @@ function RemoveClass(obj)
 	});
 }
 
+// 
 function loadClassMenu(idChap)
 {
 	$("#hidChapter").val(idChap);

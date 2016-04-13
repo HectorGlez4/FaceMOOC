@@ -79,10 +79,14 @@
             </div>
             <div class="modal-body">
                 <form >
+                <div class="row">
+                <div class="col-sm-6">
                 <input type="hidden" id="idConChpSup">
                 <button id="btnSupCon"class="btn btn-sm btn-primary btn-block" data-dismiss="modal" type="button">Oui</button>
+                </div>
+                <div class="col-sm-6">
                 <button type="button" class="btn btn-sm btn-primary btn-block" data-dismiss="modal">Non</button>
-
+                </div>
                 </form>
             </div>
            

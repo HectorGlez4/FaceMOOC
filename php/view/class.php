@@ -171,7 +171,7 @@ $date = date("Y-m-d H:i:s");
                                 document.getElementById('desc').focus();
                                 $("#flash").hide();
 
-                                alert(data);
+                                // alert(data);
                                 $("#comments").append('<div class="panel panel-default"><div class="panel-body"><ul class="comments-holder-ul"><li class="comment-holder" id="_1"><div class="user-img"><img width="50" height="50" src="/FaceMOOC/' + data[0].avatar + '" /></div><h4 class="username-field"><p class="text-info">'+data[0].firstname+' a dit ('+mark+'/5) :</p></h4><div class="comment-text" id="comments">&nbsp;&nbsp;'+comment+'<br/><div style="text-align: right; font-size: 10px"><u>' + date_show + '</u></div></div></li></ul></div><div>');//instead this line here you can call some function to read database values and display
 
                             },

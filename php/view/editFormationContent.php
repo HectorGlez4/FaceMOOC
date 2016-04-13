@@ -75,11 +75,6 @@ $idForm = $content['FormationInfo'][0]['id_formation'];
 </script>
 
 
-
-
-<?php include("addClassModal.php"); ?>
-<?php include("addChapterModal.php"); ?>
-
 <?php $idForm = $content['FormationInfo'][0]['id_formation']; ?>
 
 

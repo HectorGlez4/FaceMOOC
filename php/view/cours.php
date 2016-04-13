@@ -44,11 +44,11 @@
 
                 echo '<tr>';
                 echo '<td>' . $key["id_formation"] . '</td>';
-                echo '<td>' . $key["title"] . '</td>';
-                echo '<td>' . $key["description"] . '</td>';
-                echo '<td>' . $key["required_skill"] . '</td>';
-                echo '<td>' . $key["difficulty"] . '</td>';
-                echo '<td>' . $key["keywords"] . '</td>';
+                echo '<td id="colTD">' . $key["title"] . '</td>';
+                echo '<td id="colTD">' . $key["description"] . '</td>';
+                echo '<td id="colTD">' . $key["required_skill"] . '</td>';
+                echo '<td id="colTD">' . $key["difficulty"] . '</td>';
+                echo '<td id="colTD">' . $key["keywords"] . '</td>';
 
                 echo '<td><a href="' . WEBROOT . 'GestionFormation/editFormations/' . $key["id_formation"] . '"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>';
                 echo '<td><a href="' . WEBROOT . 'GestionFormation/updateFormations/' . $key["id_formation"] . '"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></td>';

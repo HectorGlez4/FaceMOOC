@@ -49,7 +49,8 @@ $date = date("Y-m-d H:i:s");
             <?php
             if ($classesInfo['docs'] != null) {
                 ?>
-                <a class='btn btn-primary' href='<?= WEBROOT . "docs/" . $classesInfo['docs'] ?>'
+                Téléchargez le cours :
+                <a class='btn btn-primary' href='<?= WEBROOT . $classesInfo['docs'] ?>'
                    onclick='window.open(this.href); return false;'><span class='glyphicon glyphicon-download'></span>
                     Download teacher's note </a>
                 <?php

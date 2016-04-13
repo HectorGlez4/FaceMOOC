@@ -77,8 +77,7 @@ Class GestionFormation extends Controller
                     }
                 }
             } else {
-
-                $this->showMessage("Vous avez déjà une formation avec ce titre");
+                echo "Vous avez déjà une formation de ce titre";
             }
         }
     }//gestionfor
@@ -159,6 +158,7 @@ Class GestionFormation extends Controller
     {
         if ($_POST['iclID']) {
             $MClass = new MClass();
+            $idForm = $_POST['idForm'];
             $title = $_POST['title'];
             $description = $_POST['description'];
             $video = $_POST['video'];
@@ -180,11 +180,11 @@ Class GestionFormation extends Controller
                     } else if (!in_array($ext, $extensions_valides)) {
                         echo 'erreur extension';
                     } else {
-                        $fichier = 'img/doc/' . $idClass . ".$extension_upload";
+                        $fichier = 'docs/' . $idClass . ".$extension_upload";
                         $resultat = move_uploaded_file($_FILES['cours']['tmp_name'], $fichier);
                         if ($resultat) {
-                            $MClass->addDoc($fichier, $_SESSION['email']);
-                            echo 'uploaded !';
+                            $MClass->addDoc($fichier, $idClass);
+                            header('Location:' . WEBROOT . 'GestionFormation/editFormations/' . $idForm);
                         }
                     }
                 }

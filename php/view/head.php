@@ -19,7 +19,7 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-
+    <link rel="stylesheet" href="<?php echo WEBROOT ?>css/login.css">
 
 
     <style>
@@ -34,6 +34,5 @@
     <link rel="stylesheet" type="text/css" href="<?php echo WEBROOT?>css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo WEBROOT?>css/magic-check.css">
     <link rel="stylesheet" type="text/css" href="<?php echo WEBROOT?>css/magic-check.min.css">
-
 
 </head>

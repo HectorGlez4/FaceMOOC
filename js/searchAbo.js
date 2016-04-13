@@ -22,11 +22,9 @@ function loadFormations(page) {
         }).done(function (data) {
         var ResultsMax = data[data.length - 1];
         //alert(ResultsMax);
-        data.pop();
         //var NbResults = data[data.length - 1];
         var NbResults = data[data.length - 1];
         //alert(data[data.length - 1]);
-        data.pop();
         //alert(NbResults[0]);
         //alert(data.join(""));
         var sRow = "";
@@ -42,8 +40,8 @@ function loadFormations(page) {
                 sRow += "<h3 class='panel-title'>" + data[i]['title'] + "</h3>";
                 sRow += "</div>";
                 sRow += "<img src='" + data[i]['image'] + "' alt='Image formation' class='img-responsive img-thumbnail'>";
-                sRow += "<p>Difficulty : " + data[i]['difficulty'] + " </p>";
-                sRow += "<p>Required skills : " + data[i]['required_skill'] + " </p>";
+                sRow += "<p>Difficulté : " + data[i]['difficulty'] + " </p>";
+                sRow += "<p>Cométences requises : " + data[i]['required_skill'] + " </p>";
                 sRow += "</div>";
                 sRow += "</div>";
                 sRow += "</div>";

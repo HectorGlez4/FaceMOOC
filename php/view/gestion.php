@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("head.php");
 include("header.php");
 global $content;
@@ -50,17 +50,17 @@ global $content;
                            value="<?php echo $content['userGestion'][0]['lastname'] ?>">
                 </div>
                 <?php if ($_SESSION['id_expert'] == 1) { ?>
-                <div class="form-group">
-                    <label>Adresse :</label>
-                    <input type="text" class="form-control" name="address"
-                           value="<?php echo $content['expertGestion'][0]['address'] ?>">
-                </div>
-                <div class="form-group">
-                    <label>Téléphone :</label>
-                    <input type="tel" pattern = '[0-9]{10}' maxlength = '10' class="form-control" name="phone"
-                           value="<?php echo $content['expertGestion'][0]['phone'] ?>">
-                </div>
-                <?php }  ?>
+                    <div class="form-group">
+                        <label>Adresse :</label>
+                        <input type="text" class="form-control" name="address"
+                               value="<?php echo $content['expertGestion'][0]['address'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Téléphone :</label>
+                        <input type="tel" pattern='[0-9]{10}' maxlength='10' class="form-control" name="phone"
+                               value="<?php echo $content['expertGestion'][0]['phone'] ?>">
+                    </div>
+                <?php } ?>
 
                 <button type="button" class="btn btn-md btn-primary btn-block" data-toggle="modal"
                         data-target="#myModal">Modifier mot de passe
@@ -74,6 +74,5 @@ global $content;
 <?php include("changepass.php") ?>
 </div>
 
-
 </body>
-</html>
+<?php include('footer.php') ?>

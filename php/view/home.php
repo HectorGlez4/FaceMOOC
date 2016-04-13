@@ -29,3 +29,4 @@ $pages = ceil($countFormations[0] / $perpage);
     <script src="<?php echo WEBROOT ?>js/search.js"></script>
     <script>loadFormations(1)</script>
 </body>
+<?php include('footer.php') ?>

@@ -5,6 +5,7 @@ include_once(ROOT . 'php/model/MChapter.php');
 include_once(ROOT . 'php/model/MClass.php');
 include_once(ROOT . 'php/model/MUser.php');
 include_once(ROOT . 'php/model/MExpert.php');
+include_once(ROOT . 'php/model/MClass.php');
 
 
 Class GestionFormation extends Controller
@@ -150,23 +151,58 @@ Class GestionFormation extends Controller
         if (empty($nameChapter) || empty($descriptionChapter)) {
             echo "Veuillez entrer un nom et une description";
         } else {
-            $MChapter->InsertChapter($id,$nameChapter,$descriptionChapter);
+            $MChapter->InsertChapter($id, $nameChapter, $descriptionChapter);
         }
     }
 
-    function updateClass($id)
+    function updateClass()
     {
-        $title = $_POST['title'];
-        $description = $_POST['description'];
-        $video = $_POST['video'];
-        if (empty($title)) {
-            echo "veuillez entrer un titre";
-        } else {
-            if ($_FILES['cours']['name'] == '' && $_FILES['cours']['type'] == '') {
+        if ($_POST['iclID']) {
+            $MClass = new MClass();
+            $title = $_POST['title'];
+            $description = $_POST['description'];
+            $video = $_POST['video'];
+            $idClass = $_POST['iclID'];
+
+            if (empty($title)) {
+                echo "Veuillez inscrire un titre";
+            } else {
+                if ($_FILES['cours']['name'] !== '' && $_FILES['cours']['type'] !== '') {
+                    $maxsize = 2097152;
+                    $extensions_valides = array('pdf');
+                    $filename = $_FILES['cours']['name'];
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                    $extension_upload = strtolower(substr(strrchr($_FILES['cours']['name'], '.'), 1));
+                    if ($_FILES['cours']['error'] > 0) {
+                        echo 'error';
+                    } else if (($_FILES['cours']['size'] >= $maxsize) || ($_FILES["cours"]["size"] == 0)) {
+                        echo 'erreur size';
+                    } else if (!in_array($ext, $extensions_valides)) {
+                        echo 'erreur extension';
+                    } else {
+                        $fichier = 'img/doc/' . $idClass . ".$extension_upload";
+                        $resultat = move_uploaded_file($_FILES['cours']['tmp_name'], $fichier);
+                        if ($resultat) {
+                            $MClass->addDoc($fichier, $_SESSION['email']);
+                            echo 'uploaded !';
+                        }
+                    }
+                }
+                if (!empty($video)) {
+                    $MClass->addVideo($video, $idClass);
+                }
+
+                if (!empty($description)) {
+                    $MClass->addDescription($description, $idClass);
+                }
+
+                    $MClass->addTitle($title, $idClass);
+
 
             }
+        } else {
+            echo "Selectionnez une classe !";
         }
-
     }
 
     function deleteFormations($id)

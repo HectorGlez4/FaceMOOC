@@ -48,6 +48,16 @@
 			return $this->Select($stmt);
 		}
 
+		function SelectUserById($id)
+		{
+			$Data = null;
+			$this->Connect();
+			$sql = "SELECT * FROM user WHERE id_user = :id ";
+			$stmt = $this->PDO->prepare($sql);
+			$stmt->bindParam(":id", $id, PDO::PARAM_INT);
+			return $this->Select($stmt);
+		}
+
 		function SelectUserPassword($email)
 		{
 			$Data = null;

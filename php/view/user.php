@@ -1,7 +1,7 @@
 <?php
 include("head.php");
 ?>
-<link rel="stylesheet" href="<?php echo WEBROOT ?>css/login.css">
+
 <body>
 <div class="container well" id="contenu">
 
@@ -38,6 +38,5 @@ include("head.php");
 <script src="<?php echo WEBROOT ?>js/showmessage.js"></script>
 <script>showmessage("user");</script>
 
-
 </body>
-</html>
+<?php include('footer.php') ?>

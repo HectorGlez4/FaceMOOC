@@ -70,10 +70,5 @@ include("header.php");
             </div>
         </div>
     </form>
-
-    <?php include("cours.php") ?>
-
-
-
-
 </body>
+<?php include("cours.php") ?>

@@ -1,72 +1,33 @@
-$(document).ready(function(){
- 
-                    function showComment(id){
-                    	post = "idFormation=" + id;
+$(document).ready(function () {
 
-                      $.ajax({
-                        type:"post",
-                        url:"/FaceMOOC/php/controller/searchComments.php",
-                        data: post,
-                        success:function(data){
-                             $("#comments").html(data);
-                        }
-                      });
-                    }
- 
-                    showComment(id);
+    function showComment(id) {
+        post = "idFormation=" + id;
 
-            $("#frmaddComment").on("submit", function(event) {
-                event.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: "/FaceMOOC/php/controller/Comments.php",
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        // $("#comments").append(data+"<p>esto viene desde el ajax</p>");//instead this line here you can call some function to read database values and display
-                     showComment(id);
-                    },
-                });
-            });
-            });
+        $.ajax({
+            type: "post",
+            url: "/FaceMOOC/php/controller/searchComments.php",
+            data: post,
+            success: function (data) {
+                $("#comments").html(data);
+            }
+        });
+    }
 
+    showComment(id);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    $("#frmaddComment").on("submit", function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/FaceMOOC/php/controller/Comments.php",
+            data: $(this).serialize(),
+            success: function (data) {
+                // $("#comments").append(data+"<p>esto viene desde el ajax</p>");//instead this line here you can call some function to read database values and display
+                showComment(id);
+            },
+        });
+    });
+});
 
 
 // $("#btnc").click(function(event)
@@ -77,9 +38,9 @@ $(document).ready(function(){
 
 // function seeComment(idform)
 // {
-	
+
 // 	// clean();
-	
+
 // 	post = "idFormation=" + idform;
 // 	$.ajax(
 // 	{

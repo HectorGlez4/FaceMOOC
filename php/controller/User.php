@@ -39,7 +39,7 @@ Class User extends Controller
                 if ($idExpert) {
                     $_SESSION['id_expert'] = 1;
                 }
-                $this->showMessage("Email ou mot de passe incorrecte", "ok", WEBROOT . 'Home');
+                $this->showMessage("Email ou mot de passe correcte", "ok", WEBROOT . 'Home');
                 //header('Location:' . WEBROOT . 'Home');
             } else {
 //                header('Location:' . WEBROOT . 'index');
@@ -95,7 +95,7 @@ Class User extends Controller
                         $MExpert->InsertExpert($idUser[0]['id_user'],'','');
                         $_SESSION['id_expert'] = 1;
                     }
-                    header('Location:' . WEBROOT . 'Home');
+                    $this->showMessage("Email ou mot de passe correcte", "ok", WEBROOT . 'Home');
                 } else {
                     $this->showMessage("Mots de passe non identiques");
                 }

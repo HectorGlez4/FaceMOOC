@@ -38,7 +38,7 @@ global $content;
                     <div class="form-group">
                         <label for="video">Vidéo :</label>
                         <input id="iclVideo" type="url" class="form-control" name="video" placeholder="http://"/>
-                        <p>Le lien de la vidéo à copier se situe sous la vidéo "Partager"->"Intégrer" entre les apostrophes après "src", sous la forme "https://www.youtube.com/embed/oavMtUWDBTM"</p>
+                        <p id="infovideo">Le lien de la vidéo à copier se situe sous la vidéo "Partager"->"Intégrer" entre les apostrophes après "src", sous la forme "https://www.youtube.com/embed/oavMtUWDBTM"</p>
                     </div>
                     <div class="form-group">
                         <label for="video">Ajoutez votre cours (pdf) :</label>

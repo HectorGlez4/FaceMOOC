@@ -125,3 +125,7 @@ footer a:hover{
 .ec-stars-wrapper > a:hover ~ a {
   color: #888;
 }
+
+#infovideo {
+    font-size: 75%;
+}

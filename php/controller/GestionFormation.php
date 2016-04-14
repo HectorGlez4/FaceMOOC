@@ -77,8 +77,7 @@ Class GestionFormation extends Controller
                     }
                 }
             } else {
-
-                $this->showMessage("Vous avez déjà une formation avec ce titre");
+                echo "Vous avez déjà une formation de ce titre";
             }
         }
     }//gestionfor
@@ -159,6 +158,7 @@ Class GestionFormation extends Controller
     {
         if ($_POST['iclID']) {
             $MClass = new MClass();
+            $idForm = $_POST['idForm'];
             $title = $_POST['title'];
             $description = $_POST['description'];
             $video = $_POST['video'];
@@ -180,11 +180,11 @@ Class GestionFormation extends Controller
                     } else if (!in_array($ext, $extensions_valides)) {
                         echo 'erreur extension';
                     } else {
-                        $fichier = 'img/doc/' . $idClass . ".$extension_upload";
+                        $fichier = 'docs/' . $idClass . ".$extension_upload";
                         $resultat = move_uploaded_file($_FILES['cours']['tmp_name'], $fichier);
                         if ($resultat) {
-                            $MClass->addDoc($fichier, $_SESSION['email']);
-                            echo 'uploaded !';
+                            $MClass->addDoc($fichier, $idClass);
+                            header('Location:' . WEBROOT . 'GestionFormation/editFormations/' . $idForm);
                         }
                     }
                 }
@@ -217,7 +217,10 @@ Class GestionFormation extends Controller
     {
 
         $MFormation = new MFormation();
-        $d['editFormation'] = $MFormation->SelectFormationById($id);
+        $MUser = new MUser();
+        $id_user = $MUser->SelectUserId($_SESSION['email']);
+        $id_user = $id_user[0]['id_user'];
+        $d['editFormation'] = $MFormation->SelectFormationById($id, $id_user);
         $this->set($d);
         $this->render('editFormation');
     }
@@ -226,11 +229,20 @@ Class GestionFormation extends Controller
     {
 
         $MFormation = new MFormation();
+        $MUser = new MUser();
         $MChapter = new MChapter();
-        $d['FormationInfo'] = $MFormation->SelectFormationById($id);
-        $d['ChapterInfo'] = $MChapter->SelectChapters($id);
-        $this->set($d);
-        $this->render('editFormationContent');
+        $id_user = $MUser->SelectUserId($_SESSION['email']);
+        $id_user = $id_user[0]['id_user'];
+        $verifFormation = $MFormation->SelectFormationById($id, $id_user);
+        if ($verifFormation == null) {
+            echo "Vous n'avez pas les permissions pour éditer cette formation";
+        }
+        else{
+            $d['FormationInfo'] = $verifFormation;
+            $d['ChapterInfo'] = $MChapter->SelectChapters($id);
+            $this->set($d);
+            $this->render('editFormationContent');
+        }
 
     }
 }

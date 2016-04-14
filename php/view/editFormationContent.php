@@ -2,6 +2,7 @@
 include("head.php");
 include("header.php");
 global $content;
+$idForm = $content['FormationInfo'][0]['id_formation'];
 ?>
 <div class='container'>
     <div class="jumbotron">
@@ -27,6 +28,7 @@ global $content;
             <div class='col-md-9'>
                 <form id="editFormationContent" action="<?php echo WEBROOT ?>GestionFormation/updateClass" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="iclID" id="iclID">
+                    <input type="hidden" name="idForm" id="idForm" value="<?php echo $idForm ?>">
                     <div class="form-group">
                         <label for="title">Titre :</label>
                         <input id="iclTitle" type="text" class="form-control" name="title"/>
@@ -73,11 +75,11 @@ global $content;
 </script>
 
 
-
 <?php $idForm = $content['FormationInfo'][0]['id_formation']; ?>
 
 
 <?php include("modals.php"); ?>
+
 
 
 

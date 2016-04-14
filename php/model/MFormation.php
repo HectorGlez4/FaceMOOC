@@ -72,12 +72,13 @@
 			return ($this->Select($stmt));
 		}
 
-		function SelectFormationById($id)
+		function SelectFormationById($id, $id_user)
 		{
 			$this->Connect();
-			$sql = "Select * From formation WHERE id_formation = :id";
+			$sql = "Select * From formation AS f, expert AS e WHERE id_formation = :id and f.id_expert = e.id_expert and e.id_user = :id_user";
 			$stmt = $this->PDO->prepare($sql);
 			$stmt->bindParam(":id", $id, PDO::PARAM_INT);
+			$stmt->bindParam(":id_user", $id_user, PDO::PARAM_INT);
 			return ($this->Select($stmt));
 		}
 

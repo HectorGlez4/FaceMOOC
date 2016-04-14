@@ -97,9 +97,9 @@ function loadClassMenu(idChap)
 		{
 			idUL = "#chp" + idChap;
 
-			$(idUL).append("<a onclick='loadClass("+a.id_class+")'><li>"+ a.title +"</li></a>" 
-							+"<button onclick='RemoveClass({idClass:"+a.id_class+ " , idChap:"+ idChap+"})' type='button'  class='btn btn-primary btn-xs' >"
-							+"<span class='glyphicon glyphicon-remove' style='color:red;font-size:1em;' aria-hidden='true'></span></button>");
+			$(idUL).append("<a onclick='loadClass("+a.id_class+")'><li>"+ a.title +" " 
+							+"<button onclick='RemoveClass({idClass:"+a.id_class+ " , idChap:"+ idChap+"})' type='button'  class='btn btn-info btn-xs btn-round' >"
+							+"<span class='glyphicon glyphicon-trash' font-size:1em;' aria-hidden='true'></span></button></li></a>");
 		});
 	});
 }

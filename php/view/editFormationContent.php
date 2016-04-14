@@ -8,14 +8,14 @@ global $content;
         <h1><?php echo $content['FormationInfo'][0]['title']; ?></h1>
     </div>
 
-<p class="text-success">Chapitres :<p>
+    <label>Chapitres :</label><br>
 
         <div class='row'>
             <div class='col-md-3'>
                 <div class="ChapterClassMenu">
-                </div>
+                </div><br><br>
                     
-
+                <label>Actions :</label><br>
                 <td><a href="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-folder-open"
                                                                                 aria-hidden="true"></span> Ajouter Chapitre </a>
                 </td>
@@ -39,12 +39,12 @@ global $content;
                     <div class="form-group">
                         <label for="video">Vidéo :</label>
                         <input id="iclVideo" type="url" class="form-control" name="video" placeholder="http://"/>
-                        <p id="infovideo">Le lien de la vidéo à copier se situe sous la vidéo "Partager"->"Intégrer" entre les apostrophes après "src", sous la forme "https://www.youtube.com/embed/oavMtUWDBTM"</p>
+                        <p id="infovideo" class="bg-warning">Le lien de la vidéo à copier se situe sous la vidéo "Partager"->"Intégrer" entre les apostrophes après "src", sous la forme "https://www.youtube.com/embed/oavMtUWDBTM"</p>
                     </div>
                     <div class="form-group">
                         <label for="video">Ajoutez votre cours (pdf) :</label>
                         <div class="input-group">
-                            <input class="btn btn-md btn-primary btn-block" type="file" name="cours"/>
+                            <input class="" type="file" name="cours"/>
                         </div>
                     </div>
                     <button class="btn btn-md btn-primary btn-block" type="submit">Modifier ce cours</button>
